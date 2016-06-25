@@ -49,9 +49,9 @@ in {
       kde5.enable = params.get-KDE;
       xterm.enable = false;
     };
-    #displayManager = {
-    #  sddm.enable = true;
-    #};
+    displayManager = {
+      sddm.enable = config.services.xserver.enable;
+    };
     windowManager = {
       default = if !params.use-KDE then "i3" else "none";
       i3.enable = params.get-i3;
