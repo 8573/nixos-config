@@ -30,7 +30,7 @@
   services.xserver = {
     desktopManager = {
       default = "kde5";
-      kde5.enable = true;
+      kde5.enable = config.services.xserver.enable;
     };
     displayManager = {
       sddm.enable = config.services.xserver.enable;
