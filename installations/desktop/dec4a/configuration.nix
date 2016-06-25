@@ -27,6 +27,16 @@
     enable = !config.environment.noXlibs && false;
   };
 
+  services.xserver = {
+    desktopManager = {
+      default = "kde5";
+      kde5.enable = true;
+    };
+    displayManager = {
+      sddm.enable = config.services.xserver.enable;
+    };
+  };
+
   swapDevices = [
     { device = "/dev/disk/by-uuid/7c57cf03-d918-410b-bb9e-b0f56476f078"; }
   ];

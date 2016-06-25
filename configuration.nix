@@ -43,19 +43,4 @@ in {
     enable = params.use-grsecurity;
   };
 
-  services.xserver = {
-    desktopManager = {
-      default = if params.use-KDE then "kde5" else "none";
-      kde5.enable = params.get-KDE;
-      xterm.enable = false;
-    };
-    displayManager = {
-      sddm.enable = config.services.xserver.enable;
-    };
-    windowManager = {
-      default = if !params.use-KDE then "i3" else "none";
-      i3.enable = params.get-i3;
-    };
-  };
-
 }
