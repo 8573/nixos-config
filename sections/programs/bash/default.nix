@@ -4,7 +4,7 @@
     enableCompletion = true;
 
     interactiveShellInit = ''
-      # See also <https://github.com/mrzool/bash-sensible>
+      # See also <https://github.com/mrzool/bash-sensible/raw/d252937b073de6afbf5ac0ed3d7a9ae015ec9fab/sensible.bash>
 
       set -o noclobber
 

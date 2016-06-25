@@ -30,6 +30,7 @@
     };
   };
 
+  # Per <https://nixos.org/wiki/ZFS_on_NixOS>.
   boot.supportedFilesystems = [
     "vfat"
     "zfs"

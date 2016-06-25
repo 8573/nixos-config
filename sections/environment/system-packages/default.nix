@@ -23,6 +23,7 @@
   ] ++ [
     # Utilities, network.
     ldns
+    telnet
     whois
   ] ++ [
     # Utilities, security/cryptographic.
@@ -37,6 +38,7 @@
     tcpdump
   ] ++ [
     # Utilities, hardware.
+    alsaUtils
     lshw
     pciutils
     smartmontools
@@ -50,14 +52,14 @@
     subversion
     tig
   ] ++ [
-    # C-family development.
+    # Software development, C-family.
     clang
     gcc
   ] ++ [
-    # Shell scripting.
+    # Software development, shell scripting.
     shellcheck
   ] ++ [
-    # Rust development.
+    # Software development, Rust.
     cargo
     rustc
     rustfmt
@@ -85,6 +87,7 @@
     nmap_graphical
   ] ++ lib.optionals (!config.environment.noXlibs) [
     # Utilities, X11.
+    dmenu
     i3status
     xclip
   ]);
