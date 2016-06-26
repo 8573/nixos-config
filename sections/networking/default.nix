@@ -13,7 +13,7 @@
 
   networking.wireless = {
     # Enables wireless support via wpa_supplicant.
-    enable = true;
+    enable = config.c74d-params.installation-type != "server";
   };
 
 }
