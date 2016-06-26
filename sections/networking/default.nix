@@ -1,5 +1,9 @@
 { config, lib, pkgs, ... }: {
 
+  networking.hostId = config.c74d-params.id8;
+
+  networking.hostName = config.c74d-params.id5;
+
   networking.nameservers = [
     "8.8.8.8"
     "2001:4860:4860::8888"

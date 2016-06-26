@@ -2,45 +2,18 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, lib, pkgs, ... } @ args:
-
-let
-
-  # ./installations/local should be a symlink to the directory for the
-  # local system's Nixos installation.
-
-  local-installation = import ./installations/local/info.nix {
-    inherit config lib pkgs;
-    toplevel-args = args;
-  };
-
-  params = import ./params.nix {
-    inherit config lib pkgs local-installation;
-    toplevel-args = args;
-    params = params // local-installation.params or {};
-  };
-
-in {
+{ config, lib, pkgs, ... }: {
 
   imports = [
+    ./params.nix
+
+    # ./installations/local should be a symlink to the directory for the
+    # local system's Nixos installation.
     ./installations/local/configuration.nix
+
     ./sections
+
     ./secret/users.nix
   ];
-
-  environment.noXlibs = !params.use-X11;
-
-  hardware.enableAllFirmware = params.enable-all-firmware;
-
-  networking = {
-    hostId = local-installation.id8;
-    hostName = local-installation.id5;
-  };
-
-  # TODO: Determine how to pass around state like `params`, and move this to
-  # the security section module.
-  security.grsecurity = {
-    enable = params.use-grsecurity;
-  };
 
 }

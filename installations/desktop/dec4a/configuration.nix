@@ -1,5 +1,13 @@
 { config, lib, pkgs, ... }: {
 
+  c74d-params = {
+    id = "dec4a944";
+    installation-type = "desktop";
+    secure = false;
+
+    KDE.enable = true;
+  };
+
   fileSystems."/" = {
     device = "zpool-dec4a-0-1/root/nixos";
     fsType = "zfs";

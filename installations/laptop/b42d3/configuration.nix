@@ -1,5 +1,11 @@
 { config, lib, pkgs, ... }: {
 
+  c74d-params = {
+    id = "b42d35f1";
+    installation-type = "laptop";
+    secure = false;
+  };
+
   # Prevent Wi-Fi from being significantly slowed when Bluetooth is on.
   boot.extraModprobeConfig = ''
     options iwlwifi bt_coex_active=N
