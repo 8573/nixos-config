@@ -45,6 +45,7 @@
   ] ++ [
     # Software development, general.
     gdb
+    gitAndTools.git-imerge
     gitFull
     gnumake
     llvm
