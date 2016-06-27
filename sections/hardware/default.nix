@@ -4,7 +4,7 @@
 
   hardware.sane = {
     enable = config.c74d-params.installation-type != "server";
-    extraBackends = with pkgs; [
+    extraBackends = with pkgs; lib.optionals config.hardware.sane.enable [
       hplip
     ];
   };
