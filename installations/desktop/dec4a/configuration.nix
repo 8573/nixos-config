@@ -5,7 +5,12 @@
     installation-type = "desktop";
     secure = false;
 
-    hw.cores = 8;
+    hw = {
+      cores = {
+        physical = 8;
+        virtual = 16;
+      };
+    };
 
     KDE.enable = true;
   };

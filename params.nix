@@ -112,10 +112,17 @@ in {
       default = false;
     };
 
-    hw.cores = mkOption {
+    hw.cores.physical = mkOption {
       type = types.int;
       description = ''
-        How many CPU cores the system has.
+        How many physical CPU cores the system has.
+      '';
+    };
+
+    hw.cores.virtual = mkOption {
+      type = types.int;
+      description = ''
+        How many virtual CPU cores the system has.
       '';
     };
 

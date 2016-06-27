@@ -1,18 +1,10 @@
-{ config, lib, pkgs, ... }:
-
-let
-
-  half-the-cores =
-    builtins.div (config.c74d-params.hw.cores or 2) 2;
-
-in {
+{ config, lib, pkgs, ... }: {
 
   nix = {
-    buildCores = half-the-cores;
     gc = {
       automatic = true;
     };
-    maxJobs = half-the-cores;
+    maxJobs = config.c74d-params.hw.cores.virtual;
     useSandbox = true;
     extraOptions = ''
       auto-optimise-store = true

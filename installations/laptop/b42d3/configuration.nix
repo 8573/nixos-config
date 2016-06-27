@@ -5,7 +5,12 @@
     installation-type = "laptop";
     secure = false;
 
-    hw.cores = 4;
+    hw = {
+      cores = {
+        physical = 4;
+        virtual = 8;
+      };
+    };
   };
 
   # Prevent Wi-Fi from being significantly slowed when Bluetooth is on.
