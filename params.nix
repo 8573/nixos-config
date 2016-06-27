@@ -112,6 +112,13 @@ in {
       default = false;
     };
 
+    hw.cores = mkOption {
+      type = types.int;
+      description = ''
+        How many CPU cores the system has.
+      '';
+    };
+
     grsecurity.enable = mkOption {
       type = types.bool;
       default = params.secure;

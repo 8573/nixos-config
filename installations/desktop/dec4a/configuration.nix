@@ -5,6 +5,8 @@
     installation-type = "desktop";
     secure = false;
 
+    hw.cores = 8;
+
     KDE.enable = true;
   };
 
@@ -24,11 +26,6 @@
     device = "/dev/disk/by-uuid/9786-99E0";
     fsType = "vfat";
     options = ["noatime" "nodiratime" "nosuid" "utf8" "tz=UTC"];
-  };
-
-  nix = {
-    buildCores = 4;
-    maxJobs = 4;
   };
 
   services.redshift = {

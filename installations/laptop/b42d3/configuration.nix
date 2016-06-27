@@ -4,6 +4,8 @@
     id = "b42d35f1";
     installation-type = "laptop";
     secure = false;
+
+    hw.cores = 4;
   };
 
   # Prevent Wi-Fi from being significantly slowed when Bluetooth is on.
@@ -41,11 +43,6 @@
 
   hardware.bluetooth = {
     enable = true;
-  };
-
-  nix = {
-    buildCores = 4;
-    maxJobs = 4;
   };
 
   powerManagement.enable = false;
