@@ -3,7 +3,7 @@
   hardware.enableAllFirmware = config.c74d-params.enable-all-firmware;
 
   hardware.sane = {
-    enable = true;
+    enable = config.c74d-params.installation-type != "server";
     extraBackends = with pkgs; [
       hplip
     ];
