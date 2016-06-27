@@ -104,7 +104,6 @@ in {
 
     secure = mkOption {
       type = types.bool;
-      default = true;
     };
 
     lightweight = mkOption {
