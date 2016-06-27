@@ -3,6 +3,7 @@
   imports = [
     ./etc
     ./system-packages
+    ./variables
   ];
 
   environment.extraInit = ''
