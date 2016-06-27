@@ -13,7 +13,7 @@
     displayManager = {
       ${if config.c74d-params.KDE.enable
         then "sddm"
-        else "slim"}.enable = config.services.xserver.enable;
+        else "lightdm"}.enable = config.services.xserver.enable;
     };
 
     windowManager = {

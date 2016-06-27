@@ -57,10 +57,6 @@
   };
 
   services.xserver = {
-    displayManager.slim = {
-      autoLogin = true;
-      defaultUser = "c74d";
-    };
     multitouch = {
       # `multitouch` overrides `synaptics` and is less configurable.
       enable = false;
