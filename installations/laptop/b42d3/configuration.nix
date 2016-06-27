@@ -56,7 +56,6 @@
 
   services.xserver = {
     displayManager.slim = {
-      enable = config.services.xserver.enable;
       autoLogin = true;
       defaultUser = "c74d";
     };
@@ -77,10 +76,6 @@
       palmDetect = true;
       twoFingerScroll = true;
       #vertEdgeScroll = false;
-    };
-    windowManager = {
-      default = "i3";
-      i3.enable = config.services.xserver.enable;
     };
   };
 
