@@ -4,6 +4,7 @@
     id = "dec4a944";
     installation-type = "desktop";
     secure = false;
+    personal = true;
 
     hw = {
       cores = {

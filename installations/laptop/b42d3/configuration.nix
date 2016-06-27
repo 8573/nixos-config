@@ -4,6 +4,7 @@
     id = "b42d35f1";
     installation-type = "laptop";
     secure = false;
+    personal = true;
 
     hw = {
       cores = {

@@ -112,6 +112,17 @@ in {
       default = false;
     };
 
+    personal = mkOption {
+      type = types.bool;
+      description = ''
+        Whether this installation of NixOS is for my personal use, as opposed
+        to being for, e.g., a shell-host server intended to be shared with
+        others. Setting this to `true` turns on greater system-wide
+        customization of things like Git and text editors (and choice of text
+        editors).
+      '';
+    };
+
     hw.cores.physical = mkOption {
       type = types.int;
       description = ''
