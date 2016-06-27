@@ -13,7 +13,7 @@ let
         "A" "B" "C" "D" "E" "F"
       ];
       empty-strings =
-        genList (_: "") (length hex-digits);
+        genList (const "") (length hex-digits);
       is-all-hex =
         replaceStrings hex-digits empty-strings s == "";
     in
