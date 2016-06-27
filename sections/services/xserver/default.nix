@@ -10,7 +10,11 @@
       default = "kde5";
     };
 
-    displayManager = if config.c74d-params.KDE.enable then {
+    displayManager = {
+      hiddenUsers = [
+        "nobody"
+      ];
+    } // (if config.c74d-params.KDE.enable then {
       sddm = {
         enable = config.services.xserver.enable;
       };
@@ -19,7 +23,7 @@
         enable = config.services.xserver.enable;
         background = "#000000";
       };
-    };
+    });
 
     windowManager = {
       i3.enable = config.c74d-params.i3.install;
