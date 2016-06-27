@@ -10,10 +10,15 @@
       default = "kde5";
     };
 
-    displayManager = {
-      ${if config.c74d-params.KDE.enable
-        then "sddm"
-        else "lightdm"}.enable = config.services.xserver.enable;
+    displayManager = if config.c74d-params.KDE.enable then {
+      sddm = {
+        enable = config.services.xserver.enable;
+      };
+    } else {
+      lightdm = {
+        enable = config.services.xserver.enable;
+        background = "#000000";
+      };
     };
 
     windowManager = {
