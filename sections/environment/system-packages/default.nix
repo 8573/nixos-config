@@ -60,6 +60,9 @@
     # Software development, shell scripting.
     shellcheck
   ] ++ [
+    # Software development, Web.
+    closurecompiler
+  ] ++ [
     # Software development, Rust.
     cargo
     rustc
