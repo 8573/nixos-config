@@ -76,6 +76,9 @@
     nix-prefetch-scripts
     nix-repl
   ] ++ [
+    # Google-related non-graphical software
+    drive
+  ] ++ [
     # Data.
     aspellDicts.en
     man-pages
