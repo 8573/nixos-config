@@ -14,7 +14,7 @@
     file
     imagemagick
     jq
-    #libav
+    libav
     libqalculate
     silver-searcher
     tree
