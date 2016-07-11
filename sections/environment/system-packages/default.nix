@@ -3,6 +3,7 @@
   environment.systemPackages = (with pkgs; [
     # Common applications (that don't require a graphical environment).
     elinks
+    moc
     vim_configurable
     vlc
     weechat
