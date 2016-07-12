@@ -28,8 +28,12 @@
   '' + lib.optionalString config.c74d-params.personal ''
     [alias]
         vc = commit --verbose
+        vci = commit --verbose --interactive
+        vcp = commit --verbose --patch
         s = status
         co = checkout
+        ai = add --interactive
+        ap = add --patch
         mwdiff = diff --minimal --word-diff
         gl = log --graph
         sl = log --decorate --source --format=short --encoding=UTF-8 --notes --show-signature --date=iso --graph
