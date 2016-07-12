@@ -17,7 +17,7 @@
       set-option -g status-interval 1
       set-option -g status-left '[#{=16:socket_path} #{session_id} #{session_name}] '
       set-option -g status-left-length 40
-      set-option -g status-right ' [%F %T %Z] [#{host_short}]'
+      set-option -g status-right ' [#{session_attached}ac] [%F %T %Z] [#{host_short}]'
       set-option -g status-style "fg=white,bg=blue"
 
       set-window-option -g allow-rename off
