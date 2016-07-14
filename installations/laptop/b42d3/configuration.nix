@@ -54,7 +54,7 @@
   powerManagement.enable = false;
 
   services.redshift = {
-    enable = !config.environment.noXlibs;
+    enable = config.c74d-params.X11.enable;
   };
 
   services.xserver = {

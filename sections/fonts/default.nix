@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }: {
 
-  fonts.fontconfig = lib.optionalAttrs (!config.environment.noXlibs) {
+  fonts.fontconfig = lib.optionalAttrs config.c74d-params.X11.enable {
     defaultFonts = {
       sansSerif = [
         "Noto Sans"
@@ -17,7 +17,7 @@
     };
   };
 
-  fonts.fonts = lib.optionals (!config.environment.noXlibs) (with pkgs; [
+  fonts.fonts = lib.optionals config.c74d-params.X11.enable (with pkgs; [
     noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji

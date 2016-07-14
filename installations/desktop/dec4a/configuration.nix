@@ -35,7 +35,7 @@
   };
 
   services.redshift = {
-    enable = !config.environment.noXlibs && false;
+    enable = config.c74d-params.X11.enable && false;
   };
 
   swapDevices = [
