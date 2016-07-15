@@ -4,6 +4,10 @@
 
 in {
 
+  imports = [
+    ./bluetooth.nix
+  ];
+
   programs.bash.shellAliases = std // {
     "ls" = "${std.ls} --classify --si --time-style=posix-long-iso";
     "l" = "ls --format=long --almost-all";
