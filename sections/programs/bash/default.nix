@@ -1,5 +1,9 @@
 { config, lib, pkgs, ... }: {
 
+  imports = [
+    ./aliases
+  ];
+
   programs.bash = {
     enableCompletion = true;
 
@@ -30,14 +34,6 @@
       HISTSIZE=65536
       HISTTIMEFORMAT='%F %T '
     '';
-
-    shellAliases = let std = config.environment.shellAliases; in std // {
-      "ls" = "${std.ls} --classify --si --time-style=posix-long-iso";
-      "l" = "ls --format=long --almost-all";
-      "cp" = "cp --interactive";
-      "mv" = "mv --interactive";
-      "rm" = "rm --interactive=once";
-    };
   };
 
 }
