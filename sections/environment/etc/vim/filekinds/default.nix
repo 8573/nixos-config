@@ -14,22 +14,22 @@
       fts-list.sha256 = "0cz729xf10lrw014jj2hlbxalgdpahxbg61gdg51jnryx8dqxrmr";
       fkplugin.sha256 = "1arxbp47zsk55qdcrczfgi774yw435v6z73zqm4jl4jliykl1y2m"; }
     { kind = "document";
-      fts-list.sha256 = "057y15imz1mfkalmg5h4vwzmiqs1f3f0hg5j2j2j78ky9l438ngw"; 
+      fts-list.sha256 = "057y15imz1mfkalmg5h4vwzmiqs1f3f0hg5j2j2j78ky9l438ngw";
       fkplugin.sha256 = "0fnghfv34y7678gl33zydkzjsvqbxfnrh918iq2azmz5mk2r7rrn"; }
     { kind = "message";
-      fts-list.sha256 = "1p3n4g04r98nah4p3a0ky788bq1sjnz41w8ipvh3bjc6xnd5rc2n"; 
+      fts-list.sha256 = "1p3n4g04r98nah4p3a0ky788bq1sjnz41w8ipvh3bjc6xnd5rc2n";
       fkplugin.sha256 = "059r1k33q9ysh2aahhy81y648c4l4rzig8d0r4imxq7zyr8hsl85"; }
     { kind = "code";
-      fts-list.sha256 = "0zdkvf3mdhbc8jlchdhcqhq85bgp9brx11iiph2dsrc76jfsiw3b"; 
+      fts-list.sha256 = "0zdkvf3mdhbc8jlchdhcqhq85bgp9brx11iiph2dsrc76jfsiw3b";
       fkplugin.sha256 = "02diblgkv8iwimvgpyv0phg93cvcb1zgkx7ay70kz8pln3gl4vxj"; }
     { kind = "program-source";
-      fts-list.sha256 = "1w0qc4kpcx1jlmn7lba9ny86nxx6py72qbrdv1w04bngbmfkpz0g"; 
+      fts-list.sha256 = "1w0qc4kpcx1jlmn7lba9ny86nxx6py72qbrdv1w04bngbmfkpz0g";
       fkplugin.sha256 = "1p6ddxqqz65dnb4h3ab88va47a0zhk4fxgv1nwr1r2m3379vlmkd"; }
     { kind = "configuration";
-      fts-list.sha256 = "1j2c4bb70yp6gvz8q1519554b95n487hmf6lxdbrv9bis96m7hm4"; 
+      fts-list.sha256 = "1j2c4bb70yp6gvz8q1519554b95n487hmf6lxdbrv9bis96m7hm4";
       fkplugin.sha256 = "032xfzyp36qh7ykdxszi3sj8dwyqvgkswhyrln7q0j16z8lgn30c"; }
     { kind = "data-storage";
-      fts-list.sha256 = "0y7sd3vslbxqb4v2pl3ngzm9mgjqpl9qxn0zj25kdsxl6bqg44ic"; 
+      fts-list.sha256 = "0y7sd3vslbxqb4v2pl3ngzm9mgjqpl9qxn0zj25kdsxl6bqg44ic";
       fkplugin.sha256 = "032xfzyp36qh7ykdxszi3sj8dwyqvgkswhyrln7q0j16z8lgn30c"; }
   ];
 
