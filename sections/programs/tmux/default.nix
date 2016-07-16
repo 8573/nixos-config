@@ -25,18 +25,7 @@
       set-option -g status-style "fg=white,bg=blue"
 
       set-window-option -g allow-rename off
-      set-window-option -g window-status-activity-style "fg=yellow,none"
-      set-window-option -g window-status-bell-style "fg=red,none"
-      set-window-option -g window-status-current-format '#I#F#W'
-      set-window-option -g window-status-current-style "fg=green"
-      set-window-option -g window-status-format '#I#F#W'
-      set-window-option -g window-status-last-style "fg=cyan"
-      set-window-option -g window-status-separator ' '
-      set-window-option -g window-status-style "fg=cyan"
       set-window-option -g xterm-keys on
-
-      bind-key C new-window -a
-      bind-key C-C new-window -a -c '#{pane_current_path}'
     '';
   };
 
