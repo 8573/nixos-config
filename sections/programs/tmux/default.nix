@@ -1,5 +1,9 @@
 { config, lib, pkgs, ... }: {
 
+  imports = [
+    ./personal.nix
+  ];
+
   programs.tmux = {
     enable = true;
 
@@ -33,9 +37,6 @@
 
       bind-key C new-window -a
       bind-key C-C new-window -a -c '#{pane_current_path}'
-    '' + lib.optionalString config.c74d-params.personal ''
-      set-option -g mode-keys vi
-      set-option -g status-keys vi
     '';
   };
 
