@@ -33,9 +33,10 @@
 
       bind-key C new-window -a
       bind-key C-C new-window -a -c '#{pane_current_path}'
+    '' + lib.optionalString config.c74d-params.personal ''
+      set-option -g mode-keys vi
+      set-option -g status-keys vi
     '';
-  } // lib.optionalAttrs config.c74d-params.personal {
-    keyMode = "vi";
   };
 
 }
