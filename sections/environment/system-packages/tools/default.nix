@@ -8,6 +8,7 @@
     ./misc
     ./monitoring
     ./network
+    ./pdf
     ./security-and-crypto
     ./X11
   ];
