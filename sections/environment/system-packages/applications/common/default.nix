@@ -8,6 +8,7 @@
     vim_configurable
     vlc
     weechat
+    xpdf
   ]);
 
 }
