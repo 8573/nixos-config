@@ -1,5 +1,7 @@
 { config, lib, pkgs, ... }: {
 
+  networking.dnsExtensionMechanism = true;
+
   networking.hostId = config.c74d-params.id8;
 
   networking.hostName = config.c74d-params.id5;
