@@ -3,6 +3,7 @@
   environment.systemPackages = (with pkgs; [
     closurecompiler
     nodejs
+    nodePackages.eslint
   ]);
 
 }
