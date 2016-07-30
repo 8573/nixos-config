@@ -1,10 +1,9 @@
 { config, lib, pkgs, ... }: {
 
   programs.tmux = lib.mkIf config.c74d-params.personal {
-    extraTmuxConf = ''
-      set-option -g mode-keys vi
-      set-option -g status-keys vi
+    keyMode = "vi";
 
+    extraTmuxConf = ''
       set-window-option -g window-status-activity-style "fg=yellow,none"
       set-window-option -g window-status-bell-style "fg=red,none"
       set-window-option -g window-status-current-format '#I#F#W'
