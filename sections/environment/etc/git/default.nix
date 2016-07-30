@@ -36,6 +36,8 @@
         co = checkout
         ai = add --interactive
         ap = add --patch
+        dp = diff --diff-algorithm=patience
+        dpw = diff --diff-algorithm=patience --word-diff
         mwdiff = diff --minimal --word-diff
         gl = log --graph
         sl = log --decorate --source --format=short --encoding=UTF-8 --notes --show-signature --date=iso --graph
