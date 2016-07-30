@@ -11,6 +11,8 @@
         renames = copy
     [fetch]
         fsckObjects = yes
+    [gpg]
+        program = ${pkgs.gnupg}/bin/gpg2
     [i18n]
         commitEncoding = utf-8
         logOutputEncoding = utf-8
