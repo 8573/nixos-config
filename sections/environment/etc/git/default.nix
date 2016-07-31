@@ -5,7 +5,7 @@
         compression = 9
         pager = less -+FSX
     [diff]
-        algorithm = minimal
+        algorithm = patience
         compactionHeuristic = yes
         mnemonicPrefix = yes
         renames = copy
