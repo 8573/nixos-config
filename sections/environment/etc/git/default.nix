@@ -27,6 +27,8 @@
     [rebase]
         missingCommitsCheck = error
         stat = yes
+    [alias]
+        diff-highlight = !${pkgs.gitFull}/share/git/contrib/diff-highlight/diff-highlight
   '' + lib.optionalString config.c74d-params.personal ''
     [alias]
         vc = commit --verbose
