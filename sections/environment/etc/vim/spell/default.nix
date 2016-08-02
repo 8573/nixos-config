@@ -10,19 +10,6 @@
   spellfile-name = lang: "${lang}.utf-8.add";
   spellfile-path = lang: "spell/${spellfile-name lang}";
 
-  system-vim = let
-    default = pkgs.vim;
-    vims = with pkgs; [
-      vim
-      vim_configurable
-    ];
-  in
-    lib.findSingle
-      (lib.flip lib.elem vims)
-      default
-      default
-      config.environment.systemPackages;
-
   fetch-spellfile = {
     lang,
     rev ? vim-config-rev,
@@ -40,7 +27,7 @@
     name = "vim-spellfile-${rev}-${spellfile-name lang}.spl";
     builder = ./build-spellfile.bash;
     src = fetch-spellfile args;
-    vim = system-vim;
+    vim = config.programs.vim.package;
   };
 
   words-etc-files = lib.listToAttrs (lib.concatMap ({
