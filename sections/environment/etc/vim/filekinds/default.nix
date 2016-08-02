@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }: let
 
-  vim-config-rev = "d7801edf8c7d2cc3b2e30ad4a48bcc7232c45658";
+  vim-config-rev = "fa2c1f0fbaf9365a02a3772f86f226361a3bb9d4";
 
   fk-dir = "lib/filekinds";
 
@@ -12,7 +12,7 @@
   fk-srcs = [
     { kind = "text";
       fts-list.sha256 = "0cz729xf10lrw014jj2hlbxalgdpahxbg61gdg51jnryx8dqxrmr";
-      fkplugin.sha256 = "1arxbp47zsk55qdcrczfgi774yw435v6z73zqm4jl4jliykl1y2m"; }
+      fkplugin.sha256 = "19lyh6myb5v9zmqzmp4wmazjvycrdpgdric5l3dvx5gbya4hnflh"; }
     { kind = "document";
       fts-list.sha256 = "057y15imz1mfkalmg5h4vwzmiqs1f3f0hg5j2j2j78ky9l438ngw";
       fkplugin.sha256 = "0fnghfv34y7678gl33zydkzjsvqbxfnrh918iq2azmz5mk2r7rrn"; }
