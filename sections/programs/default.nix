@@ -5,6 +5,7 @@
     ./mosh
     ./ssh
     ./tmux
+    ./vim
   ];
 
 }

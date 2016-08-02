@@ -5,7 +5,6 @@
   environment.systemPackages = (with pkgs; [
     elinks
     moc
-    vim_configurable
     vlc
     weechat
     xpdf
