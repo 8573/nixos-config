@@ -2,7 +2,6 @@
 
   imports = [
     ./vimrc
-    ./sensible
     ./spell
     ./filekinds
   ];

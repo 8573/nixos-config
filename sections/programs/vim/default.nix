@@ -2,6 +2,10 @@
 
   programs.vim = {
     enable = true;
+
+    plugins = [
+      "sensible"
+    ];
   };
 
 }
