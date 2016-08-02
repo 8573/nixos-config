@@ -5,7 +5,7 @@
 { config, lib, pkgs, ... }: {
 
   imports = [
-    ./params.nix
+    ./modules
 
     ./pkgs
 
