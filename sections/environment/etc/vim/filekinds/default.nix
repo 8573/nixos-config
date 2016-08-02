@@ -59,7 +59,7 @@
 in {
 
   environment.etc = {
-    "vim/vimrc" = lib.optionalAttrs config.c74d-params.personal {
+    "vim/vimrc" = lib.mkIf config.c74d-params.personal {
       text = ''
         source /etc/vim/${fk-rc-path}
       '';
