@@ -2,6 +2,7 @@
 
   imports = [
     ./c74d-params
+    ./programs
   ];
 
 }
