@@ -7,11 +7,31 @@
       name = "vim-customize-wrapper";
 
       vimrcConfig.customRC = ''
+        function s:try_source(files)
+          for l:f in a:files
+            let l:f = fnamemodify(l:f, ':p')
+
+            if filereadable(l:f)
+              execute 'source' l:f
+            endif
+          endfor
+        endfunction
+
+        ${lib.optionalString cfg.vimrc.useSystemVimrc ''
+          call s:try_source(['/etc/vim/vimrc', '/etc/vimrc'])
+        ''}
+
         ${lib.optionalString (cfg.vimrc.file != null) ''
           source ${cfg.vimrc.file}
         ''}
 
-        ${cfg.vimrc.text}
+        ${lib.optionalString cfg.vimrc.useUserVimrc ''
+          call s:try_source(['~/.vim/vimrc', '~/.vimrc'])
+        ''}
+
+        ${lib.optionalString (cfg.vimrc.text != "") ''
+          source ${builtins.toFile "vimrc-extra" cfg.vimrc.text}
+        ''}
       '';
 
       vimrcConfig.vam.knownPlugins = pkgs.vimPlugins;
@@ -89,7 +109,8 @@ in {
       type = with lib.types; nullOr path;
       default = null;
       description = ''
-        A file to use as the system vimrc script.
+        A file to use as this module's Vim installation's vimrc
+        (initialization) script.
       '';
     };
 
@@ -97,7 +118,30 @@ in {
       type = lib.types.lines;
       default = "";
       description = ''
-        Extra text to append to the system vimrc script.
+        Extra text to append to this module's Vim installation's vimrc
+        (initialization) script.
+      '';
+    };
+
+    vimrc.useSystemVimrc = lib.mkOption {
+      type = lib.types.bool;
+      default = true;
+      example = false;
+      description = ''
+        Whether to source the system vimrc script (`/etc/vim/vimrc` or
+        `/etc/vimrc`), if one exists, from this module's Vim installation's
+        vimrc script.
+      '';
+    };
+
+    vimrc.useUserVimrc = lib.mkOption {
+      type = lib.types.bool;
+      default = true;
+      example = false;
+      description = ''
+        Whether to source the user's vimrc script (`~/.vim/vimrc` or
+        `~/.vimrc`), if one exists, from this module's Vim installation's
+        vimrc script.
       '';
     };
 
