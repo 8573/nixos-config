@@ -2,6 +2,70 @@
 
   cfg = config.programs.vim;
 
+  vim-customize-wrapper =
+    pkgs.vim_configurable.customize {
+      name = "vim-customize-wrapper";
+
+      vimrcConfig.customRC = ''
+        ${lib.optionalString (cfg.vimrc.file != null) ''
+          source ${cfg.vimrc.file}
+        ''}
+
+        ${cfg.vimrc.text}
+      '';
+
+      vimrcConfig.vam.knownPlugins = pkgs.vimPlugins;
+
+      vimrcConfig.vam.pluginDictionaries = map (plugin:
+        if lib.isString plugin then
+          { name = plugin; }
+        else if lib.isAttrs plugin then
+          plugin
+        else
+          throw "this should never happen"
+      ) cfg.plugins;
+    };
+
+  # By default, the `customize`'d `vim_configurable` exposes only a wrapper
+  # script for invoking Vim itself, and not the other things that the normal
+  # `vim_configurable` exposes, including `gvim`, `view`, `vimdiff`, and
+  # man-pages.
+  #
+  # This derivation provides an installation of Vim that exposes all those
+  # things, behind adapted copies of the `customize` derivation's wrapper
+  # script where applicable.
+  vim-configured = pkgs.stdenv.mkDerivation rec {
+    name = "vim-configured-${version}";
+    version = pkgs.vim_configurable.version;
+
+    src = pkgs.vim_configurable;
+
+    wrapper_script="${vim-customize-wrapper}/bin/vim-customize-wrapper";
+
+    installPhase = ''
+      mkdir --parents "$out/bin"
+
+      for f in "$src"/bin/{,e,r,g,rg}{vim,view,vimdiff}; do
+        f_out="$out/bin/$(basename "$f")"
+        if [[ -e "$f" ]]; then
+          sed -e "s|^exec [^ ]* |exec '$f' |" "$wrapper_script" > "$f_out"
+          chmod +x "$f_out"
+        fi
+      done
+
+      for f in "$src"/bin/*; do
+        f_out="$out/bin/$(basename "$f")"
+        if [[ ! -e "$f_out" ]]; then
+          ln -s "$f" "$f_out"
+        fi
+      done
+
+      ln -s "$src/share" "$out"
+    '';
+
+    dontStrip = true;
+  };
+
 in {
 
   options.programs.vim = {
@@ -78,28 +142,7 @@ in {
     if !cfg.enable then
       cfg.default-package
     else
-      pkgs.vim_configurable.customize {
-        name = "vim";
-
-        vimrcConfig.customRC = ''
-          ${lib.optionalString (cfg.vimrc.file != null) ''
-            source ${cfg.vimrc.file}
-          ''}
-
-          ${cfg.vimrc.text}
-        '';
-
-        vimrcConfig.vam.knownPlugins = pkgs.vimPlugins;
-
-        vimrcConfig.vam.pluginDictionaries = map (plugin:
-          if lib.isString plugin then
-            { name = plugin; }
-          else if lib.isAttrs plugin then
-            plugin
-          else
-            throw "this should never happen"
-        ) cfg.plugins;
-      };
+      vim-configured;
 
   config.environment.systemPackages = lib.mkIf cfg.enable [
     cfg.package
