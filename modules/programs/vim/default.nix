@@ -94,7 +94,7 @@ in {
     };
 
     vimrc.text = lib.mkOption {
-      type = lib.types.str;
+      type = lib.types.lines;
       default = "";
       description = ''
         Extra text to append to the system vimrc script.
