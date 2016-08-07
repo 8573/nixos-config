@@ -16,7 +16,7 @@ stdenv.mkDerivation rec {
 
     cp "$src/vim-pager" "$out/bin"
     cp "$src/"*".mkd" "$out/doc"
-    
+
     chmod +x "$out/bin/vim-pager"
   '';
 
