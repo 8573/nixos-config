@@ -34,8 +34,6 @@
         ''}
       '';
 
-      vimrcConfig.vam.knownPlugins = pkgs.vimPlugins;
-
       vimrcConfig.vam.pluginDictionaries = map (plugin:
         if lib.isString plugin then
           { name = plugin; }
