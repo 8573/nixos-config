@@ -4,6 +4,7 @@
     audacity
     chromium
     gimp
+    inkscape
     nmap_graphical
   ]);
 
