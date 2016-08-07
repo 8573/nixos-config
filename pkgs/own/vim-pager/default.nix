@@ -34,6 +34,13 @@ stdenv.mkDerivation rec {
     description = "A shell script for using Vim as a pager";
     homepage = "https://gitlab.com/c74d/vim-pager";
     license = stdenv.lib.licenses.asl20;
-    platforms = vim.meta.platforms;
+    platforms =
+      let
+        vim-platforms =
+          stdenv.lib.platforms.unix;
+      in
+        assert vim.meta ? platforms ->
+         vim.meta.platforms == vim-platforms;
+        vim-platforms;
   };
 }
