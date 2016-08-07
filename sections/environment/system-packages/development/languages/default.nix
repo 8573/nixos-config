@@ -2,6 +2,7 @@
 
   imports = [
     ./c-family
+    ./css
     ./javascript
     ./nix
     ./rust
