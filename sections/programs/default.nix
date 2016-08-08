@@ -6,6 +6,7 @@
     ./ssh
     ./tmux
     ./vim
+    ./zsh
   ];
 
 }
