@@ -4,6 +4,10 @@
     keyMode = "vi";
 
     extraTmuxConf = ''
+      # For now I'm leaving Bash as the system's default login shell, but
+      # within tmux I'll have it be zsh.
+      set-option -g default-shell '/run/current-system/sw/bin/zsh'
+
       set-window-option -g window-status-activity-style "fg=yellow,none"
       set-window-option -g window-status-bell-style "fg=red,none"
       set-window-option -g window-status-current-format '#I#F#W'
