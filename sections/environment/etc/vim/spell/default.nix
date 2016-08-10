@@ -50,7 +50,7 @@ in {
       function! s:set_spellfile()
         let l:sf = '/etc/vim/spell/' . &spelllang . '.utf-8.add'
 
-        if !&spellfile && filereadable(l:sf)
+        if &spellfile == "" && filereadable(l:sf)
           let &l:spellfile = l:sf
         endif
       endfunction
