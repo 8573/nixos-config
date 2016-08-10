@@ -2,19 +2,20 @@
 
 stdenv.mkDerivation rec {
   name = "c74d-vim-pager-${version}";
-  version = "0.2.0";
+  version = "0.3.0";
 
   src = fetchFromGitLab {
     owner = "c74d";
     repo = "vim-pager";
     rev = "v${version}";
-    sha256 = "0lz88gx96g65qd1vii2y0dl2655dkihb1x5zpl65h428sf0ddmpk";
+    sha256 = "1qyhnjb6kx2jx3f1b8lxxnwsj89m10cz2zdb0nn6mccccmjk6iac";
   };
 
   installPhase = ''
     mkdir --parents "$out"/{bin,doc}
 
     cp "$src/vim-pager" "$out/bin"
+    cp "$src/vim-manpager" "$out/bin"
     cp "$src/"*".mkd" "$out/doc"
 
     chmod +x "$out/bin/vim-pager"
