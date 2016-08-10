@@ -1,7 +1,11 @@
 { config, lib, pkgs, ... }: {
 
+  imports = [
+    ./personal
+  ];
+
   environment.variables = {
-    EDITOR = lib.mkIf config.c74d-params.personal "vim";
+
   };
 
 }
