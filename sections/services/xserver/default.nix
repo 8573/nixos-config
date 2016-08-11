@@ -1,5 +1,9 @@
 { config, lib, pkgs, ... }: {
 
+  imports = [
+    ./Xresources
+  ];
+
   services.xserver = {
     enable = config.c74d-params.X11.enable;
 
