@@ -13,7 +13,7 @@
       };
     };
 
-    KDE.enable = true;
+    #KDE.enable = true;
   };
 
   fileSystems."/" = {
