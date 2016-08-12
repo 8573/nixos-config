@@ -5,7 +5,7 @@
   resources-file = pkgs.writeText "Xresources" (
     lib.concatStringsSep "\n" (
       lib.mapAttrsFlatten (k: v: "${k}: ${v}") resources
-    )
+    ) + "\n"
   );
 
 in {
