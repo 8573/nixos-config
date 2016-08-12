@@ -5,6 +5,7 @@
     lshw
     pciutils
     smartmontools
+    usbutils
   ]);
 
 }
