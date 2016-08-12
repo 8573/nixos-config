@@ -2,7 +2,7 @@
 
   services.xserver.xresources = {
     "*locale" = "true";
-    "*foreground" = "rgb:C0/C0/C0";
+    "*foreground" = "rgb:A8/A8/A8";
     "*background" = "rgb:00/00/00";
     "*faceName" = "Monospace:size=11";
   };
