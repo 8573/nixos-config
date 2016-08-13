@@ -44,11 +44,11 @@
 
   system.autoUpgrade = {
     enable = true;
-  } // lib.optionalAttrs (
-    assert config.time ? timeZone;
-      config.time.timeZone == "UTC"
-  ) {
-    dates = "11:40";
+    dates =
+      lib.mkIf
+        (assert config.time ? timeZone;
+          config.time.timeZone == "UTC")
+        "11:40";
   };
 
 }
