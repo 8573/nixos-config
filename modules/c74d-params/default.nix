@@ -150,6 +150,15 @@ in {
       default = params.installation-type != "server";
     };
 
+    X11.font-size = mkOption {
+      type = types.int;
+      default = 11;
+      description = ''
+        A font size to use by default in X11, for those applications that care
+        (e.g., xterm).
+      '';
+    };
+
     enable-all-firmware = mkOption {
       type = types.bool;
       default = !params.lightweight && params.installation-type != "server";
