@@ -23,12 +23,6 @@
     timeout = 3;
   };
 
-  environment.systemPackages = (with pkgs; [
-  ] ++ lib.optionals (!config.environment.noXlibs) [
-    xorg.xbacklight
-    xorg.xev
-  ]);
-
   fileSystems."/" = {
     device = "zpool-b42d3-0-1/b42d3/nixos";
     fsType = "zfs";
