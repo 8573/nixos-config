@@ -30,7 +30,7 @@ in {
 
     font-size = lib.mkOption {
       type = lib.types.int;
-      default = 11;
+      default = config.c74d-params.X11.font-size;
       example = 8;
       description = ''
         The font size to be used for text in i3's window title bars, status
