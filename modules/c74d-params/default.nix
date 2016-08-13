@@ -81,6 +81,10 @@ let
 
 in {
 
+  imports = [
+    ./i3.nix
+  ];
+
   options.c74d-params = {
 
     id = mkOption {

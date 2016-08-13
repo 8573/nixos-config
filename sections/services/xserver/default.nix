@@ -2,6 +2,7 @@
 
   imports = [
     ./xresources
+    ./i3-config
   ];
 
   services.xserver = {
