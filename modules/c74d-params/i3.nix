@@ -67,6 +67,14 @@ in {
         screen-captures taken with these key-bindings.
       '';
     };
+
+    extraConfig = lib.mkOption {
+      type = lib.types.lines;
+      default = "";
+      description = ''
+        Additional lines to append to the i3 configuration file.
+      '';
+    };
   };
 
 }

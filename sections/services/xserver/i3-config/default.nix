@@ -74,6 +74,8 @@
     ${brightness-control-bindings}
     ${Redshift-toggle-bindings}
     ${screencap-bindings}
+
+    ${cfg.extraConfig}
     I3CONFIG
   '';
 
