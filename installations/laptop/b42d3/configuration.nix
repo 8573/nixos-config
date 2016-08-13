@@ -16,6 +16,18 @@
     X11 = {
       font-size = 13;
     };
+
+    i3 = {
+      extraConfig =
+        let
+          amixer = "${pkgs.alsaUtils}/bin/amixer";
+        in ''
+          # Key-bindings for audio output control
+          bindsym XF86AudioRaiseVolume exec '${amixer}' -Mqc 1 set Master 5%+ unmute
+          bindsym XF86AudioLowerVolume exec '${amixer}' -Mqc 1 set Master 5%- unmute
+          bindsym XF86AudioMute exec '${amixer}' -Mqc 1 set Master toggle
+        '';
+    };
   };
 
   # Prevent Wi-Fi from being significantly slowed when Bluetooth is on.
