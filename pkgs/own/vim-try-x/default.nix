@@ -4,7 +4,7 @@ stdenv.mkDerivation rec {
   name = "${scriptName}-${version}";
   scriptName = "vim-try-x";
   version = "1.0.0";
-  
+
   src = ''
     #!/bin/sh
 
