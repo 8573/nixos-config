@@ -12,6 +12,10 @@
         virtual = 8;
       };
     };
+
+    X11 = {
+      font-size = 13;
+    };
   };
 
   # Prevent Wi-Fi from being significantly slowed when Bluetooth is on.
