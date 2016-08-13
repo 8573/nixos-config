@@ -6,7 +6,9 @@
         "vim-try-x"
       else
         "vim";
+
     PAGER = "vim-pager";
+
     MANPAGER = "vim-manpager";
   };
 
