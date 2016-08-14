@@ -65,9 +65,14 @@ in {
       Coordinated Time.
     '';
 
+    clock.home = mk-bool-opt true ''
+      Whether the status bar should include a clock displaying time in the
+      time-zone of what is configured as the system's normal location.
+    '';
+
     clock.local = mk-bool-opt true ''
-      Whether the status bar should include a clock displaying time in what is
-      configured as the system's local time-zone.
+      Whether the status bar should include a clock displaying time in the
+      time-zone of what is configured as the system's current location.
     '';
 
     clock.extra-timezones = lib.mkOption {

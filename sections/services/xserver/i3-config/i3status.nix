@@ -12,17 +12,29 @@
     }
   '';
 
+  uniq-r = list:
+    if list == [] then
+      []
+    else
+      let
+        xs = lib.init list;
+        x = lib.last list;
+      in
+        lib.remove x (uniq-r xs) ++ [x];
+
   clock-TZs =
     cfg.clock.extra-timezones
     ++ lib.optional
-      (cfg.clock.local && config.time.timeZone != "UTC")
-      config.time.timeZone
+      cfg.clock.local
+      config.c74d-params.location.target.timezone
     ++ lib.optional
-      (cfg.clock.UTC
-        || (!cfg.clock.local && config.time.timeZone == "UTC"))
+      cfg.clock.home
+      config.c74d-params.location.normal.timezone
+    ++ lib.optional
+      cfg.clock.UTC
       "UTC";
 
-  clocks = lib.concatStrings (map clock clock-TZs);
+  clocks = lib.concatStrings (map clock (uniq-r clock-TZs));
 
   # The i3status configuration file format supports having advanced Unicode
   # characters directly embedded in UTF-8, but I don't trust such characters
