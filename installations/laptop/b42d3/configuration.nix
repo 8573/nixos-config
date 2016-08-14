@@ -6,6 +6,11 @@
     secure = false;
     personal = true;
 
+    location = {
+      normal = config.lib.c74d.places.US.CA.r001;
+      target = config.lib.c74d.places.US.CA.r001;
+    };
+
     hw = {
       cores = {
         physical = 4;
