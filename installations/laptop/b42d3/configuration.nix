@@ -26,6 +26,14 @@
     };
 
     i3 = {
+      status-bar = {
+        clock = {
+          extra-timezones = [
+            "America/Los_Angeles"
+          ];
+        };
+      };
+
       extraConfig =
         let
           amixer = "${pkgs.alsaUtils}/bin/amixer";

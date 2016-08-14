@@ -21,6 +21,16 @@
       };
     };
 
+    i3 = {
+      status-bar = {
+        clock = {
+          extra-timezones = [
+            "America/Los_Angeles"
+          ];
+        };
+      };
+    };
+
     #KDE.enable = true;
   };
 
