@@ -11,6 +11,14 @@
         physical = 4;
         virtual = 8;
       };
+
+      Ethernet = {
+        present = false;
+      };
+
+      Wi-Fi = {
+        present = true;
+      };
     };
 
     X11 = {

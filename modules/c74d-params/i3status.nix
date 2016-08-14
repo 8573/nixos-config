@@ -1,5 +1,7 @@
 { config, lib, pkgs, ... }: let
 
+  hw = config.c74d-params.hw;
+
   mk-bool-opt = default: description: lib.mkOption {
     type = lib.types.bool;
     example = !default;
@@ -33,15 +35,15 @@ in {
       the system's IPv6 Internet connection
     '';
 
-    Wi-Fi.enable = mk-modl-enbl-opt true ''
+    Wi-Fi.enable = mk-modl-enbl-opt hw.Wi-Fi.present ''
       the system's Wi-Fi connection
     '';
 
-    Ethernet.enable = mk-modl-enbl-opt true ''
+    Ethernet.enable = mk-modl-enbl-opt hw.Ethernet.present ''
       the system's Ethernet connection
     '';
 
-    battery.enable = mk-modl-enbl-opt true ''
+    battery.enable = mk-modl-enbl-opt hw.battery.present ''
       battery power
     '';
 

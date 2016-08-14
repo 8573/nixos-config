@@ -11,6 +11,14 @@
         physical = 8;
         virtual = 16;
       };
+
+      Ethernet = {
+        present = true;
+      };
+
+      Wi-Fi = {
+        present = true;
+      };
     };
 
     #KDE.enable = true;

@@ -140,6 +140,29 @@ in {
       '';
     };
 
+    hw.battery.present = mkOption {
+      type = types.bool;
+      default = params.installation-type == "laptop";
+      description = ''
+        Whether the system has an electric battery that it can use as a
+        primary power supply.
+      '';
+    };
+
+    hw.Ethernet.present = mkOption {
+      type = types.bool;
+      description = ''
+        Whether the system has Ethernet hardware.
+      '';
+    };
+
+    hw.Wi-Fi.present = mkOption {
+      type = types.bool;
+      description = ''
+        Whether the system has Wi-Fi hardware.
+      '';
+    };
+
     grsecurity.enable = mkOption {
       type = types.bool;
       default = params.secure;
