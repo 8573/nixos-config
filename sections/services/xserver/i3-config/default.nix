@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: let
+{ config, lib, pkgs, ... } @ args: let
 
   cfg = config.c74d-params.i3;
 
@@ -9,6 +9,8 @@
       "Mod1";
 
   font-size = toString cfg.font-size;
+
+  i3status-cfg-file = import ./i3status.nix args;
 
   sh = "${pkgs.bash}/bin/sh";
   chromium = "${pkgs.chromium}/bin/chromium";
@@ -62,6 +64,7 @@
         0,/^$/s/^$/\nset $mod ${mod-key}\n/;
         s/\<Mod1\>/$mod/g;
         s/\<\(monospace\) 8\>/\1 ${font-size}/g;
+        s|^\s*status_command /.*/i3status$|& -c '${i3status-cfg-file}'|;
         s/^exec i3-config-wizard\>/#&/;
       ' '${pkgs.i3}/etc/i3/config' > "$out"
 

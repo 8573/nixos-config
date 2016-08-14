@@ -8,6 +8,10 @@
 
 in {
 
+  imports = [
+    ./i3status.nix
+  ];
+
   options.c74d-params.i3 = {
     use-Super-key = lib.mkOption {
       type = lib.types.bool;
