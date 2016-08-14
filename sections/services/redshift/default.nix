@@ -1,15 +1,12 @@
-{ config, lib, pkgs, ... }: {
+{ config, lib, pkgs, ... }: let
+
+  loc = config.c74d-params.location.target;
+
+in {
 
   services.redshift = {
-    # Home
-    latitude = "34";
-    longitude = "-118";
-    # Conf-US-CO-GE
-    #latitude = "39";
-    #longitude = "-105";
-    # Conf-US-NC-Gy
-    #latitude = "36";
-    #longitude = "-80";
+    latitude = toString loc.latitude;
+    longitude = toString loc.longitude;
     temperature = {
       night = 1850;
     };
