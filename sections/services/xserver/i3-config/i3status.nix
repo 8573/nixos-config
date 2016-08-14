@@ -24,8 +24,6 @@
 
   clocks = lib.concatStrings (map clock clock-TZs);
 
-  Unicode-on = cfg.Unicode-symbols.enable;
-
   # The i3status configuration file format supports having advanced Unicode
   # characters directly embedded in UTF-8, but I don't trust such characters
   # to survive our technology intact.
