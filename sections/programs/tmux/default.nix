@@ -18,6 +18,7 @@
     extraTmuxConf = ''
       set-option -g mouse on
       set-option -g renumber-windows on
+      set-option -g set-titles on
       set-option -g status-interval 1
       set-option -g status-left '[#{=16:socket_path} #{session_id} #{session_name}] '
       set-option -g status-left-length 40
