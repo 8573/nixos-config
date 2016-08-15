@@ -2,6 +2,34 @@
 
   cfg = config.programs.vim;
 
+  utils = rec {
+    plugin-pkg = { name, version, src }: {
+      inherit name;
+      drv = pkgs.vimUtils.buildVimPluginFrom2Nix {
+        name = "${name}-${version}";
+        inherit src;
+      };
+    };
+
+    plugin-from-Git-host = fetch-fn: args: plugin-pkg {
+      name = args.repo;
+      version = args.rev;
+      src = fetch-fn args;
+    };
+
+    plugin-from-GitHub = plugin-from-Git-host pkgs.fetchFromGitHub;
+
+    plugin-from-GitLab = plugin-from-Git-host pkgs.fetchFromGitLab;
+
+    plugin-from-Bitbucket = plugin-from-Git-host pkgs.fetchFromBitbucket;
+  };
+
+  extra-plugins =
+    lib.listToAttrs
+      (map
+        (plugin: lib.nameValuePair plugin.name plugin.drv)
+        (lib.filter (plugin: plugin ? drv) cfg.plugins));
+
   vim-customize-wrapper =
     pkgs.vim_configurable.customize {
       name = "vim-customize-wrapper";
@@ -34,11 +62,13 @@
         ''}
       '';
 
+      vimrcConfig.vam.knownPlugins = extra-plugins // pkgs.vimPlugins;
+
       vimrcConfig.vam.pluginDictionaries = map (plugin:
         if lib.isString plugin then
           { name = plugin; }
         else if lib.isAttrs plugin then
-          plugin
+          lib.filterAttrs (k: _: k != "drv") plugin
         else
           throw "this should never happen"
       ) cfg.plugins;
@@ -189,5 +219,7 @@ in {
   config.environment.systemPackages = lib.mkIf cfg.enable [
     cfg.package
   ];
+
+  config.lib.c74d.vim.utils = utils;
 
 }

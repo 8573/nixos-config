@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }: {
+{ config, lib, pkgs, ... }: let
+
+  inherit (config.lib.c74d.vim.utils)
+    plugin-from-GitHub;
+
+in {
 
   programs.vim = {
     enable = true;
