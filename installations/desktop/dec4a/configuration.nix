@@ -55,13 +55,4 @@
     { device = "/dev/disk/by-uuid/7c57cf03-d918-410b-bb9e-b0f56476f078"; }
   ];
 
-  system.autoUpgrade = {
-    enable = true;
-    dates =
-      lib.mkIf
-        (assert config.time ? timeZone;
-          config.time.timeZone == "UTC")
-        "11:40";
-  };
-
 }
