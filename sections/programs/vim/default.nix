@@ -14,6 +14,13 @@ in {
 
     plugins = [
       "sensible"
+
+      (plugin-from-GitHub {
+        owner = "bitc";
+        repo = "vim-bad-whitespace";
+        rev = "v0.3";
+        sha256 = "1zxs47pvm217iijbv2jcd54hil2yxrg3jbz2k3nqzlcljl8bz8mn";
+      })
     ];
   };
 
