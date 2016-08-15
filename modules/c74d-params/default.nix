@@ -127,6 +127,19 @@ in {
       '';
     };
 
+    usually-up = mkOption {
+      type = types.bool;
+      default = ({
+        desktop = true;
+        laptop = false;
+        server = true;
+      }).${params.installation-type};
+      description = ''
+        Whether this installation is intended to usually be powered on and
+        running.
+      '';
+    };
+
     hw.cores.physical = mkOption {
       type = types.int;
       description = ''
