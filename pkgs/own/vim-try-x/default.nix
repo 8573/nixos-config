@@ -25,7 +25,13 @@ stdenv.mkDerivation rec {
   installPhase = ''
     mkdir -p "$out/bin"
     echo -E "$src" >> "$out/bin/$scriptName"
-    chmod +x "$out/bin/$scriptName"
+
+    cat >> "$out/bin/${scriptName}-nofork" <<SHELL_SCRIPT
+    #!/bin/sh
+    '$out/bin/$scriptName' --nofork "\$@"
+    SHELL_SCRIPT
+
+    chmod +x "$out/bin/$scriptName"*
   '';
 
   dontPatchELF = true;
