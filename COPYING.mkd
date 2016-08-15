@@ -1,0 +1,9 @@
+Copyright 02016 the authors (see the `AUTHORS.txt` file).
+
+Licensed under the Apache License, version 2.0 (the "Licence"); you may not
+use this software except in compliance with the Licence. One may obtain a copy
+of the Licence at <https://www.apache.org/licenses/LICENSE-2.0>. Unless
+required by applicable law or agreed to in writing, software distributed under
+the Licence is distributed on an ***"as is" basis, without warranties or
+conditions of any kind***, either express or implied. See the Licence for the
+specific language governing permissions and limitations under the Licence.
