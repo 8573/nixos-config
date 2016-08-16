@@ -12,4 +12,9 @@ in {
     };
   };
 
+  systemd.user.services.redshift.environment =
+    lib.mkIf (config.services.xserver.display == null) (lib.mkForce {
+      DISPLAY = ":0";
+    });
+
 }
