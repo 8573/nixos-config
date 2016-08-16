@@ -1,0 +1,13 @@
+diff --git i/Makefile w/Makefile
+index 220a7e5..37f4d7a 100644
+--- i/Makefile
++++ w/Makefile
+@@ -48,7 +48,7 @@ endif
+ install: install-lib install-doc
+ 
+ install-lib: $(INSTALL_EXT)
+-	install -C -m 0755 $(LIBS) $(INSTALL_LIB)/
++	install -C -m 0755 $(LIB)/$(NAME) $(INSTALL_CMD)
+ 	install -d -m 0755 $(INSTALL_EXT)/
+ 	install -C -m 0755 $(EXTS) $(INSTALL_EXT)/
+ 

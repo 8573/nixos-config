@@ -21,6 +21,7 @@ stdenv.mkDerivation rec {
     ./patches/0002-Makefile-paths.patch
     ./patches/0003-Makefile-we-lack-prove.patch
     ./patches/0004-zsh-completion-we-dont-use-GIT_HUB_ROOT.patch
+    ./patches/0005-Makefile-dont-install-support-files-twice.patch
   ];
 
   dontBuild = true;
