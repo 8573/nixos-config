@@ -51,4 +51,24 @@ rec {
     };
   };
 
+  Swim = buildPerlPackage rec {
+    name = "Swim-0.1.43";
+    src = fetchurl {
+      url = "mirror://cpan/authors/id/I/IN/INGY/${name}.tar.gz";
+      sha256 = "75a8f4dd4be5979a4330e84499031e04a28a45b9431029440cb9d79349c23069";
+    };
+    buildInputs = [ FileShareDirInstall ];
+    propagatedBuildInputs = [ HTMLEscape HashMerge Pegex TextAutoformat YAMLLibYAML ]
+      # XXX: Swim's CPAN package description doesn't mention `IPC::Run`, but
+      # it seems to be an undeclared dependency. I've filed an issue report
+      # (<https://github.com/ingydotnet/swim-pm/issues/33>) and, pending
+      # resolution thereof, am adding `IPCRun` here.
+      ++ [ IPCRun ];
+    meta = {
+      homepage = https://github.com/ingydotnet/swim-pm;
+      description = "See What I Mean?!";
+      license = with stdenv.lib.licenses; [ artistic1 gpl1Plus ];
+    };
+  };
+
 }
