@@ -10,6 +10,7 @@
     ./network
     ./pdf
     ./security-and-crypto
+    ./typesetting
     ./X11
   ];
 
