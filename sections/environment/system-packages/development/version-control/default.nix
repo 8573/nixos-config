@@ -6,6 +6,8 @@
     gitFull
     subversion
     tig
+  ]) ++ (with config.lib.c74d.pkgs; [
+    git-hub-ingydotnet
   ]);
 
 }
