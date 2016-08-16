@@ -20,6 +20,7 @@ stdenv.mkDerivation rec {
     ./patches/0001-always-use-perl-json-impl.patch
     ./patches/0002-Makefile-paths.patch
     ./patches/0003-Makefile-we-lack-prove.patch
+    ./patches/0004-zsh-completion-we-dont-use-GIT_HUB_ROOT.patch
   ];
 
   dontBuild = true;
@@ -32,6 +33,9 @@ stdenv.mkDerivation rec {
 
   postInstall = ''
     wrapProgram "$out/bin/git-hub" --prefix PERL5LIB : "$perl_lib"
+
+    install -Dm 444 'share/completion.bash' "$out/etc/bash_completion.d/git-hub.bash"
+    install -Dm 444 'share/zsh-completion/_git-hub' -t "$out/share/zsh/site-functions"
   '';
 
   meta = {
