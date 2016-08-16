@@ -16,6 +16,16 @@ in {
     # the compiled version of the `zshrc` script is not used.
   };
 
+  # These would normally be set by the `programs.zsh` module, but aren't
+  # because I disable its managing of zsh completion facilities below, so I'm
+  # obliged to set these options myself for fully functional completion.
+  environment.systemPackages = [
+    pkgs.nix-zsh-completions
+  ];
+  environment.pathsToLink = [
+    "/share/zsh"
+  ];
+
   programs.zsh = if-personal {
 
     # Disable this because zsh-config manages the completion system.
