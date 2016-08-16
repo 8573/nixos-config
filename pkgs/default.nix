@@ -12,6 +12,8 @@ in {
 
     c74d = import ./c74d args;
 
+    perlPackages = import ./perl-packages args;
+
     # My vim-pager and vim-try-x (etc.) packages will see this version of Vim,
     # so I needn't override it for each of them.
     vim = config.programs.vim.package;
