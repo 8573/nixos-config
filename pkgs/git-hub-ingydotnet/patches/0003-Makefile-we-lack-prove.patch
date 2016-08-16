@@ -1,0 +1,18 @@
+diff --git i/Makefile w/Makefile
+index 7cf0224..fc0c4ea 100644
+--- i/Makefile
++++ w/Makefile
+@@ -32,13 +32,6 @@ help:
+ 	@echo 'install    Install $(NAME)'
+ 	@echo 'uninstall  Uninstall $(NAME)'
+ 
+-.PHONY: test
+-test:
+-ifeq ($(shell which prove),)
+-	@echo '`make test` requires the `prove` utility'
+-	@exit 1
+-endif
+-	prove $(PROVEOPT:%=% )test/
+ 
+ install: install-lib install-doc
+ 

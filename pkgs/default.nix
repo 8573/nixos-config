@@ -12,6 +12,8 @@ in {
 
     c74d = import ./c74d args;
 
+    git-hub-ingydotnet = call-pkg ./git-hub-ingydotnet {};
+
     perlPackages = import ./perl-packages args;
 
     # My vim-pager and vim-try-x (etc.) packages will see this version of Vim,
