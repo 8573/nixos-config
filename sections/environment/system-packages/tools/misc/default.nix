@@ -6,10 +6,8 @@
     libqalculate
     wdiff
     wget
-  ]) ++ [
-    (config.lib.c74d.call-pkg "own/vim-pager" {
-      vim = config.programs.vim.package;
-    })
-  ];
+  ]) ++ (with config.lib.c74d.pkgs; [
+    c74d.vim-pager
+  ]);
 
 }

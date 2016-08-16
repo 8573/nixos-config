@@ -2,7 +2,7 @@
 
   if-personal = lib.mkIf config.c74d-params.personal;
 
-  zsh-config = config.lib.c74d.call-pkg "own/zsh-config" {};
+  inherit (config.lib.c74d.pkgs.c74d) zsh-config;
 
 in {
 
