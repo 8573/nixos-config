@@ -20,6 +20,8 @@ in {
     # so I needn't override it for each of them.
     vim = config.programs.vim.package;
 
+    wrapped = import ./wrapped args;
+
   };
 
 }
