@@ -6,6 +6,7 @@
     xorg.xev
   ] ++ lib.optionals config.c74d-params.i3.enable [
     dmenu
+    i3lock
     i3status
   ]);
 
