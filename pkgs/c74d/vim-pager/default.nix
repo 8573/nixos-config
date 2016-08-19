@@ -2,13 +2,13 @@
 
 stdenv.mkDerivation rec {
   name = "c74d-vim-pager-${version}";
-  version = "0.3.2";
+  version = "0.3.3";
 
   src = fetchFromGitLab {
     owner = "c74d";
     repo = "vim-pager";
     rev = "v${version}";
-    sha256 = "04bsjgg5xby7ks3s2ql4ck3gd2pkmk8268xfdl72rkcs9vzbppmx";
+    sha256 = "1lzzm1ll0893b3ddfxx8anjzc3rczfd2m2hy9ks6z81hzyw2wgcq";
   };
 
   installPhase = ''
