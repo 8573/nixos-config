@@ -21,6 +21,9 @@
       bind-key C-C new-window -a -c '#{pane_current_path}'
 
       bind-key w choose-window -F '#{?window_bell_flag,!, }#{?window_active,*,#{?window_last_flag,-, }}#{?window_silence_flag,~, }#{?window_zoomed_flag,Z, }#{?window_linked,L, } #{pane_current_path}  (#{pane_current_command}/#{pane_pid})'
+
+      bind-key -r < swap-window -t -1
+      bind-key -r > swap-window -t +1
     '';
   };
 
