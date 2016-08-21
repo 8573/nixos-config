@@ -5,6 +5,8 @@
 
 in {
 
+  tmux-open-piped-url = call-pkg ./tmux-open-piped-url {};
+
   vim-config = call-pkg ./vim-config {};
 
   vim-pager = call-pkg ./vim-pager {};
