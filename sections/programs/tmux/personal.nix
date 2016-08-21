@@ -24,6 +24,8 @@
 
       bind-key -r < swap-window -t -1
       bind-key -r > swap-window -t +1
+
+      bind-key -t vi-copy u copy-pipe "${config.lib.c74d.pkgs.c74d.tmux-open-piped-url}"
     '';
   };
 
