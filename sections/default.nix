@@ -4,6 +4,7 @@
     ./boot
     ./environment
     ./hardware
+    ./file-systems
     ./fonts
     ./networking
     ./nix
