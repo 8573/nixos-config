@@ -44,7 +44,7 @@
   fileSystems."/boot" = {
     device = "UUID=9786-99E0";
     fsType = "vfat";
-    options = ["noatime" "nodiratime" "nosuid" "utf8" "tz=UTC"];
+    options = ["noatime" "nodiratime" "nodev" "noexec" "nosuid" "utf8" "tz=UTC"];
   };
 
   services.redshift = {
