@@ -70,6 +70,16 @@
     options = ["noatime" "nodiratime" "nosuid" "utf8" "tz=UTC"];
   };
 
+  fileSystems."/mnt/VoiceTracer-SD-card" = {
+    device = "UUID=4406-E439";
+    fsType = "vfat";
+    options = [
+      "noauto" "x-mount.mkdir=755"
+      "noatime" "nodiratime" "nodev" "noexec" "nosuid"
+      "utf8" "tz=UTC" "ro" "umask=0022"
+    ];
+  };
+
   hardware.bluetooth = {
     enable = true;
   };
