@@ -42,7 +42,7 @@
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/9786-99E0";
+    device = "UUID=9786-99E0";
     fsType = "vfat";
     options = ["noatime" "nodiratime" "nosuid" "utf8" "tz=UTC"];
   };
@@ -52,7 +52,7 @@
   };
 
   swapDevices = [
-    { device = "/dev/disk/by-uuid/7c57cf03-d918-410b-bb9e-b0f56476f078"; }
+    { device = "UUID=7c57cf03-d918-410b-bb9e-b0f56476f078"; }
   ];
 
 }

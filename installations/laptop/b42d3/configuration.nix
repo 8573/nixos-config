@@ -65,7 +65,7 @@
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/185A-2ABB";
+    device = "UUID=185A-2ABB";
     fsType = "vfat";
     options = ["noatime" "nodiratime" "nosuid" "utf8" "tz=UTC"];
   };
