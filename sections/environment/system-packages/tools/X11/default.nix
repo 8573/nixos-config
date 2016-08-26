@@ -9,8 +9,6 @@ in {
     xorg.xbacklight
     xorg.xev
   ] ++ lib.optionals config.c74d-params.i3.enable [
-    dmenu
-    i3status
     c74d-pkgs.wrapped.i3lock
   ]);
 
