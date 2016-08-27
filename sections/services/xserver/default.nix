@@ -37,4 +37,25 @@
     xkbOptions = "compose:caps";
   };
 
+  systemd.services.c74d-set-X11-VTs-to-RAW-mode = {
+    after = ["display-manager.service"];
+    partOf = ["display-manager.service"];
+    wantedBy = ["display-manager.service"];
+    serviceConfig.Type = "oneshot";
+    script = ''
+      sleep 5
+      for n in $(
+        '${pkgs.procps}/bin/pgrep' --full --list-full \
+          '/bin/X .*\<vt[0-9]+\>' \
+        | sed 's/.*\<vt\([0-9]\+\)\>.*/\1/'
+      ); do
+        tty="/dev/tty$n"
+        if [ -w "$tty" ]; then
+          echo "Setting RAW mode on $tty"
+          '${pkgs.kbd}/bin/kbd_mode' -s -C "$tty"
+        fi
+      done
+    '';
+  };
+
 }
