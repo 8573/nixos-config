@@ -8,6 +8,7 @@ in {
     xclip
     xorg.xbacklight
     xorg.xev
+    xorg.xmodmap
   ] ++ lib.optionals config.c74d-params.i3.enable [
     c74d-pkgs.wrapped.i3lock
   ]);
