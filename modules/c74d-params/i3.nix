@@ -64,8 +64,8 @@ in {
 
     bindings.screen-capture.output-directory = lib.mkOption {
       type = lib.types.str;
-      default = "~/screen-captures";
-      example = "~/Pictures/Screenshots";
+      default = "$HOME/screen-captures";
+      example = "$HOME/Pictures/Screenshots";
       description = ''
         The path of a directory (which need not exist) in which to save
         screen-captures taken with these key-bindings.

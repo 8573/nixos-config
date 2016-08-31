@@ -46,7 +46,7 @@
 
   mkdir = "${pkgs.coreutils}/bin/mkdir";
   date = "${pkgs.coreutils}/bin/date";
-  im-import = "${pkgs.imagemagick}/bin/import";
+  im-import = "${pkgs.imagemagick.out}/bin/import";
 
   screencap-cmd = file-ext: ''
     exec '${sh}' -c '"${mkdir}" -p "${screencap-dir}" && "${im-import}" -window root "${screencap-dir}/screencap-$("${date}" "+%F-%T-%N").${file-ext}"'
