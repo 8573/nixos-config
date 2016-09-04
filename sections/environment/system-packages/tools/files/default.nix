@@ -5,6 +5,8 @@
     file
     silver-searcher
     tree
+  ]) ++ (with config.lib.c74d.pkgs; [
+    agrep
   ]);
 
 }
