@@ -4,7 +4,7 @@
     gc = {
       automatic = true;
     };
-    maxJobs = config.c74d-params.hw.cores.virtual;
+    maxJobs = config.c74d-params.hardware.cores.virtual;
     useSandbox = true;
     extraOptions = ''
       auto-optimise-store = true

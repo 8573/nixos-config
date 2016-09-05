@@ -11,7 +11,7 @@
       target = config.lib.c74d.places.US.CA.r001;
     };
 
-    hw = {
+    hardware = {
       cores = {
         physical = 8;
         virtual = 16;

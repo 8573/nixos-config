@@ -140,21 +140,21 @@ in {
       '';
     };
 
-    hw.cores.physical = mkOption {
+    hardware.cores.physical = mkOption {
       type = types.int;
       description = ''
         How many physical CPU cores the system has.
       '';
     };
 
-    hw.cores.virtual = mkOption {
+    hardware.cores.virtual = mkOption {
       type = types.int;
       description = ''
         How many virtual CPU cores the system has.
       '';
     };
 
-    hw.battery.present = mkOption {
+    hardware.battery.present = mkOption {
       type = types.bool;
       default = params.installation-type == "laptop";
       description = ''
@@ -163,14 +163,14 @@ in {
       '';
     };
 
-    hw.Ethernet.present = mkOption {
+    hardware.Ethernet.present = mkOption {
       type = types.bool;
       description = ''
         Whether the system has Ethernet hardware.
       '';
     };
 
-    hw.Wi-Fi.present = mkOption {
+    hardware.Wi-Fi.present = mkOption {
       type = types.bool;
       description = ''
         Whether the system has Wi-Fi hardware.

@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }: let
 
-  hw = config.c74d-params.hw;
+  hw = config.c74d-params.hardware;
 
   mk-bool-opt = default: description: lib.mkOption {
     type = lib.types.bool;
