@@ -6,6 +6,7 @@
     ./hardware
     ./file-systems
     ./fonts
+    ./i18n
     ./networking
     ./nix
     ./programs
