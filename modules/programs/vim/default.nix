@@ -196,20 +196,10 @@ in {
   };
 
   config.programs.vim.default-package =
-    let
-      default = pkgs.vim;
-      vims = [
-        pkgs.vim
-        pkgs.vim_configurable
-        pkgs.vimNox
-      ];
-    in
-      lib.findSingle
-        (lib.flip lib.elem vims)
-        default
-        default
-        config.environment.systemPackages;
-
+    if config.c74d-params.X11.enable then
+      pkgs.vim
+    else
+      pkgs.vimNox;
 
   config.programs.vim.package =
     if !cfg.enable then
