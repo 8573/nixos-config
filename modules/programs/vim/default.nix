@@ -201,6 +201,7 @@ in {
       vims = [
         pkgs.vim
         pkgs.vim_configurable
+        pkgs.vimNox
       ];
     in
       lib.findSingle
