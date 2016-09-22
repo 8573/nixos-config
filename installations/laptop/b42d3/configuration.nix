@@ -84,6 +84,14 @@
     enable = true;
   };
 
+  nixpkgs.config = {
+    allowUnfree = true;
+
+    chromium = {
+      enablePepperFlash = true;
+    };
+  };
+
   powerManagement.enable = false;
 
   services.redshift = {
