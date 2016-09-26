@@ -4,6 +4,7 @@
     ./c-family
     ./css
     ./javascript
+    ./lisp
     ./nix
     ./rust
     ./shell-script
