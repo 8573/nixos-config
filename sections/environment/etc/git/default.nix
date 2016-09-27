@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }: {
 
   environment.etc."gitconfig".text = let
-    pager = "less -+FSX";
+    pager = "${pkgs.less}/bin/less -+FSX";
     diff-highlight =
       "${pkgs.gitFull}/share/git/contrib/diff-highlight/diff-highlight";
     common-personal-log-alias-options =
