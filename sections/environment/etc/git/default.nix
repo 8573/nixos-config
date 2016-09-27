@@ -1,9 +1,15 @@
 { config, lib, pkgs, ... }: {
 
-  environment.etc."gitconfig".text = ''
+  environment.etc."gitconfig".text = let
+    pager = "less -+FSX";
+    diff-highlight =
+      "${pkgs.gitFull}/share/git/contrib/diff-highlight/diff-highlight";
+    common-personal-log-alias-options =
+      "--decorate --source --encoding=UTF-8 --notes --show-signature --date=iso --graph";
+  in ''
     [core]
         compression = 9
-        pager = less -+FSX
+        pager = ${pager}
     [diff]
         algorithm = patience
         compactionHeuristic = yes
@@ -17,18 +23,18 @@
         commitEncoding = utf-8
         logOutputEncoding = utf-8
     [interactive]
-        diffFilter = ${pkgs.gitFull}/share/git/contrib/diff-highlight/diff-highlight
+        diffFilter = ${diff-highlight}
     [log]
         date = iso8601
     [pager]
-        diff = ${pkgs.gitFull}/share/git/contrib/diff-highlight/diff-highlight | less -+FSX
-        log = ${pkgs.gitFull}/share/git/contrib/diff-highlight/diff-highlight | less -+FSX
-        show = ${pkgs.gitFull}/share/git/contrib/diff-highlight/diff-highlight | less -+FSX
+        diff = ${diff-highlight} | ${pager}
+        log = ${diff-highlight} | ${pager}
+        show = ${diff-highlight} | ${pager}
     [rebase]
         missingCommitsCheck = error
         stat = yes
     [alias]
-        diff-highlight = !${pkgs.gitFull}/share/git/contrib/diff-highlight/diff-highlight
+        diff-highlight = !${diff-highlight}
   '' + lib.optionalString config.c74d-params.personal ''
     [alias]
         vc = commit --verbose
@@ -42,11 +48,11 @@
         dpw = diff --diff-algorithm=patience --word-diff
         mwdiff = diff --minimal --word-diff
         gl = log --graph
-        sl = log --decorate --source --format=short --encoding=UTF-8 --notes --show-signature --date=iso --graph
-        xl = log --decorate --source --format=fuller --encoding=UTF-8 --notes --show-signature --date=iso --graph
-        sxl = log --decorate --source --format=fuller --encoding=UTF-8 --notes --show-signature --date=iso --graph --stat --patch
-        pxl = log --decorate --source --format=fuller --encoding=UTF-8 --notes --show-signature --date=iso --graph --stat --patch
-        wpxl = log --decorate --source --format=fuller --encoding=UTF-8 --notes --show-signature --date=iso --graph --stat --patch --word-diff
+        sl = log ${common-personal-log-alias-options} --format=short
+        xl = log ${common-personal-log-alias-options} --format=fuller
+        sxl = log ${common-personal-log-alias-options} --format=fuller --stat --patch
+        pxl = log ${common-personal-log-alias-options} --format=fuller --stat --patch
+        wpxl = log ${common-personal-log-alias-options} --format=fuller --stat --patch --word-diff
         ffmerge = merge --ff-only
         noffmerge = merge --no-ff
         ffpull = pull --ff-only
