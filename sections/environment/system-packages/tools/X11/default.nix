@@ -5,6 +5,7 @@
 in {
 
   environment.systemPackages = lib.mkIf config.services.xserver.enable (with pkgs; [
+    redshift
     xclip
     xorg.xbacklight
     xorg.xev
