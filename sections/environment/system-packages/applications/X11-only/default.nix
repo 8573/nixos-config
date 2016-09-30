@@ -6,6 +6,9 @@
     gimp
     inkscape
     nmap_graphical
+    (rxvt_unicode.override {
+      perlSupport = false;
+    })
   ]) ++ (with config.lib.c74d.pkgs; [
     c74d.vim-try-x
   ]));
