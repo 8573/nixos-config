@@ -15,6 +15,8 @@
 
     "URxvt*scrollBar" = "false";
 
+    "URxvt*urgentOnBell" = "true";
+
     "URxvt*utmpInhibit" = "true";
   };
 
