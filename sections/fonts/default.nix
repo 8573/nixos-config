@@ -22,6 +22,7 @@
     noto-fonts-cjk
     noto-fonts-emoji
     dejavu_fonts
+    symbola
   ]);
 
 }
