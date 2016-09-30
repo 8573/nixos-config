@@ -9,11 +9,11 @@
         (config.fonts.fontconfig.defaultFonts.monospace
           ++ ["Monospace"]);
 
-    "URxvt*scrollBar" = "false";
-
     "URxvt*pointerBlank" = "true";
 
     "URxvt*pointerBlankDelay" = "60";
+
+    "URxvt*scrollBar" = "false";
 
     "URxvt*utmpInhibit" = "true";
   };
