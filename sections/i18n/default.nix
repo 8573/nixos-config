@@ -8,6 +8,7 @@
         hangul
         libpinyin
         mozc
+        table
         table-others
       ]);
     };
