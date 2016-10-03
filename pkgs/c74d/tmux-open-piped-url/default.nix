@@ -3,12 +3,15 @@
 stdenv.mkDerivation rec {
   name = "${scriptName}-${version}";
   scriptName = "tmux-open-piped-url";
-  version = "1.0.0";
+  version = "1.0.1";
 
   src = ''
     #!/usr/bin/env bash
 
     read -rd ${"$'\\0'"} url
+
+    # Escape `$url` from tmux's format sequences.
+    url="''${url//#/##}"
 
     gui_browsers=(chromium-browser firefox)
     tui_browsers=(elinks lynx links)
