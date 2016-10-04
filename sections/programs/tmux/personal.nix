@@ -1,4 +1,8 @@
-{ config, lib, pkgs, ... }: {
+{ config, lib, pkgs, ... }: let
+
+  xclip = "${pkgs.xclip}/bin/xclip";
+
+in {
 
   programs.tmux = lib.mkIf config.c74d-params.personal {
     keyMode = "vi";
@@ -26,6 +30,8 @@
       bind-key -r > swap-window -t +1
 
       bind-key -t vi-copy u copy-pipe "${config.lib.c74d.pkgs.c74d.tmux-open-piped-url}"
+      bind-key -t vi-copy x copy-pipe "'${xclip}' -in -selection primary"
+      bind-key -t vi-copy X copy-pipe "'${xclip}' -in -selection clipboard"
     '';
   };
 
