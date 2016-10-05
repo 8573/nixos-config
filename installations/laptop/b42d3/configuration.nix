@@ -17,6 +17,15 @@
         virtual = 8;
       };
 
+      memory = {
+        main = {
+          gigabytes = 8;
+        };
+        swap = {
+          gigabytes = 16;
+        };
+      };
+
       Ethernet = {
         present = false;
       };

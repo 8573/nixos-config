@@ -154,6 +154,20 @@ in {
       '';
     };
 
+    hardware.memory.main.gigabytes = mkOption {
+      type = types.int;
+      description = ''
+        How many gigabytes of main memory the system has, rounded down.
+      '';
+    };
+
+    hardware.memory.swap.gigabytes = mkOption {
+      type = types.int;
+      description = ''
+        How many gigabytes of swap space the system has, rounded down.
+      '';
+    };
+
     hardware.battery.present = mkOption {
       type = types.bool;
       default = params.installation-type == "laptop";
