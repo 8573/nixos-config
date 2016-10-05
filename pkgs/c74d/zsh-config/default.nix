@@ -2,13 +2,13 @@
 
 stdenv.mkDerivation rec {
   name = "c74d-zsh-config-${version}";
-  version = "0.5.3";
+  version = "0.5.4";
 
   src = fetchFromGitLab {
     owner = "c74d";
     repo = "zsh-config";
     rev = "v${version}";
-    sha256 = "103isbzvgbjpwpj10219mjza3zsbbyf55dmsb9wpd5dv97x0k37n";
+    sha256 = "0kcqclclmnajkp9qbqpasqg4av2g83yzil92bwg9h4hp4nkbiiiq";
   };
 
   buildInputs = [
