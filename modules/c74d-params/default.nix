@@ -222,4 +222,13 @@ in {
     id = "KDE";
   };
 
+  config.lib.c74d = {
+    auto-build-flag =
+      any
+        (e:
+          e.prefix == "AUTO-BUILD-FLAG"
+          && e.path == "/dev/null/AUTO-BUILD-FLAG")
+        builtins.nixPath;
+  };
+
 }

@@ -12,6 +12,9 @@
           (assert config.time ? timeZone;
             config.time.timeZone == "UTC")
           "11:40";
+      flags = [
+        "-I" "AUTO-BUILD-FLAG=/dev/null/AUTO-BUILD-FLAG"
+      ];
     };
   };
 
