@@ -1,5 +1,9 @@
 { config, lib, pkgs, ... }: {
 
+  imports = [
+    ./i3
+  ];
+
   options.c74d-params.software.X11.tools.enable =
     lib.mkOption {
       type = lib.types.bool;
