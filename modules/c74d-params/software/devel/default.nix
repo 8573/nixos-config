@@ -4,7 +4,7 @@
     ./languages
   ];
 
-  options.c74d-params.software.extra.enable =
+  options.c74d-params.software.devel.enable =
     lib.mkOption {
       type = lib.types.bool;
       default = {

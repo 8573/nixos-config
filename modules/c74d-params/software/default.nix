@@ -3,6 +3,8 @@
   imports = [
     ./basic
     ./extra
+    ./devel
+    ./X11
   ];
 
 }
