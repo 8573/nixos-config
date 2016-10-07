@@ -82,6 +82,7 @@ let
 in {
 
   imports = [
+    ./software
     ./location.nix
     ./i3.nix
   ];

@@ -5,7 +5,6 @@
     ./data
     ./development
     ./shells
-    ./tools
   ];
 
 }
