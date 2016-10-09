@@ -1,7 +1,6 @@
 {
   id = "tools";
   name = "basic user-facing tools";
-  default = true;
   sw = (p: with p; [
     apg
     atool

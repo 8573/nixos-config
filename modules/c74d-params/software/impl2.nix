@@ -92,8 +92,9 @@
         if default != null then
           default
         else
-          # TODO: Make this default to the parent's default.
-          false;
+          lib.getAttrFromPath
+            (parent-attr-path ++ ["enable"])
+            config;
 
       option =
         lib.setAttrByPath
