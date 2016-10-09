@@ -4,14 +4,14 @@
     let
       root-ir =
         mk-software-module-IR
-          []
+          null
           (import root-modl-src-path);
       collected =
         collect-opts-and-pkgs
           collect-opts-and-pkgs-initial-state
           root-ir;
     in {
-      options.c74d-params =
+      options.c74d-params.software =
         lib.mkMerge
           collected.options;
       config.environment.systemPackages =
@@ -73,12 +73,15 @@
     sw ? null,
     modules ? null,
   } @ this-swmodule:
-    assert lib.isList parent-attr-path;
-    assert lib.all lib.isString parent-attr-path;
+    assert parent-attr-path != null -> lib.isList parent-attr-path;
+    assert parent-attr-path != null -> lib.all lib.isString parent-attr-path;
     assert check-swmodule-invariants this-swmodule;
     let
       attr-path =
-        parent-attr-path ++ [id];
+        if parent-attr-path == null then
+          []
+        else
+          parent-attr-path ++ [id];
 
       enable-opt-path =
         attr-path ++ ["enable"];
@@ -121,7 +124,7 @@
           lib.mkIf
             (lib.getAttrFromPath
               enable-opt-path
-              config.c74d-params)
+              config.c74d-params.software)
             sw-pkgs;
 
       sub-modules =
