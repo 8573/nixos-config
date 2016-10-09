@@ -4,6 +4,7 @@
   sw = (p: with p; [
     apg
     atool
+    c74d.vim-pager
     checksec
     file
     gnupg
