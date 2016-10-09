@@ -1,7 +1,7 @@
 {
   id = "tools";
   name = "basic user-facing tools";
-  sw = (p: with p; [
+  sw = p: with p; [
     apg
     atool
     c74d.vim-pager
@@ -26,5 +26,5 @@
     wdiff
     wget
     whois
-  ]);
+  ];
 }

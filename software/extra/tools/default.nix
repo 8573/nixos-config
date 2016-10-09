@@ -1,7 +1,7 @@
 {
   id = "tools";
   name = "extra user-facing tools";
-  sw = (p: with p; [
+  sw = p: with p; [
     agrep
     alsaUtils
     aspell
@@ -10,5 +10,5 @@
     (lib.getBin libav)
     (lib.getBin libqalculate)
     pdfdiff
-  ]);
+  ];
 }
