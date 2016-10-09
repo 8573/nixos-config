@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: let
+{ config, lib, pkgs, ... } @ module-args: let
 
   mk-software-module-hierarchy = root-modl-src-path:
     let
@@ -64,7 +64,7 @@
   }:
     assert lib.isString id;
     assert lib.isString name;
-    assert default != null -> lib.isBool default;
+    assert default != null -> lib.isBool default || lib.isFunction default;
     assert modules != null -> sw == null;
     assert modules == null -> lib.isFunction sw;
     assert sw != null -> modules == null;
@@ -89,8 +89,14 @@
         attr-path ++ ["enable"];
 
       opt-default =
-        if default != null then
+        if lib.isBool default then
           default
+        else if lib.isFunction default then
+          let
+            value = default module-args;
+          in
+            assert lib.isBool value;
+            value
         else
           lib.getAttrFromPath
             (parent-attr-path ++ ["enable"])

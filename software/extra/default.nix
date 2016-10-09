@@ -1,9 +1,11 @@
 {
   id = "extra";
   name = "extra user-facing software";
-  # TODO: Make `default` be a function of
-  # `config.c74d-params.installation-type`.
-  default = true;
+  default = {config, ...}:
+    { desktop = true;
+      laptop = true;
+      server = false; }
+    .${config.c74d-params.installation-type};
   modules = [
     ./tools
   ];
