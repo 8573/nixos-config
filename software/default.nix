@@ -3,7 +3,7 @@
   name = "user software";
   default = true;
   modules = [
-    ./basic
-    ./extra
+#    ./basic
+#    ./extra
   ];
 }

@@ -3,10 +3,10 @@
   imports = [
     ./impl2.nix
 
-    ./basic
-    ./extra
-    ./devel
-    ./X11
+#    ./basic
+#    ./extra
+#    ./devel
+#    ./X11
   ];
 
 }
