@@ -10,31 +10,24 @@
         collect-opts-and-pkgs
           collect-opts-and-pkgs-initial-state
           root-ir;
-    in {
-      options.c74d-params =
-        lib.mkMerge
-          collected.options;
-      config.environment.systemPackages =
-        lib.mkMerge
-          collected.pkgs-cfg;
-    };
+    in
+      lib.mkMerge collected;
 
-  collect-opts-and-pkgs-initial-state = {
-    options = [];
-    pkgs-cfg = [];
-  };
+  collect-opts-and-pkgs-initial-state = [];
 
-  collect-opts-and-pkgs = { options, pkgs-cfg }: ir:
+  collect-opts-and-pkgs = collected: ir:
     assert check-IR-invariants ir;
     if ir.modules == null then
       # We've hit a leaf node, our base case.
-      { options = options ++ [ir.option];
-        pkgs-cfg = pkgs-cfg ++ [ir.pkgs-cfg]; }
+      collected ++ [
+        { options.c74d-params = ir.option;
+          config.environment.systemPackages = ir.pkgs-cfg; }
+      ]
     else
       let
-        state =
-          { options = options ++ [ir.option];
-            inherit pkgs-cfg; };
+        state = collected ++ [
+          { options.c74d-params = ir.option; }
+        ];
       in
         lib.foldl collect-opts-and-pkgs state ir.modules;
 
