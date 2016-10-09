@@ -4,17 +4,17 @@
     let
       root-ir =
         mk-software-module-IR
-          []
+          ["c74d-params"]
           (import root-modl-src-path);
       collected =
         collect-opts-and-pkgs
           collect-opts-and-pkgs-initial-state
           root-ir;
     in {
-      options.c74d-params =
+      options =
         lib.mkMerge
           collected.options;
-      config.environment.systemPackages =
+      config =
         lib.mkMerge
           collected.pkgs-cfg;
     };
@@ -121,8 +121,8 @@
           lib.mkIf
             (lib.getAttrFromPath
               enable-opt-path
-              config.c74d-params)
-            sw-pkgs;
+              config)
+            { environment.systemPackages = sw-pkgs; };
 
       sub-modules =
         if modules == null then
