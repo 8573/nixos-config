@@ -1,10 +1,7 @@
 { config, lib, pkgs, ... }: {
 
   imports = [
-    ./basic
-    ./extra
-    ./devel
-    ./X11
+    ./impl2.nix
   ];
 
 }
