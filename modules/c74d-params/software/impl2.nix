@@ -12,31 +12,36 @@
           root-ir;
     in {
       options =
-        lib.mkMerge
-          collected.options;
+        collected.options;
       config =
         lib.mkMerge
           collected.pkgs-cfg;
     };
 
   collect-opts-and-pkgs-initial-state = {
-    options = [];
+    options = {};
     pkgs-cfg = [];
   };
 
   collect-opts-and-pkgs = { options, pkgs-cfg }: ir:
     assert check-IR-invariants ir;
-    if ir.modules == null then
-      # We've hit a leaf node, our base case.
-      { options = options ++ [ir.option];
-        pkgs-cfg = pkgs-cfg ++ [ir.pkgs-cfg]; }
-    else
-      let
-        state =
-          { options = options ++ [ir.option];
-            inherit pkgs-cfg; };
-      in
-        lib.foldl collect-opts-and-pkgs state ir.modules;
+    let
+      options' =
+        lib.recursiveUpdate
+          options
+          ir.option;
+    in
+      if ir.modules == null then
+        # We've hit a leaf node, our base case.
+        { options = options';
+          pkgs-cfg = pkgs-cfg ++ [ir.pkgs-cfg]; }
+      else
+        let
+          state =
+            { options = options';
+              inherit pkgs-cfg; };
+        in
+          lib.foldl collect-opts-and-pkgs state ir.modules;
 
   check-IR-invariants = {
     option,
