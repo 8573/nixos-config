@@ -6,9 +6,9 @@
     alsaUtils
     aspell
     drive
-    (lib.getBin imagemagick)
-    (lib.getBin libav)
-    (lib.getBin libqalculate)
+    imagemagick
+    libav
+    libqalculate
     pdfdiff
   ];
 }

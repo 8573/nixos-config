@@ -123,7 +123,7 @@
                 config.lib.c74d.pkgs);
         in
           assert lib.isList value;
-          value;
+          map lib.getBin value;
 
       pkgs-cfg =
         if sw == null then

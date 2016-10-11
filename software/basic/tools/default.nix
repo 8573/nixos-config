@@ -11,7 +11,7 @@
     htop
     iotop
     jq
-    (lib.getBin ldns)
+    ldns
     lshw
     lsscsi
     openssl
