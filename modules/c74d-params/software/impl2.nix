@@ -30,18 +30,21 @@
         lib.recursiveUpdate
           options
           ir.option;
+
+      pkgs-cfg' =
+        if ir.pkgs-cfg == null then
+          pkgs-cfg
+        else
+          pkgs-cfg ++ [ir.pkgs-cfg];
+
+      state =
+        { options = options';
+          pkgs-cfg = pkgs-cfg'; };
     in
       if ir.modules == null then
-        # We've hit a leaf node, our base case.
-        { options = options';
-          pkgs-cfg = pkgs-cfg ++ [ir.pkgs-cfg]; }
+        state
       else
-        let
-          state =
-            { options = options';
-              inherit pkgs-cfg; };
-        in
-          lib.foldl collect-opts-and-pkgs state ir.modules;
+        lib.foldl collect-opts-and-pkgs state ir.modules;
 
   check-IR-invariants = {
     option,
@@ -49,9 +52,7 @@
     modules,
   }:
     assert lib.isAttrs option;
-    assert modules != null -> pkgs-cfg == null;
     assert modules == null -> lib.isType "if" pkgs-cfg;
-    assert pkgs-cfg != null -> modules == null;
     assert pkgs-cfg == null -> lib.isList modules;
     true;
 
@@ -65,9 +66,7 @@
     assert lib.isString id;
     assert lib.isString name;
     assert default != null -> lib.isBool default || lib.isFunction default;
-    assert modules != null -> sw == null;
     assert modules == null -> lib.isFunction sw;
-    assert sw != null -> modules == null;
     assert sw == null -> lib.isList modules;
     true;
 
