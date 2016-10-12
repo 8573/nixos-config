@@ -3,7 +3,6 @@
   imports = [
     ./applications
     ./development
-    ./shells
   ];
 
 }
