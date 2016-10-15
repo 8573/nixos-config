@@ -1,6 +1,6 @@
 {
   id = "programming";
-  name = "software for working with specific programming languages";
+  desc = "software for working with specific programming languages";
   modules = [
     ./c-family
     ./javascript

@@ -1,6 +1,6 @@
 {
   id = "pdf";
-  name = "PDF tools";
+  desc = "PDF tools";
   sw = p: with p; [
     pdfdiff
   ];

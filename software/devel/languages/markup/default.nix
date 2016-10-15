@@ -1,6 +1,6 @@
 {
   id = "markup";
-  name = "software for working with markup languages";
+  desc = "software for working with markup languages";
   modules = [
     ./swim
   ];

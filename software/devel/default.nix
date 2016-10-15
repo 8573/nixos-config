@@ -1,6 +1,6 @@
 {
   id = "devel";
-  name = "developer tools and toolchains";
+  desc = "developer tools and toolchains";
   default = {config, ...}:
     { desktop = true;
       laptop = true;

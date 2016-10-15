@@ -1,6 +1,6 @@
 {
   id = "compression";
-  name = "compression tools";
+  desc = "compression tools";
   sw = p: with p; [
     zopfli
   ];

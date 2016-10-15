@@ -1,6 +1,6 @@
 {
   id = "style";
-  name = "software for working with styling languages";
+  desc = "software for working with styling languages";
   modules = [
     ./css
   ];

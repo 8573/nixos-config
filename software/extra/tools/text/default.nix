@@ -1,6 +1,6 @@
 {
   id = "text";
-  name = "text-processing tools";
+  desc = "text-processing tools";
   sw = p: with p; [
     agrep
   ];

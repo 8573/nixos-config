@@ -1,6 +1,6 @@
 {
   id = "tools";
-  name = "extra user-facing tools";
+  desc = "extra user-facing tools";
   modules = [
     ./audio-video
     ./compression

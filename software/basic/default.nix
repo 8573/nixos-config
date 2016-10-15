@@ -1,6 +1,6 @@
 {
   id = "basic";
-  name = "basic user-facing software";
+  desc = "basic user-facing software";
   default = true;
   modules = [
     ./documentation

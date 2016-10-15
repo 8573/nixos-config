@@ -1,6 +1,6 @@
 {
   id = "google";
-  name = "Google-related tools";
+  desc = "Google-related tools";
   sw = p: with p; [
     drive
   ];

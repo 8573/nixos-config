@@ -1,6 +1,6 @@
 {
   id = "image";
-  name = "image-processing tools";
+  desc = "image-processing tools";
   sw = p: with p; [
     imagemagick
   ];

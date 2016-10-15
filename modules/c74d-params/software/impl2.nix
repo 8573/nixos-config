@@ -58,13 +58,13 @@
 
   check-swmodule-invariants = {
     id,
-    name,
+    desc,
     default ? null,
     sw ? null,
     modules ? null,
   }:
     assert lib.isString id;
-    assert lib.isString name;
+    assert lib.isString desc;
     assert default != null -> lib.isBool default || lib.isFunction default;
     assert modules == null -> lib.isFunction sw;
     assert sw == null -> lib.isList modules;
@@ -72,7 +72,7 @@
 
   mk-software-module-IR = parent-attr-path: {
     id,
-    name,
+    desc,
     default ? null,
     sw ? null,
     modules ? null,
@@ -109,7 +109,7 @@
             default = opt-default;
             example = !opt-default;
             description = ''
-              Whether to install ${name} as part of the set of system
+              Whether to install ${desc} as part of the set of system
               packages.
             '';
           });

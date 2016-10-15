@@ -1,6 +1,6 @@
 {
   id = "hardware";
-  name = "hardware-related tools";
+  desc = "hardware-related tools";
   sw = p: with p; [
     alsaUtils
   ];
