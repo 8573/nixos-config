@@ -2,7 +2,6 @@
 
   imports = [
     ./misc
-    ./version-control
   ];
 
 }

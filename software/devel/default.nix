@@ -8,5 +8,6 @@
     .${config.c74d-params.installation-type};
   modules = [
     ./languages
+    ./version-control
   ];
 }
