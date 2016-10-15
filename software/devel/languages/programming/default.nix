@@ -5,6 +5,8 @@
     ./c-family
     ./javascript
     ./lisp
+    ./llvm
+    ./make
     ./nix
     ./ocaml
     ./rust

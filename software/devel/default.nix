@@ -7,6 +7,7 @@
       server = false; }
     .${config.c74d-params.installation-type};
   modules = [
+    ./debug
     ./languages
     ./version-control
   ];
