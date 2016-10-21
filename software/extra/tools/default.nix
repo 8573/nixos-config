@@ -7,6 +7,7 @@
     ./google
     ./hardware
     ./image
+    ./network
     ./pdf
     ./spellcheck
     ./text
