@@ -92,7 +92,13 @@
           default
         else if lib.isFunction default then
           let
-            value = default module-args;
+            args = module-args // {
+              parent =
+                lib.getAttrFromPath
+                  parent-attr-path
+                  config;
+            };
+            value = default args;
           in
             assert lib.isBool value;
             value
