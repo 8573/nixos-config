@@ -2,7 +2,6 @@
 
   imports = [
     ./common
-    ./X11-only
   ];
 
 }

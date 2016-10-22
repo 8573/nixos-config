@@ -1,6 +1,9 @@
 {
   id = "tools";
   desc = "basic user-facing tools";
+  modules = [
+    ./X11-on.nix
+  ];
   sw = p: with p; [
     apg
     atool
