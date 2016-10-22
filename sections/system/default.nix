@@ -7,6 +7,13 @@
 
     autoUpgrade = {
       enable = config.c74d-params.usually-up;
+      channel =
+        "https://nixos.org/channels/nixos-${
+          { desktop = "unstable";
+            laptop = "unstable";
+            server = "unstable-small"; }
+          .${config.c74d-params.installation-type}
+        }";
       dates =
         lib.mkIf
           (assert config.time ? timeZone;
