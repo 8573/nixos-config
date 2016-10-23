@@ -8,6 +8,7 @@
     .${config.c74d-params.installation-type};
   modules = [
     ./apps
+    ./rare
     ./shells
     ./tools
   ];
