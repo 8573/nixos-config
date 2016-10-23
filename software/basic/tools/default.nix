@@ -1,6 +1,9 @@
 {
   id = "tools";
-  name = "basic user-facing tools";
+  desc = "basic user-facing tools";
+  modules = [
+    ./X11-on.nix
+  ];
   sw = p: with p; [
     apg
     atool
@@ -11,7 +14,7 @@
     htop
     iotop
     jq
-    (lib.getBin ldns)
+    ldns
     lshw
     lsscsi
     openssl

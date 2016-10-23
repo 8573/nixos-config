@@ -1,14 +1,18 @@
 {
   id = "tools";
-  name = "extra user-facing tools";
+  desc = "extra user-facing tools";
+  modules = [
+    ./audio-video
+    ./compression
+    ./google
+    ./hardware
+    ./image
+    ./network
+    ./pdf
+    ./spellcheck
+    ./text
+  ];
   sw = p: with p; [
-    agrep
-    alsaUtils
-    aspell
-    drive
-    (lib.getBin imagemagick)
-    (lib.getBin libav)
-    (lib.getBin libqalculate)
-    pdfdiff
+    libqalculate
   ];
 }
