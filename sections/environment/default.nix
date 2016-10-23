@@ -2,7 +2,6 @@
 
   imports = [
     ./etc
-    ./system-packages
     ./variables
   ];
 
