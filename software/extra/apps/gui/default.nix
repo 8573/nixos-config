@@ -4,6 +4,7 @@
   modules = [
     ./audio-video
     ./image
+    ./maths
     ./pdf
     ./web-browsing
   ];

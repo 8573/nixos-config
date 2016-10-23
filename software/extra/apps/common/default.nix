@@ -8,6 +8,7 @@
   modules = [
     ./audio-video
     ./communication
+    ./maths
     ./web-browsing
   ];
 }
