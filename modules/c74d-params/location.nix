@@ -6,10 +6,12 @@
       "latitude"
       "longitude"
       "timezone"
+      "timezone-avg-offset"
     ]
     && lib.isInt x.latitude
     && lib.isInt x.longitude
-    && lib.isString x.timezone;
+    && lib.isString x.timezone
+    && lib.isInt x.timezone-avg-offset;
 
   loc-ty = lib.mkOptionType {
     name = "rough geographical location";
@@ -17,13 +19,13 @@
     merge = lib.mergeOneOption;
   };
 
-  loc = timezone: latitude: longitude:
+  loc = timezone: timezone-avg-offset: latitude: longitude:
     assert lib.isString timezone;
     assert lib.isInt latitude;
     assert lib.isInt longitude;
     let
       r = {
-        inherit timezone latitude longitude;
+        inherit timezone timezone-avg-offset latitude longitude;
       };
     in
       assert is-loc r;
@@ -52,10 +54,10 @@ in {
   };
 
   config.lib.c74d.places = {
-    CA.BC.wd00 = loc "America/Vancouver" (49) (-123);
-    US.CA.r001 = loc "America/Los_Angeles" (34) (-118);
-    US.CO.p008 = loc "America/Denver" (39) (-105);
-    US.NC.p015 = loc "America/New_York" (36) (-80);
+    CA.BC.wd00 = loc "America/Vancouver" (-8) (49) (-123);
+    US.CA.r001 = loc "America/Los_Angeles" (-8) (34) (-118);
+    US.CO.p008 = loc "America/Denver" (-7) (39) (-105);
+    US.NC.p015 = loc "America/New_York" (-5) (36) (-80);
   };
 
 }
