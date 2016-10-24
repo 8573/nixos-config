@@ -18,6 +18,7 @@
     lshw
     lsscsi
     openssl
+    par2cmdline
     pciutils
     rsync
     silver-searcher
