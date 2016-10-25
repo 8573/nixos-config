@@ -1,8 +1,8 @@
 {
   id = "documentation";
   desc = "basic documentation";
-  sw = p: with p; [
+  sw = p: map p.lib.lowPrio (with p; [
     man-pages
     posix_man_pages
-  ];
+  ]);
 }
