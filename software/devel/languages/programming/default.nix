@@ -8,7 +8,6 @@
     ./llvm
     ./make
     ./nix
-    ./ocaml
     ./rust
     ./shell-script
   ];
