@@ -9,6 +9,7 @@
   modules = [
     ./debug
     ./languages
+    ./project-stats
     ./version-control
   ];
 }
