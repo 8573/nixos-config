@@ -47,7 +47,7 @@
 
   Unicode-icon = description: symbol:
     if cfg.Unicode-symbols.advanced.enable then
-      "${U-thin-sp}${symbol}${U-thin-sp}${U-thin-sp}"
+      "${U-thin-sp}${symbol}${U-thin-sp}"
     else
       " ${description} ";
 
