@@ -53,6 +53,7 @@
         sxl = log ${common-personal-log-alias-options} --format=fuller --stat --patch
         pxl = log ${common-personal-log-alias-options} --format=fuller --stat --patch
         wpxl = log ${common-personal-log-alias-options} --format=fuller --stat --patch --word-diff
+        authors = "!f() { git log --format='%aN <%aE>' \"$@\" | sort -u; }; f"
         ffmerge = merge --ff-only
         noffmerge = merge --no-ff
         ffpull = pull --ff-only
