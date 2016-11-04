@@ -5,7 +5,7 @@
   ];
 
   environment.variables = {
-
+    "TERMINFO" = "/run/current-system/sw/share/terminfo";
   };
 
 }
