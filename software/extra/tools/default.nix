@@ -10,6 +10,7 @@
     ./network
     ./pdf
     ./spellcheck
+    ./terminfo
     ./text
   ];
   sw = p: with p; [
