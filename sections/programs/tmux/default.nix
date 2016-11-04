@@ -13,7 +13,7 @@
 
     historyLimit = 65536;
 
-    terminal = "screen-256color";
+    terminal = "tmux-256color";
 
     extraTmuxConf = ''
       set-option -g mouse on
