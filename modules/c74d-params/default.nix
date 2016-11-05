@@ -49,17 +49,6 @@ let
     '';
   };
 
-  installation-type-ty = mkOptionType {
-    name = "installation type";
-    check = s:
-      isString s && elem s [
-        "server"
-        "laptop"
-        "desktop"
-      ];
-    merge = mergeEqualOption;
-  };
-
   mk-env-pkg-options = { id, on-by-default ? false }: {
     ${id} = {
       enable = mkOption {
@@ -102,7 +91,11 @@ in {
     id8 = mk-id-len-option 8;
 
     installation-type = mkOption {
-      type = installation-type-ty;
+      type = types.enum [
+        "server"
+        "laptop"
+        "desktop"
+      ];
       description = ''
         What type of installation this is -- "server", "desktop", or "laptop".
       '';
