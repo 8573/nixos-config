@@ -1,8 +1,8 @@
 { stdenv, lib, fetchFromGitHub, makeWrapper, perlPackages }:
 
 stdenv.mkDerivation rec {
-  name = "git-hub-ingydotnet-${version}";
-  version = "git-${git-revision}";
+  name = "git-hub-ingydotnet-unstable-${version}";
+  version = "2016-06-29";
   git-revision = "386844dac3da6ea5293e0a9d71ed91aedf2120a0";
 
   src = fetchFromGitHub {
