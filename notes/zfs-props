@@ -1,0 +1,10 @@
+NAME             PROPERTY         VALUE                  SOURCE
+zpool-dec4a-0-1  creation         Sun May 29  7:27 2016  -
+zpool-dec4a-0-1  casesensitivity  sensitive              -
+zpool-dec4a-0-1  normalization    formD                  -
+zpool-dec4a-0-1  utf8only         on                     -
+zpool-dec4a-0-1  atime            off                    local
+zpool-dec4a-0-1  checksum         sha256                 local
+zpool-dec4a-0-1  compression      gzip-9                 local
+zpool-dec4a-0-1  copies           2                      local
+zpool-dec4a-0-1  setuid           off                    local
