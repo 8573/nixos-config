@@ -7,6 +7,7 @@
     ./google
     ./hardware
     ./image
+    ./intel
     ./network
     ./pdf
     ./spellcheck
