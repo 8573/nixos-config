@@ -134,6 +134,16 @@ in {
       '';
     };
 
+    hardware.main-CPU-mfr = mkOption {
+      type = types.enum [
+        "Intel"
+        "AMD"
+      ];
+      description = ''
+        The manufacturer of the system's main CPU(s).
+      '';
+    };
+
     hardware.cores.physical = mkOption {
       type = types.int;
       description = ''

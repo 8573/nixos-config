@@ -12,6 +12,8 @@
     };
 
     hardware = {
+      main-CPU-mfr = "Intel";
+
       cores = {
         physical = 8;
         virtual = 16;
