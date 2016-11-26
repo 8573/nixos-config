@@ -2,6 +2,8 @@
 
   xclip = "${pkgs.xclip}/bin/xclip";
 
+  zsh = "/run/current-system/sw/bin/zsh";
+
 in {
 
   programs.tmux = lib.mkIf config.c74d-params.personal {
@@ -10,7 +12,7 @@ in {
     extraTmuxConf = ''
       # For now I'm leaving Bash as the system's default login shell, but
       # within tmux I'll have it be zsh.
-      set-option -g default-shell '/run/current-system/sw/bin/zsh'
+      set-option -g default-shell '${zsh}'
 
       set-window-option -g window-status-activity-style "fg=yellow,none"
       set-window-option -g window-status-bell-style "fg=red,none"
@@ -25,6 +27,8 @@ in {
       bind-key C-C new-window -a -c '#{pane_current_path}'
 
       bind-key w choose-window -F '#{?window_bell_flag,!, }#{?window_active,*,#{?window_last_flag,-, }}#{?window_silence_flag,~, }#{?window_zoomed_flag,Z, }#{?window_linked,L, } #{pane_current_path}  (#{pane_current_command}/#{pane_pid})'
+
+      bind-key C-r split-window -v -b -l 5 env ZSHRC_EXIT_AFTER_FIRST_CMD_IF_OK=1 '${zsh}'
 
       bind-key -r < swap-window -t -1
       bind-key -r > swap-window -t +1
