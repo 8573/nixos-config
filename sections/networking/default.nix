@@ -15,7 +15,10 @@
 
   networking.wireless = {
     # Enables wireless support via wpa_supplicant.
-    enable = config.c74d-params.installation-type != "server";
+    enable = lib.elem config.c74d-params.installation-type [
+      "desktop"
+      "laptop"
+    ];
   };
 
 }

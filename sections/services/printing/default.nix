@@ -1,7 +1,10 @@
 { config, lib, pkgs, ... }: {
 
   services.printing = {
-    enable = config.c74d-params.installation-type != "server";
+    enable = lib.elem config.c74d-params.installation-type [
+      "desktop"
+      "laptop"
+    ];
 
     drivers = lib.mkIf config.services.printing.enable (with pkgs; [
       hplip

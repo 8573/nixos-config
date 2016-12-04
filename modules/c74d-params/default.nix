@@ -202,7 +202,10 @@ in {
 
     X11.enable = mkOption {
       type = types.bool;
-      default = params.installation-type != "server";
+      default = lib.elem params.installation-type [
+        "desktop"
+        "laptop"
+      ];
     };
 
     X11.font-size = mkOption {
@@ -216,7 +219,10 @@ in {
 
     enable-all-firmware = mkOption {
       type = types.bool;
-      default = !params.lightweight && params.installation-type != "server";
+      default = !params.lightweight && lib.elem params.installation-type [
+        "desktop"
+        "laptop"
+      ];
     };
 
   } // mk-env-pkg-options {
