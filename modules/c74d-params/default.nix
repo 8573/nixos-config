@@ -219,7 +219,7 @@ in {
 
     X11.enable = mkOption {
       type = types.bool;
-      default = lib.elem params.installation-type [
+      default = !params.minimal && lib.elem params.installation-type [
         "desktop"
         "laptop"
       ];
