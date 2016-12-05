@@ -105,7 +105,7 @@ in {
       type = types.bool;
     };
 
-    lightweight = mkOption {
+    minimal = mkOption {
       type = types.bool;
       default = false;
     };
@@ -232,7 +232,7 @@ in {
 
     enable-all-firmware = mkOption {
       type = types.bool;
-      default = !params.lightweight && lib.elem params.installation-type [
+      default = !params.minimal && lib.elem params.installation-type [
         "desktop"
         "laptop"
       ];
