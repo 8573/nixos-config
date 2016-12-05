@@ -1,7 +1,8 @@
 {
   id = "software";
   desc = "user software";
-  default = true;
+  default = {config, ...}:
+    !config.c74d-params.lightweight;
   global = true;
   modules = [
     ./basic
