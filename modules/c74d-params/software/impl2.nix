@@ -4,6 +4,7 @@
     let
       root-ir =
         mk-software-module-IR
+          {}
           ["c74d-params"]
           (import root-modl-src-path);
       collected =
@@ -49,6 +50,7 @@
   check-IR-invariants = {
     option,
     pkgs-cfg,
+    global-computed,
     modules,
   }:
     assert lib.isAttrs option;
@@ -60,20 +62,23 @@
     id,
     desc,
     default ? null,
+    global ? null,
     sw ? null,
     modules ? null,
   }:
     assert lib.isString id;
     assert lib.isString desc;
     assert default != null -> lib.isBool default || lib.isFunction default;
+    assert global != null -> lib.isBool global || lib.isFunction global;
     assert modules == null -> lib.isFunction sw;
     assert sw == null -> lib.isList modules;
     true;
 
-  mk-software-module-IR = parent-attr-path: {
+  mk-software-module-IR = parent-ir: parent-attr-path: {
     id,
     desc,
     default ? null,
+    global ? null,
     sw ? null,
     modules ? null,
   } @ this-swmodule:
@@ -87,10 +92,10 @@
       enable-opt-path =
         attr-path ++ ["enable"];
 
-      opt-default =
-        if lib.isBool default then
-          default
-        else if lib.isFunction default then
+      compute-default = immed-val: default:
+        if lib.isBool immed-val then
+          immed-val
+        else if lib.isFunction immed-val then
           let
             args = module-args // {
               parent =
@@ -98,14 +103,24 @@
                   parent-attr-path
                   config;
             };
-            value = default args;
+            value = immed-val args;
           in
             assert lib.isBool value;
             value
         else
-          lib.getAttrFromPath
+          default;
+
+      opt-default =
+        compute-default
+          default
+          (lib.getAttrFromPath
             (parent-attr-path ++ ["enable"])
-            config;
+            config);
+
+      global-computed =
+        compute-default
+          global
+          parent-ir.global-computed;
 
       option =
         lib.setAttrByPath
@@ -114,9 +129,11 @@
             type = lib.types.bool;
             default = opt-default;
             example = !opt-default;
-            description = ''
+            description = if global-computed then ''
               Whether to install ${desc} as part of the set of system
               packages.
+            '' else ''
+              Whether to keep ${desc} in the Nix store.
             '';
           });
 
@@ -129,7 +146,7 @@
                 config.lib.c74d.pkgs);
         in
           assert lib.isList value;
-          map lib.getBin value;
+          value;
 
       pkgs-cfg =
         if sw == null then
@@ -139,7 +156,16 @@
             (lib.getAttrFromPath
               enable-opt-path
               config)
-            { environment.systemPackages = sw-pkgs; };
+            pkgs-cfg-inner;
+
+      pkgs-cfg-inner =
+        if global-computed then {
+          environment.systemPackages =
+            map lib.getBin sw-pkgs;
+        } else {
+          environment.etc."c74d/non-system-packages".text =
+            lib.concatStringsSep "\n" sw-pkgs;
+        };
 
       sub-modules =
         if modules == null then
@@ -148,14 +174,21 @@
           map
             (src-path:
               mk-software-module-IR
+                ir-result
                 attr-path
                 (import src-path))
             modules;
-    in {
-      inherit option pkgs-cfg;
 
-      modules = sub-modules;
-    };
+      ir-result = {
+        inherit
+          option
+          pkgs-cfg
+          global-computed;
+
+        modules = sub-modules;
+      };
+    in
+      ir-result;
 
 in
   mk-software-module-hierarchy
