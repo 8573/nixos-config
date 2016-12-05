@@ -5,6 +5,7 @@
     storage space in which to keep them around
   '';
   default = false;
+  global = false;
   modules = [
     ./graphics
   ];
