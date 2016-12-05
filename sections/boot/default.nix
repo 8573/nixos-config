@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }: {
+{ config, lib, pkgs, ... }: let
+
+  mk-if-non-minimal =
+    lib.mkIf (!config.c74d-params.minimal);
+
+in {
 
   boot.cleanTmpDir = true;
 
@@ -9,7 +14,7 @@
     kernelModules = [
       "zfs"
     ];
-    supportedFilesystems = [
+    supportedFilesystems = mk-if-non-minimal [
       "vfat"
       "zfs"
     ];
@@ -43,14 +48,14 @@
   };
 
   # Per <https://nixos.org/wiki/ZFS_on_NixOS>.
-  boot.supportedFilesystems = [
+  boot.supportedFilesystems = mk-if-non-minimal [
     "vfat"
     "zfs"
   ];
 
   boot.tmpOnTmpfs = true;
 
-  boot.zfs = {
+  boot.zfs = mk-if-non-minimal {
     forceImportAll = false;
     forceImportRoot = false;
   };
