@@ -9,5 +9,6 @@
     ./extra
     ./devel
     ./X11
+    ./VMs
   ];
 }

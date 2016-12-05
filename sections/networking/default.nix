@@ -4,7 +4,7 @@
 
   networking.hostId = config.c74d-params.id8;
 
-  networking.hostName = config.c74d-params.id5;
+  networking.hostName = lib.mkDefault config.c74d-params.id5;
 
   networking.nameservers = [
     "8.8.8.8"

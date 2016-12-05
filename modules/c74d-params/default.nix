@@ -95,9 +95,13 @@ in {
         "server"
         "laptop"
         "desktop"
+        "VM"
       ];
       description = ''
-        What type of installation this is -- "server", "desktop", or "laptop".
+        What type of installation this is -- "server", "desktop", "laptop", or
+        "VM" (a virtual machine hosted by another NixOS installation of mine,
+        as which a virtual private server running on someone else's host
+        doesn't count).
       '';
     };
 
@@ -107,7 +111,9 @@ in {
 
     minimal = mkOption {
       type = types.bool;
-      default = false;
+      default = lib.elem params.installation-type [
+        "VM"
+      ];
       description = ''
         Whether this installation is intended to be minimal, such as for a VM
         installation.
@@ -131,6 +137,7 @@ in {
         desktop = true;
         laptop = false;
         server = true;
+        VM = false;
       }).${params.installation-type};
       description = ''
         Whether this installation is intended to usually be powered on and
@@ -155,6 +162,7 @@ in {
       type = types.enum [
         "Intel"
         "AMD"
+        "(virtual)"
       ];
       description = ''
         The manufacturer of the system's main CPU(s).

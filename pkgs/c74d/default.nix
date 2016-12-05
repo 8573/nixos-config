@@ -1,9 +1,13 @@
-{ config, lib, pkgs, ... }: let
+{ config, lib, pkgs, ... } @ args: let
 
   inherit (config.lib.c74d)
     call-pkg;
 
 in {
+
+  build-VM = call-pkg ./build-VM {
+    host-module-args = args;
+  };
 
   tmux-open-piped-url = call-pkg ./tmux-open-piped-url {};
 

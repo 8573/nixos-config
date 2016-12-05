@@ -11,7 +11,8 @@
         "https://nixos.org/channels/nixos-${
           { desktop = "unstable";
             laptop = "unstable";
-            server = "unstable-small"; }
+            server = "unstable-small";
+            VM = "unstable"; }
           .${config.c74d-params.installation-type}
         }";
       dates =
