@@ -108,6 +108,10 @@ in {
     minimal = mkOption {
       type = types.bool;
       default = false;
+      description = ''
+        Whether this installation is intended to be minimal, such as for a VM
+        installation.
+      '';
     };
 
     personal = mkOption {
