@@ -134,6 +134,19 @@ in {
       '';
     };
 
+    manages-own-store = mkOption {
+      type = types.bool;
+      default = ({
+        desktop = true;
+        laptop = true;
+        server = true;
+        VM = false;
+      }).${params.installation-type};
+      description = ''
+        Whether this installation is intended to manage its own Nix store.
+      '';
+    };
+
     hardware.main-CPU-mfr = mkOption {
       type = types.enum [
         "Intel"
