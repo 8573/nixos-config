@@ -1,0 +1,22 @@
+{ config, lib, pkgs, ... } @ module-args: let
+
+  libs-srcs = [
+    ./trivial.nix
+    ./strings.nix
+  ];
+
+  libs =
+    map
+      mk-lib
+      libs-srcs;
+
+  mk-lib = src:
+    let
+      module-args' =
+        module-args
+        // { lib = lib.recursiveUpdate lib config.lib.c74d; };
+    in
+      { lib.c74d = import src module-args'; };
+
+in
+  lib.mkMerge libs
