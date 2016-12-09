@@ -2,3 +2,32 @@ nixos-config
 ========
 
 A configuration for the Linux distribution NixOS.
+
+
+Repository directory structure
+--------
+
+This repository's directory tree is structured as follows:
+
+- `generic`: Portions of the configuration that are not specific to any
+  particular installation of NixOS.
+
+- `installations`: NixOS modules providing configuration specific to
+  particular installations of NixOS.
+
+- `modules`: NixOS modules not otherwise categorized.
+
+- `notes`: Notes. Not executable nor evaluated as part of the configuration.
+
+- `pkgs`: Software package definitions.
+
+- `sections`: NixOS modules defining, and not declaring, other modules'
+  configuration options. This directory is subdivided into one directory for
+  each top-level namespace of NixOS options (`boot`, `environment`, etc.).
+
+  I believe the historical reason for the name is that this was where I
+  started splitting my configuration into "sections".
+
+- `software`: Configuration files that list what user-facing software is to be
+  installed on the system by default. The installation-specific configurations
+  can override these defaults.
