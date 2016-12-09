@@ -20,6 +20,18 @@
           gigabytes = lib.mkDefault 0;
         };
       };
+
+      Ethernet = {
+        present = lib.mkDefault false;
+      };
+
+      Wi-Fi = {
+        present = lib.mkDefault false;
+      };
+
+      battery = {
+        present = lib.mkDefault false;
+      };
     };
   };
 
