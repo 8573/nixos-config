@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }: {
 
   programs.mosh = {
-    enable = true;
+    enable = lib.mkDefault (!config.c74d-params.minimal);
   };
 
 }
