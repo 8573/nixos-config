@@ -3,6 +3,5 @@
   desc = "extra user-facing tools for system monitoring";
   sw = p: with p; [
     dstat
-    sysstat
   ];
 }
