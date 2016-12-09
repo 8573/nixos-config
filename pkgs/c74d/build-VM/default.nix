@@ -18,6 +18,7 @@ let
       imports = [
         generic-configuration-path
         ./vm-cfg
+        template-cfg
         input-cfg
       ];
     };
