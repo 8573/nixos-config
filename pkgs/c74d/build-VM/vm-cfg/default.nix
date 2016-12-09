@@ -23,6 +23,8 @@
     };
   };
 
+  services.fail2ban.enable = false;
+
   users.users = {
     root = {
       hashedPassword = lib.mkOverride 60 "$6$KMwVgk/Oz8wdeX48$PS..8q81o2IYvDlzQ4WddRAKCwHE7QYMKzXhup7Bz3QHji.scHd3drBFWPXafCZOwMgMLA8.HwNZhiwGwNqgr/";
