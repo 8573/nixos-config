@@ -6,7 +6,7 @@
 in {
 
   programs.vim = {
-    enable = true;
+    enable = lib.mkDefault (!config.c74d-params.minimal);
 
     vimrc.text = ''
       source /etc/vim/vimrc
