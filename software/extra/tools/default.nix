@@ -8,6 +8,7 @@
     ./hardware
     ./image
     ./intel
+    ./monitoring
     ./network
     ./pdf
     ./spellcheck
