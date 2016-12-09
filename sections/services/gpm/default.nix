@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }: {
 
   services.gpm = {
-    enable = true;
+    enable = lib.mkDefault (!config.c74d-params.minimal);
   };
 
 }
