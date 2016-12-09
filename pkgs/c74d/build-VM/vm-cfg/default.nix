@@ -8,6 +8,11 @@
     # Virtual machines don't use ZFS, so they can run grsecurity.
     secure = lib.mkDefault true;
 
+    location = {
+      normal = lib.mkDefault config.lib.c74d.places.nowhere;
+      target = lib.mkDefault config.lib.c74d.places.nowhere;
+    };
+
     hardware = {
       main-CPU-mfr = "(virtual)";
 
