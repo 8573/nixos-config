@@ -1,6 +1,11 @@
-{ config, lib, pkgs, ... }: {
+{ config, lib, pkgs, ... }: let
 
-  fileSystems."/mnt" = lib.mkIf (!config.c74d-params.minimal) {
+  inherit (config.lib.c74d)
+    mk-if-non-minimal;
+
+in {
+
+  fileSystems."/mnt" = mk-if-non-minimal {
     device = "tmpfs";
     fsType = "tmpfs";
     options = [

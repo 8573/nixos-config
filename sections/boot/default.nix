@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }: let
 
-  mk-if-non-minimal =
-    lib.mkIf (!config.c74d-params.minimal);
+  inherit (config.lib.c74d)
+    mk-if-non-minimal;
 
 in {
 
