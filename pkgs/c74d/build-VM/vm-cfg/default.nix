@@ -23,4 +23,15 @@
     };
   };
 
+  users.users = {
+    root = {
+      hashedPassword = lib.mkOverride 60 "$6$KMwVgk/Oz8wdeX48$PS..8q81o2IYvDlzQ4WddRAKCwHE7QYMKzXhup7Bz3QHji.scHd3drBFWPXafCZOwMgMLA8.HwNZhiwGwNqgr/";
+    };
+
+    user = {
+      isNormalUser = true;
+      hashedPassword = lib.mkOverride 60 "$6$rprMXsMczzrJOT$/mgR1LkI.aPglsyDXfBssX95J3.RExv/sHAsgX8Ij3WCODzMKhVlcZVoYAvhNKwr7cvzHq0dizV6RYt933c0F/";
+    };
+  };
+
 }

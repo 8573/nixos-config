@@ -5,6 +5,9 @@ let
   inherit (host-module-args)
     lib;
 
+  inherit (host-module-args.config.lib.c74d)
+    str-contains-none;
+
   build-VM = configuration:
     (import <nixpkgs/nixos> {
       inherit configuration;
@@ -16,17 +19,16 @@ let
   base-cfg =
     host-cfg // {
       imports =
-        lib.remove
-          local-inst-cfg-path
+        lib.filter
+          host-cfg-imports-filter
           host-cfg.imports;
     };
 
-  local-inst-cfg-path =
-    /.. + local-inst-cfg-path-str;
-
-  local-inst-cfg-path-str =
-    lib.removeSuffix "/configuration.nix" (toString <nixos-config>)
-    + "/installations/local/configuration.nix";
+  host-cfg-imports-filter =
+    str-contains-none [
+      "local"
+      "secret"
+    ];
 
   template = template-cfg: input-cfg:
     build-VM (
