@@ -3,6 +3,7 @@
   libs-srcs = [
     ./trivial.nix
     ./strings.nix
+    ./c74d-params.nix
   ];
 
   libs =
