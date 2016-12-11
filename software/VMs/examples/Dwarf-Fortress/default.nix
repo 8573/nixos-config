@@ -1,5 +1,5 @@
 # This is an example of a virtual machine configuration wrapping a game, Dwarf
-# Fortress.
+# Fortress, along with some auxiliary programs for use with it.
 
 { config, lib, pkgs, ... }: {
 
@@ -8,10 +8,15 @@
   c74d-params.id =
     "453d1a98b262374ba7d7728a37e07cf823a2ae232524453a6df42b1d2e56d3d9";
 
+  # As computer games seem to often require.
+  c74d-params.secure = false;
+
   c74d-params.X11.enable = true;
 
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs.dwarf-fortress-packages; [
+    dfhack
     dwarf-fortress
+    dwarf-therapist
   ];
 
   nixpkgs.config.allowUnfree = true;
