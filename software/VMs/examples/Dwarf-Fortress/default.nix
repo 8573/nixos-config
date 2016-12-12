@@ -1,5 +1,5 @@
 # This is an example of a virtual machine configuration wrapping a game, Dwarf
-# Fortress, along with some auxiliary programs for use with it.
+# Fortress, along with an auxiliary program for use with it.
 
 { config, lib, pkgs, ... }: {
 
@@ -16,7 +16,6 @@
   environment.systemPackages = with pkgs.dwarf-fortress-packages; [
     dfhack
     dwarf-fortress
-    dwarf-therapist
   ];
 
   nixpkgs.config.allowUnfree = true;
