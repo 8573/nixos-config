@@ -40,6 +40,12 @@
     };
   };
 
+  # `boot.tmpOnTmpfs = true` causes a tmpfs to be mounted *over* the 9P
+  # mount-points in `/tmp` that one is to use to exchange data with the host,
+  # rendering them inaccessible.
+  # [<https://github.com/NixOS/nixpkgs/issues/21490>]
+  boot.tmpOnTmpfs = lib.mkForce false;
+
   services.fail2ban.enable = false;
 
   users.users = {
