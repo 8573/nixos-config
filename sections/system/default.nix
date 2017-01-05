@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }: {
+{ config, lib, pkgs, ... }: let
+
+  inherit (config.lib.c74d)
+    approx-target-local-time-h;
+
+in {
 
   system = {
     # The NixOS release to be compatible with for stateful data such as
@@ -17,25 +22,10 @@
         }";
       dates =
         let
-          tz-offset =
-            config.c74d-params.location.target.timezone-avg-offset;
           hour =
-            assert tz-offset < 24;
-            assert tz-offset > -24;
-            4 - tz-offset;
-          hour' =
-            assert hour >= -24;
-            assert hour <= 47;
-            if hour < 0 then
-              hour + 24
-            else if hour >= 24 then
-              hour - 24
-            else
-              hour;
+            approx-target-local-time-h 4;
           value =
-            assert hour' >= 0;
-            assert hour' < 24;
-            "${toString hour'}:40";
+            "${toString hour}:40";
         in
           lib.mkIf
             (assert config.time ? timeZone;

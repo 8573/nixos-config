@@ -3,6 +3,7 @@
   libs-srcs = [
     ./trivial.nix
     ./strings.nix
+    ./date-and-time.nix
     ./c74d-params.nix
   ];
 
