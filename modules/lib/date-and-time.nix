@@ -30,4 +30,21 @@ in rec {
       assert hour' < 24;
       hour';
 
+  approx-target-local-time-h-str = local-hour:
+    let
+      h = toString (approx-target-local-time-h local-hour);
+      h-pad = lib.optionalString (local-hour < 10) "0";
+    in
+      "${h-pad}${h}";
+
+  approx-target-local-time-hm-str = local-hour: local-minute:
+    assert local-minute >= 0;
+    assert local-minute < 60;
+    let
+      h-str = approx-target-local-time-h-str local-hour;
+      m = toString local-minute;
+      m-pad = lib.optionalString (local-minute < 10) "0";
+    in
+      "${h-str}:${m-pad}${m}";
+
 }
