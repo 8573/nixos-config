@@ -74,6 +74,7 @@ in {
     ./software
     ./location.nix
     ./i3.nix
+    ./services.nix
   ];
 
   options.c74d-params = {

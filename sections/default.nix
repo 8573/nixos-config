@@ -14,6 +14,7 @@
     ./security
     ./services
     ./system
+    ./systemd
     ./time
     ./users
     ./zram-swap
