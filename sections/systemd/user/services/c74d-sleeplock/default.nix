@@ -20,8 +20,6 @@ in {
   systemd.user.services.c74d-sleeplock = {
     description = "c74d's sleep encouragement";
 
-    restartIfChanged = false;
-
     script = ''
       function is-running {
         '${pkgs.procps}/bin/ps' -d --format comm --no-headers |
