@@ -38,6 +38,10 @@
     };
 
     #KDE.enable = true;
+
+    sleeplock = {
+      enable = true;
+    };
   };
 
   fileSystems."/" = {
