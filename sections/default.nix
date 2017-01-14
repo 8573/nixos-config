@@ -13,6 +13,7 @@
     ./programs
     ./security
     ./services
+    ./sound
     ./system
     ./systemd
     ./time
