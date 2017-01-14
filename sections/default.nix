@@ -3,9 +3,9 @@
   imports = [
     ./boot
     ./environment
-    ./hardware
     ./file-systems
     ./fonts
+    ./hardware
     ./i18n
     ./networking
     ./nix
