@@ -11,7 +11,8 @@ in {
     stateVersion = "16.03";
 
     autoUpgrade = {
-      enable = config.c74d-params.usually-up;
+      enable = with config.c74d-params;
+        usually-up && installation-type != "VM";
       channel =
         "https://nixos.org/channels/nixos-${
           { desktop = "unstable";
