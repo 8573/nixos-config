@@ -1,7 +1,8 @@
 { config, lib, pkgs, ... }: let
 
   inherit (config.lib.c74d)
-    approx-target-local-time-hm-str;
+    approx-target-local-time-hm-str
+    mk-if-TZ-is-UTC;
 
 in {
 
@@ -22,9 +23,7 @@ in {
           .${config.c74d-params.installation-type}
         }";
       dates =
-        lib.mkIf
-          (assert config.time ? timeZone;
-            config.time.timeZone == "UTC")
+        mk-if-TZ-is-UTC
           (approx-target-local-time-hm-str 4 40);
       flags = [
         "-I" "AUTO-BUILD-FLAG=/dev/null/AUTO-BUILD-FLAG"

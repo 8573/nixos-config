@@ -47,4 +47,10 @@ in rec {
     in
       "${h-str}:${m-pad}${m}";
 
+  mk-if-TZ-is-UTC = content:
+    lib.mkIf
+      (assert config.time ? timeZone;
+        config.time.timeZone == "UTC")
+      content;
+
 }
