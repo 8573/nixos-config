@@ -37,6 +37,8 @@ in {
         "kvm-amd")
     ]);
 
+  boot.kernelPackages = pkgs.linuxPackages_4_4;
+
   boot.loader = {
     systemd-boot = {
       enable = !config.c74d-params.minimal;
