@@ -11,7 +11,6 @@
     useSandbox = true;
     extraOptions = ''
       auto-optimise-store = true
-      build-fallback = false
     '';
   };
 
