@@ -111,6 +111,10 @@
       ln -s "$src/share" "$out"
     '';
 
+    # The man-pages will have already been compressed; attempting to compress
+    # them again fails.
+    dontGzipMan = true;
+
     dontStrip = true;
   };
 
