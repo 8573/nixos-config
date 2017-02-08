@@ -163,8 +163,8 @@
           environment.systemPackages =
             map lib.getBin sw-pkgs;
         } else {
-          environment.etc."c74d/non-system-packages".text =
-            lib.concatStringsSep "\n" sw-pkgs;
+          system.extraDependencies =
+            sw-pkgs;
         };
 
       sub-modules =
