@@ -61,21 +61,13 @@ in {
   environment.etc = {
     "vim/vimrc" = lib.mkIf config.c74d-params.personal {
       text = ''
-        source /etc/vim/${fk-rc-path}
+        source ${fetch-vim-config-file {
+          path = fk-rc-path;
+          sha256 = "1gkv8qp48m1k54y2fhbwqfx5n707hnqjfxvnfp6c6xsqjz9c8nq4";
+        }}
+        let g:vim_homedir = '/etc/vim'
       '';
     };
-
-    "vim/${fk-rc-path}".text = ''
-      ${lib.readFile (fetch-vim-config-file {
-        path = fk-rc-path;
-        sha256 = "1gkv8qp48m1k54y2fhbwqfx5n707hnqjfxvnfp6c6xsqjz9c8nq4";
-      })}
-
-      let s:vim_homedir = '/etc/vim'
-      let s:fk_dir = '${fk-dir}'
-      let s:fkplugin_dir = '${fkplugin-dir}'
-      let s:ft_lists_dir = '${ft-lists-dir}'
-    '';
 
     "vim/${fkplugin-dir}/all.vim".source = fetch-vim-config-file {
       path = "${fkplugin-dir}/all.vim";
