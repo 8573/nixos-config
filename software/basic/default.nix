@@ -4,6 +4,7 @@
   default = true;
   modules = [
     ./apps
+    ./build-basics
     ./documentation
     ./tools
   ];
