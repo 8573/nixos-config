@@ -51,19 +51,4 @@ rec {
     };
   };
 
-  Swim = buildPerlPackage rec {
-    name = "Swim-0.1.45";
-    src = fetchurl {
-      url = "mirror://cpan/authors/id/I/IN/INGY/${name}.tar.gz";
-      sha256 = "3755ba1a02aee933c8e1de3995aca1523d6175291a1fa60c3f7fd477f5bb2469";
-    };
-    buildInputs = [ FileShareDirInstall ];
-    propagatedBuildInputs = [ HTMLEscape HashMerge IPCRun Pegex TextAutoformat YAMLLibYAML ];
-    meta = {
-      homepage = https://github.com/ingydotnet/swim-pm;
-      description = "See What I Mean?!";
-      license = with stdenv.lib.licenses; [ artistic1 gpl1Plus ];
-    };
-  };
-
 }
