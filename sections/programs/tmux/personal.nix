@@ -36,6 +36,13 @@ in {
       bind-key -t vi-copy u copy-pipe "${config.lib.c74d.pkgs.c74d.tmux-open-piped-url}"
       bind-key -t vi-copy x copy-pipe "'${xclip}' -in -selection primary"
       bind-key -t vi-copy X copy-pipe "'${xclip}' -in -selection clipboard"
+
+      # While the duality between the standard bindings of `[` and `]` is
+      # understandable, I've too often pressed `]` when meaning to press `[`
+      # and pasted something by accident, which is inconvenient and
+      # undesirable, so I'm unbinding `]` in favor of always using the
+      # standard binding of `=` when I do mean to paste from a buffer.
+      unbind-key ]
     '';
   };
 
