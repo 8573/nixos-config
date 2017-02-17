@@ -8,6 +8,7 @@
     ./audio-video
     ./image
     ./maths
+    ./office-suites
     ./pdf
     ./web-browsing
   ];
