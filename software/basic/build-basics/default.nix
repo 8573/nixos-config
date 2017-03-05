@@ -7,6 +7,7 @@
   '';
   global = false;
   sw = p: with p; ([
+    patchelf
     stdenv.bootstrapTools
   ] ++ map lib.getDev [
     bash
