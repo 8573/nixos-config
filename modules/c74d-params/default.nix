@@ -181,6 +181,20 @@ in {
       '';
     };
 
+    system-state-version = mkOption {
+      type = types.enum [
+        "17.03"
+        "16.09"
+        "16.03"
+      ];
+      description = ''
+        This option is just used to set the standard option
+        `system.stateVersion`. This option exists to necessitate a version to
+        be set for each installation, rather than allowing the default value
+        to be used.
+      '';
+    };
+
     VM.host.config = mkOption {
       type = types.attrs;
       description = ''

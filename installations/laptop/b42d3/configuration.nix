@@ -5,6 +5,7 @@
     installation-type = "laptop";
     secure = false;
     personal = true;
+    system-state-version = "17.03";
 
     location = {
       normal = config.lib.c74d.places.US.CA.r001;

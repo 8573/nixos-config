@@ -9,7 +9,7 @@ in {
   system = {
     # The NixOS release to be compatible with for stateful data such as
     # databases.
-    stateVersion = "16.03";
+    stateVersion = config.c74d-params.system-state-version;
 
     autoUpgrade = {
       enable = with config.c74d-params;
