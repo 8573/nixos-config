@@ -112,9 +112,12 @@ in {
 
     minimal = mkOption {
       type = types.bool;
-      default = lib.elem params.installation-type [
-        "VM"
-      ];
+      default = ({
+        desktop = false;
+        laptop = false;
+        server = true;
+        VM = true;
+      }).${params.installation-type};
       description = ''
         Whether this installation is intended to be minimal, such as for a VM
         installation.
