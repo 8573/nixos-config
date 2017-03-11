@@ -59,6 +59,7 @@ in {
     US.CA.r001 = loc "America/Los_Angeles" (-8) (34) (-118);
     US.CO.p008 = loc "America/Denver" (-7) (39) (-105);
     US.NC.p015 = loc "America/New_York" (-5) (36) (-80);
+    US.NY.c002 = loc "America/New_York" (-5) (43) (-79);
   };
 
 }
