@@ -15,13 +15,7 @@ in {
       enable = with config.c74d-params;
         usually-up && installation-type != "VM";
       channel =
-        "https://nixos.org/channels/nixos-${
-          { desktop = "unstable";
-            laptop = "unstable";
-            server = "unstable-small";
-            VM = "unstable"; }
-          .${config.c74d-params.installation-type}
-        }";
+        "https://nixos.org/channels/nixos-${config.c74d-params.channel}";
       dates =
         mk-if-TZ-is-UTC
           (approx-target-local-time-hm-str 4 40);

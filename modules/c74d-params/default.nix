@@ -149,6 +149,25 @@ in {
       '';
     };
 
+    channel = mkOption {
+      type = types.enum [
+        "unstable"
+        "unstable-small"
+        "17.03"
+        "17.03-small"
+      ];
+      default = ({
+        desktop = "unstable";
+        laptop = "unstable";
+        server = "unstable-small";
+        VM = params.VM.host.config.c74d-params.channel;
+      }).${params.installation-type};
+      description = ''
+        The nixpkgs channel to use for this installation, with the prefix
+        `nixos-` implied.
+      '';
+    };
+
     manages-own-store = mkOption {
       type = types.bool;
       default = ({
