@@ -162,6 +162,15 @@ in {
       '';
     };
 
+    VM.host.config = mkOption {
+      type = types.attrs;
+      description = ''
+        The configuration of a NixOS VM's host. Only relevant when the
+        `installation-type` is `VM`. Set automatically by the VM-building
+        infrastructure.
+      '';
+    };
+
     hardware.main-CPU-mfr = mkOption {
       type = types.enum [
         "Intel"

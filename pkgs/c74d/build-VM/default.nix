@@ -13,10 +13,18 @@ let
       inherit configuration;
     }).vm;
 
+  exported-host-cfg = {
+    c74d-params.VM.host = {
+      inherit (host-module-args)
+        config;
+    };
+  };
+
   template = template-cfg: input-cfg:
     build-VM {
       imports = [
         generic-configuration-path
+        exported-host-cfg
         ./vm-cfg
         template-cfg
         input-cfg
