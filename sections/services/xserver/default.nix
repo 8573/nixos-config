@@ -9,8 +9,8 @@
     enable = config.c74d-params.X11.enable;
 
     desktopManager = {
-      default = lib.mkIf config.c74d-params.KDE.enable "kde5";
-      kde5.enable = config.c74d-params.KDE.install;
+      default = lib.mkIf config.c74d-params.KDE.enable "plasma5";
+      plasma5.enable = config.c74d-params.KDE.install;
       xterm.enable = false;
     };
 
