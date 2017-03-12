@@ -10,13 +10,10 @@ in {
   boot.initrd = {
     availableKernelModules = mk-if-non-minimal
       ["ehci_pci" "ahci" "xhci_pci" "usbhid" "usb_storage" "sd_mod" "sr_mod"];
-    kernelModules = mk-if-non-minimal [
+    kernelModules = lib.mkIf config.c74d-params.ZFS.enable [
       "zfs"
     ];
-    supportedFilesystems = mk-if-non-minimal [
-      "vfat"
-      "zfs"
-    ];
+    inherit (config.boot) supportedFilesystems;
   };
 
   boot.kernel = {
@@ -49,14 +46,13 @@ in {
   };
 
   # Per <https://nixos.org/wiki/ZFS_on_NixOS>.
-  boot.supportedFilesystems = mk-if-non-minimal [
-    "vfat"
-    "zfs"
-  ];
+  boot.supportedFilesystems =
+    lib.optional (!config.c74d-params.minimal) "vfat"
+    ++ lib.optional config.c74d-params.ZFS.enable "zfs";
 
   boot.tmpOnTmpfs = true;
 
-  boot.zfs = mk-if-non-minimal {
+  boot.zfs = {
     forceImportAll = false;
     forceImportRoot = false;
   };

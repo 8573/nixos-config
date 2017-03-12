@@ -209,6 +209,19 @@ in {
       '';
     };
 
+    ZFS.enable = mkOption {
+      type = types.bool;
+      default = ({
+        desktop = true;
+        laptop = true;
+        server = true;
+        VM = false;
+      }).${params.installation-type};
+      description = ''
+        Whether to enable ZFS support.
+      '';
+    };
+
     VM.host.config = mkOption {
       type = types.attrs;
       description = ''
