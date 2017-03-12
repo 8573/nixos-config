@@ -222,6 +222,20 @@ in {
       '';
     };
 
+    VM.virtualization-type = mkOption {
+      type = types.nullOr (types.enum [
+        "QEMU/KVM"
+      ]);
+      default = ({
+        desktop = null;
+        laptop = null;
+        VM = "QEMU/KVM";
+      }).${params.installation-type};
+      description = ''
+        The virtualization software that a VM is running under.
+      '';
+    };
+
     VM.host.config = mkOption {
       type = types.attrs;
       description = ''
