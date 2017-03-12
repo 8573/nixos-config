@@ -149,6 +149,20 @@ in {
       '';
     };
 
+    usually-on-Internet = mkOption {
+      type = types.bool;
+      default = ({
+        desktop = true;
+        laptop = false;
+        server = true;
+        VM = false;
+      }).${params.installation-type};
+      description = ''
+        Whether this installation is intended to have a persistent,
+        low-downtime Internet connection.
+      '';
+    };
+
     channel = mkOption {
       type = types.enum [
         "unstable"
