@@ -17,7 +17,7 @@
 
 in {
 
-  systemd.user.services.c74d-sleeplock = {
+  systemd.user.services.c74d-sleeplock = lib.mkIf cfg.enable {
     description = "c74d's sleep encouragement";
 
     script = ''
@@ -44,10 +44,9 @@ in {
       Type = "oneshot";
     };
 
-    startAt =
-      lib.optional
-        cfg.enable
-        (approx-target-local-time-hm-str cfg.time.hour cfg.time.minute);
+    startAt = [
+      (approx-target-local-time-hm-str cfg.time.hour cfg.time.minute)
+    ];
 
     unitConfig = {
       X-StopOnRemoval = false;
