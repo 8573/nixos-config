@@ -1,4 +1,4 @@
-# zpool create -o ashift=12 -O normalization=formD -O compression=gzip-9 -O checksum=sha256 -O copies=2 -O atime=off -O setuid=off -m none -R /mnt -d -o feature@async_destroy=enabled -o feature@empty_bpobj=enabled -o feature@lz4_compress=enabled -o feature@spacemap_histogram=enabled -o feature@enabled_txg=enabled -o feature@extensible_dataset=enabled -o feature@bookmarks=enabled -o feature@embedded_data zpool-HOSTNAME-0-1 DEVICE
+# zpool create -o ashift=12 -O normalization=formD -O compression=gzip-9 -O checksum=sha256 -O copies=2 -O atime=off -O setuid=off -m none -R /mnt -d -o feature@async_destroy=enabled -o feature@empty_bpobj=enabled -o feature@lz4_compress=enabled -o feature@spacemap_histogram=enabled -o feature@enabled_txg=enabled -o feature@extensible_dataset=enabled -o feature@bookmarks=enabled -o feature@embedded_data=enabled zpool-HOSTNAME-0-1 DEVICE
 # zfs create -o mountpoint=legacy zpool-HOSTNAME-0-1/users
 
 ---
