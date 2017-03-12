@@ -13,7 +13,7 @@ in {
 
     autoUpgrade = {
       enable = with config.c74d-params;
-        usually-up && manages-own-store;
+        usually-up && manages-own-store && usually-on-Internet;
       channel =
         "https://nixos.org/channels/nixos-${config.c74d-params.channel}";
       dates =
