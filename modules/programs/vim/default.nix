@@ -200,10 +200,7 @@ in {
   };
 
   config.programs.vim.default-package =
-    if config.c74d-params.X11.enable then
-      pkgs.vim
-    else
-      pkgs.vimNox;
+    pkgs.vim;
 
   config.programs.vim.package =
     if !cfg.enable then
