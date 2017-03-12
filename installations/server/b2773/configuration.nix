@@ -55,6 +55,8 @@
     "virtio_pci"
   ];
 
+  boot.loader.grub.device = "/dev/vda";
+
   fileSystems."/" = {
     device = "zpool-b2773-0-1/root";
     fsType = "zfs";
