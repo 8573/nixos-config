@@ -38,7 +38,7 @@ in {
 
   boot.loader = {
     systemd-boot = {
-      enable = !config.c74d-params.minimal;
+      enable = config.c74d-params.firmware.type == "EFI";
     };
     efi = {
       canTouchEfiVariables = config.boot.loader.systemd-boot.enable;

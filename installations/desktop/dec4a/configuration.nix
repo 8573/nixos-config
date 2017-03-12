@@ -12,6 +12,10 @@
       target = config.lib.c74d.places.US.CA.r001;
     };
 
+    firmware = {
+      type = "EFI";
+    };
+
     hardware = {
       main-CPU-mfr = "Intel";
 

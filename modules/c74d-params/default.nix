@@ -293,6 +293,16 @@ in {
       '';
     };
 
+    firmware.type = mkOption {
+      type = types.enum [
+        "EFI"
+        "BIOS"
+      ];
+      description = ''
+        The type of firmware (EFI or BIOS) that this installation has.
+      '';
+    };
+
     grsecurity.enable = mkOption {
       type = types.bool;
       default = params.secure;

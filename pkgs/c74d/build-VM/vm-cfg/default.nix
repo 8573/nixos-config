@@ -13,6 +13,10 @@
       target = lib.mkDefault config.lib.c74d.places.nowhere;
     };
 
+    firmware = {
+      type = "BIOS";
+    };
+
     hardware = {
       main-CPU-mfr = "(virtual)";
 
