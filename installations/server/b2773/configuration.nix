@@ -69,8 +69,8 @@
     options = ["noatime" "nodiratime" "nodev" "noexec" "nosuid"];
   };
 
-  swapDevices = [
+  /*swapDevices = [
     { device = "/dev/disk/by-uuid/86cd1034-2e7d-4cd7-a4d1-e68970c8a8a8"; }
-  ];
+  ];*/
 
 }
