@@ -40,6 +40,10 @@ in {
     efi = {
       canTouchEfiVariables = config.boot.loader.systemd-boot.enable;
     };
+    grub = {
+      enable = config.c74d-params.firmware.type == "BIOS";
+      zfsSupport = config.c74d-params.ZFS.enable;
+    };
     systemd-boot = {
       enable = config.c74d-params.firmware.type == "EFI";
     };
