@@ -4,7 +4,6 @@
 
   mk-bool-opt = default: description: lib.mkOption {
     type = lib.types.bool;
-    example = !default;
     inherit default description;
   };
 

@@ -3,7 +3,6 @@
   mk-enable-opt-default-on = description:
     lib.mkEnableOption description // {
       default = true;
-      example = false;
     };
 
 in {
@@ -16,7 +15,6 @@ in {
     use-Super-key = lib.mkOption {
       type = lib.types.bool;
       default = true;
-      example = false;
       description = ''
         Whether to use the Super key (a.k.a. Windows key) as the main
         key-binding modifier key for i3, rather than the default, the Alt key.

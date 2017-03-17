@@ -128,7 +128,6 @@
           (lib.mkOption {
             type = lib.types.bool;
             default = opt-default;
-            example = !opt-default;
             description = if global-computed then ''
               Whether to install ${desc} as part of the set of system
               packages.

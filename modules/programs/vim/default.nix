@@ -160,7 +160,6 @@ in {
     vimrc.useSystemVimrc = lib.mkOption {
       type = lib.types.bool;
       default = true;
-      example = false;
       description = ''
         Whether to source the system vimrc script (`/etc/vim/vimrc` or
         `/etc/vimrc`), if one exists, from this module's Vim installation's
@@ -171,7 +170,6 @@ in {
     vimrc.useUserVimrc = lib.mkOption {
       type = lib.types.bool;
       default = true;
-      example = false;
       description = ''
         Whether to source the user's vimrc script (`~/.vim/vimrc` or
         `~/.vimrc`), if one exists, from this module's Vim installation's

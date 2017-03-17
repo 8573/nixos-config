@@ -42,7 +42,6 @@ in {
         lib.setAttrByPath (path ++ ["enable"]) (lib.mkOption {
           type = lib.types.bool;
           inherit default;
-          example = !default;
           description = ''
             Whether to include ${name} in the set of system packages.
           '';

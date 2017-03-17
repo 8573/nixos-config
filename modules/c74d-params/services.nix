@@ -5,7 +5,6 @@
     sleeplock.enable = lib.mkOption {
       type = lib.types.bool;
       default = false;
-      example = true;
       description = ''
         Whether to enable a background service named "sleeplock" to encourage
         me to sleep at proper times by locking me out of my desktop
