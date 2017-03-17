@@ -86,7 +86,9 @@
     name = "vim-configured-${version}";
     version = pkgs.vim_configurable.version;
 
-    src = pkgs.vim_configurable;
+    src = pkgs.vim_configurable.override {
+      python = pkgs.python3;
+    };
 
     wrapper_script="${vim-customize-wrapper}/bin/vim-customize-wrapper";
 
