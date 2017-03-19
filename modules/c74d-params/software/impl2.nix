@@ -161,7 +161,9 @@
         if global-computed then {
           environment.systemPackages =
             map lib.getBin sw-pkgs
-            ++ map (lib.getOutput "doc") sw-pkgs;
+            ++ lib.optionals
+              (!config.c74d-params.minimal)
+              (map (lib.getOutput "doc") sw-pkgs);
         } else {
           system.extraDependencies =
             sw-pkgs;
