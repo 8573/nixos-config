@@ -160,7 +160,8 @@
       pkgs-cfg-inner =
         if global-computed then {
           environment.systemPackages =
-            map lib.getBin sw-pkgs;
+            map lib.getBin sw-pkgs
+            ++ map (lib.getOutput "doc") sw-pkgs;
         } else {
           system.extraDependencies =
             sw-pkgs;
