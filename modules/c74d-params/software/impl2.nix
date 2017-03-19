@@ -1,5 +1,8 @@
 { config, lib, pkgs, ... } @ module-args: let
 
+  inherit (config.lib.c74d)
+    mk-if-non-minimal;
+
   mk-software-module-hierarchy = root-modl-src-path:
     let
       root-ir =
@@ -11,12 +14,21 @@
         collect-opts-and-pkgs
           collect-opts-and-pkgs-initial-state
           root-ir;
+      extra-share =
+        collect-extra-share
+          collected.pkgs-cfg;
+      cfgs =
+        collected.pkgs-cfg ++ [
+          { environment.systemPackages =
+              mk-if-non-minimal
+                [extra-share]; }
+        ];
     in {
       options =
         collected.options;
       config =
         lib.mkMerge
-          collected.pkgs-cfg;
+          cfgs;
     };
 
   collect-opts-and-pkgs-initial-state = {
@@ -46,6 +58,34 @@
         state
       else
         lib.foldl collect-opts-and-pkgs state ir.modules;
+
+  collect-extra-share = pkgs-cfg:
+    let
+      extra-deps-of-cfg = cfg:
+        let
+          extra-deps = cfg.system.extraDependencies or [];
+        in
+          assert lib.isList extra-deps;
+          extra-deps;
+      extra-deps-of-if = { _type, condition, content }:
+        assert _type == "if";
+        lib.optionals
+          condition
+          (extra-deps-of-cfg content);
+      pkg-list =
+        lib.concatMap
+          extra-deps-of-if
+          pkgs-cfg;
+      extra-share-env =
+        pkgs.buildEnv {
+          name = "c74d-extraDependencies-docs";
+          paths = pkg-list;
+          ignoreCollisions = true;
+          pathsToLink = ["/share"];
+          extraOutputsToInstall = ["doc"];
+        };
+    in
+      extra-share-env;
 
   check-IR-invariants = {
     option,
