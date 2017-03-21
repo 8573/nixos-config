@@ -18,6 +18,7 @@ in {
 
   boot.kernel = {
     sysctl = {
+      "kernel.yama.ptrace_scope" = 1;
       "vm.overcommit_memory" = lib.mkIf
         (config.c74d-params.hardware.memory.main.gigabytes >= 2)
         2;
