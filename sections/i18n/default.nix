@@ -1,6 +1,9 @@
 { config, lib, pkgs, ... }: {
 
-  i18n.inputMethod = lib.mkIf config.c74d-params.X11.enable {
+  i18n.inputMethod = lib.mkIf (
+    config.c74d-params.X11.enable
+    && !config.c74d-params.minimal
+  ) {
     enabled = "ibus";
 
     ibus = {
