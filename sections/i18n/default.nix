@@ -13,6 +13,7 @@
         mozc
         table
         table-others
+        uniemoji
       ]);
     };
   };
