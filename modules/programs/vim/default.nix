@@ -82,17 +82,20 @@
   # This derivation provides an installation of Vim that exposes all those
   # things, behind adapted copies of the `customize` derivation's wrapper
   # script where applicable.
-  vim-configured = pkgs.stdenv.mkDerivation rec {
-    name = "vim-configured-${version}";
-    version = pkgs.vim_configurable.version;
+  vim-configured = pkgs.runCommand
+    "vim-configured-${pkgs.vim_configurable.version}"
+    { src = pkgs.vim_configurable.override {
+        python = pkgs.python3;
+      };
 
-    src = pkgs.vim_configurable.override {
-      python = pkgs.python3;
-    };
+      wrapper_script="${vim-customize-wrapper}/bin/vim-customize-wrapper";
 
-    wrapper_script="${vim-customize-wrapper}/bin/vim-customize-wrapper";
+      # The man-pages will have already been compressed; attempting to compress
+      # them again fails.
+      dontGzipMan = true;
 
-    installPhase = ''
+      dontStrip = true; }
+    ''
       mkdir --parents "$out/bin"
 
       for f in "$src"/bin/{,e,r,g,rg}{vim,view,vimdiff}; do
@@ -112,13 +115,6 @@
 
       ln -s "$src/share" "$out"
     '';
-
-    # The man-pages will have already been compressed; attempting to compress
-    # them again fails.
-    dontGzipMan = true;
-
-    dontStrip = true;
-  };
 
 in {
 
