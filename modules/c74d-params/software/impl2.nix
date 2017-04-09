@@ -81,7 +81,11 @@
           name = "c74d-extraDependencies-docs";
           paths = pkg-list;
           ignoreCollisions = true;
-          pathsToLink = ["/share"];
+          pathsToLink = [
+            "/share/doc"
+            "/share/info"
+            "/share/man"
+          ];
           extraOutputsToInstall = ["doc"];
         };
     in
