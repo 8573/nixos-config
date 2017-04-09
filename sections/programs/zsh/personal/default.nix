@@ -14,6 +14,12 @@ in {
     # files to be exempted from having their timestamps scrubbed, and zsh only
     # looks for `.zwc` scripts *newer* than the respective source scripts, so
     # the compiled version of the `zshrc` script is not used.
+
+    "zshenv".text = lib.mkBefore ''
+      # Disable this function, because a far more extensive personal
+      # configuration is installed system-wide.
+      function zsh-newuser-install {}
+    '';
   };
 
   # These would normally be set by the `programs.zsh` module, but aren't
@@ -33,12 +39,6 @@ in {
 
     # Discard the default value because zsh-config manages prompts.
     promptInit = "";
-
-    shellInit = ''
-      # Disable this function, because a far more extensive personal
-      # configuration is installed system-wide.
-      function zsh-newuser-install {}
-    '';
 
     # Discard the default value because zsh-config manages aliases.
     shellAliases = {};
