@@ -7,6 +7,7 @@
     ./openssh
     ./printing
     ./redshift
+    ./udev
     ./xserver
   ];
 
