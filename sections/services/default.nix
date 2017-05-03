@@ -3,6 +3,7 @@
   imports = [
     ./fail2ban
     ./gpm
+    ./journald
     ./logind
     ./openssh
     ./printing
