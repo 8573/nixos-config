@@ -14,11 +14,32 @@
         collect-opts-and-pkgs
           collect-opts-and-pkgs-initial-state
           root-ir;
+      extra-deps-of-cfg = cfg:
+        let
+          extra-deps = cfg.system.extraDependencies or [];
+        in
+          assert lib.isList extra-deps;
+          extra-deps;
+      extra-deps-of-if = { _type, condition, content }:
+        assert _type == "if";
+        lib.optionals
+          condition
+          (extra-deps-of-cfg content);
+      pkg-list =
+        lib.concatMap
+          extra-deps-of-if
+          collected.pkgs-cfg;
+      extra-bin =
+        collect-extra-bin
+          pkg-list;
       extra-share =
         collect-extra-share
-          collected.pkgs-cfg;
+          pkg-list;
       cfgs =
         collected.pkgs-cfg ++ [
+          { environment.etc."c74d/NixOS/sw/extraDependencies".source =
+              mk-if-non-minimal
+                extra-bin; }
           { environment.systemPackages =
               mk-if-non-minimal
                 [extra-share]; }
@@ -59,37 +80,29 @@
       else
         lib.foldl collect-opts-and-pkgs state ir.modules;
 
-  collect-extra-share = pkgs-cfg:
-    let
-      extra-deps-of-cfg = cfg:
-        let
-          extra-deps = cfg.system.extraDependencies or [];
-        in
-          assert lib.isList extra-deps;
-          extra-deps;
-      extra-deps-of-if = { _type, condition, content }:
-        assert _type == "if";
-        lib.optionals
-          condition
-          (extra-deps-of-cfg content);
-      pkg-list =
-        lib.concatMap
-          extra-deps-of-if
-          pkgs-cfg;
-      extra-share-env =
-        pkgs.buildEnv {
-          name = "c74d-extraDependencies-docs";
-          paths = pkg-list;
-          ignoreCollisions = true;
-          pathsToLink = [
-            "/share/doc"
-            "/share/info"
-            "/share/man"
-          ];
-          extraOutputsToInstall = ["doc"];
-        };
-    in
-      extra-share-env;
+  collect-extra-bin = pkg-list:
+    pkgs.buildEnv {
+      name = "c74d-extraDependencies-bin";
+      paths = pkg-list;
+      ignoreCollisions = true;
+      pathsToLink = [
+        "/bin"
+        "/sbin"
+      ];
+    };
+
+  collect-extra-share = pkg-list:
+    pkgs.buildEnv {
+      name = "c74d-extraDependencies-docs";
+      paths = pkg-list;
+      ignoreCollisions = true;
+      pathsToLink = [
+        "/share/doc"
+        "/share/info"
+        "/share/man"
+      ];
+      extraOutputsToInstall = ["doc"];
+    };
 
   check-IR-invariants = {
     option,
