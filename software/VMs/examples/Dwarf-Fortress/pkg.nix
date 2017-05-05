@@ -11,6 +11,8 @@
   # As computer games seem to often require.
   c74d-params.secure = false;
 
+  c74d-params.system-state-version = "17.03";
+
   c74d-params.X11.enable = true;
 
   environment.systemPackages = with pkgs.dwarf-fortress-packages; [

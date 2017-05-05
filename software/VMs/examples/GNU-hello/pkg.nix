@@ -8,6 +8,8 @@
   c74d-params.id =
     "4f940d0019d8dbeef7d7dfe6dd9ee7e652cb9c6e0b86b98dca98863dfbfcb116";
 
+  c74d-params.system-state-version = "17.03";
+
   environment.systemPackages = with pkgs; [
     hello
   ];
