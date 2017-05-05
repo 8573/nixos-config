@@ -37,9 +37,10 @@
           pkg-list;
       cfgs =
         collected.pkgs-cfg ++ [
-          { environment.etc."c74d/NixOS/sw/extraDependencies".source =
-              mk-if-non-minimal
-                extra-bin; }
+          { environment.etc."c74d/NixOS/sw/extraDependencies" = {
+              enable = !config.c74d-params.minimal;
+              source = extra-bin;
+          }; }
           { environment.systemPackages =
               mk-if-non-minimal
                 [extra-share]; }
