@@ -6,6 +6,7 @@
     && parent.enable;
   modules = [
     ./audio-video
+    ./entertainment
     ./image
     ./maths
     ./office-suites
