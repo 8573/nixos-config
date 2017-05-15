@@ -10,7 +10,6 @@
       engines = (with pkgs.ibus-engines; [
         hangul
         libpinyin
-        mozc
         table
         table-others
         uniemoji
