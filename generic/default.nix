@@ -1,6 +1,7 @@
 {
 
   imports = [
+    <nixpkgs/nixos/modules/profiles/hardened.nix>
     ../modules
     ../pkgs
     ../sections
