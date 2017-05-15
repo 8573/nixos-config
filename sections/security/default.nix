@@ -5,10 +5,6 @@
       enable = true;
     };
 
-    grsecurity = {
-      enable = config.c74d-params.grsecurity.enable;
-    };
-
     hideProcessInformation = true;
 
     sudo = {

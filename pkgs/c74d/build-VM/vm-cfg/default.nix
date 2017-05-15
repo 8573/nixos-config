@@ -5,7 +5,6 @@
 
     personal = lib.mkDefault true;
 
-    # Virtual machines don't use ZFS, so they can run grsecurity.
     secure = lib.mkDefault true;
 
     location = {

@@ -303,11 +303,6 @@ in {
       '';
     };
 
-    grsecurity.enable = mkOption {
-      type = types.bool;
-      default = params.secure;
-    };
-
     X11.enable = mkOption {
       type = types.bool;
       default = !params.minimal && lib.elem params.installation-type [
