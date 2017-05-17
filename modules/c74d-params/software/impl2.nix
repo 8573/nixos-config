@@ -88,7 +88,6 @@
       ignoreCollisions = true;
       pathsToLink = [
         "/bin"
-        "/sbin"
       ];
     };
 
