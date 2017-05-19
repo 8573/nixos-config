@@ -15,6 +15,8 @@
         "Noto Mono"
       ];
     };
+
+    includeUserConf = false;
   };
 
   fonts.fonts = lib.mkIf config.c74d-params.X11.enable (with pkgs; [
