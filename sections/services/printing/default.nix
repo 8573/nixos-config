@@ -6,8 +6,15 @@
       "laptop"
     ];
 
+    #gutenprint = config.services.printing.enable;
+
     drivers = lib.mkIf config.services.printing.enable (with pkgs; [
       hplip
+      #samsung-unified-linux-driver
+      #splix
+      /*(splix.overrideAttrs (orig: {
+        preBuild = lib.replaceStrings ["DISABLE_JBIG=1"] [""] orig.preBuild;
+      }))*/
     ]);
   };
 
