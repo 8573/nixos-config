@@ -38,12 +38,7 @@ in {
   # Equivalent to `pkgs.linuxPackages_hardened`, except with the latest LTS
   # release rather than the latest stable release, for compatibility with ZFS
   # stable.
-  boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux.override {
-    extraConfig = import <nixpkgs/pkgs/os-specific/linux/kernel/hardened-config.nix> {
-      inherit (pkgs) stdenv;
-      inherit (pkgs.linux) version;
-    };
-  });
+  boot.kernelPackages = pkgs.linuxPackages;
 
   boot.loader = {
     efi = {
