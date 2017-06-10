@@ -4,7 +4,7 @@
     config.c74d-params.X11.enable
     && !config.c74d-params.minimal
   ) {
-    enabled = "ibus";
+    #enabled = "ibus";
 
     ibus = {
       engines = (with pkgs.ibus-engines; [
