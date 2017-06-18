@@ -33,9 +33,9 @@ in {
       bind-key -r < swap-window -t -1
       bind-key -r > swap-window -t +1
 
-      bind-key -t vi-copy u copy-pipe "${config.lib.c74d.pkgs.c74d.tmux-open-piped-url}"
-      bind-key -t vi-copy x copy-pipe "'${xclip}' -in -selection primary"
-      bind-key -t vi-copy X copy-pipe "'${xclip}' -in -selection clipboard"
+      bind-key -T copy-mode-vi u send-keys -X copy-pipe-and-cancel "${config.lib.c74d.pkgs.c74d.tmux-open-piped-url}"
+      bind-key -T copy-mode-vi x send-keys -X copy-pipe-and-cancel "'${xclip}' -in -selection primary"
+      bind-key -T copy-mode-vi X send-keys -X copy-pipe-and-cancel "'${xclip}' -in -selection clipboard"
 
       # While the duality between the standard bindings of `[` and `]` is
       # understandable, I've too often pressed `]` when meaning to press `[`
