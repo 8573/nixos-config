@@ -5,6 +5,10 @@
       enable = true;
     };
 
+    chromiumSuidSandbox = {
+      enable = true;
+    };
+
     hideProcessInformation = true;
 
     sudo = {
