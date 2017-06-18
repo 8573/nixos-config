@@ -4,7 +4,19 @@
     config.c74d-params.X11.enable
     && !config.c74d-params.minimal
   ) {
-    enabled = "ibus";
+    enabled = "fcitx";
+
+    fcitx = {
+      engines = (with pkgs.fcitx-engines; [
+        anthy
+        hangul
+        # NOTE: Use the "Pinyin" input method, not the "Pinyin (libPinyin)"
+        # one (both are provided by `libpinyin`), because the latter seems
+        # crashy.
+        libpinyin
+        table-other
+      ]);
+    };
 
     ibus = {
       engines = (with pkgs.ibus-engines; [
