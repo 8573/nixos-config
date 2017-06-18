@@ -64,7 +64,7 @@
         0,/^$/s/^$/\nset $mod ${mod-key}\n/;
         s/\<Mod1\>/$mod/g;
         s/\<\(monospace\) 8\>/\1 ${font-size}/g;
-        s|^\s*status_command /.*/i3status$|& -c '${i3status-cfg-file}'|;
+        s|^\s*status_command \(/.*/\)\?i3status$|& -c '${i3status-cfg-file}'|;
         s/^exec i3-config-wizard\>/#&/;
       ' '${pkgs.i3}/etc/i3/config' > "$out"
 
