@@ -9,7 +9,7 @@ in {
     latitude = toString loc.latitude;
     longitude = toString loc.longitude;
     temperature = {
-      night = 1850;
+      night = 6500 / 3;
     };
   };
 
