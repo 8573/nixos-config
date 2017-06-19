@@ -8,6 +8,7 @@
     ./openssh
     ./printing
     ./redshift
+    ./tmux
     ./udev
     ./xserver
   ];
