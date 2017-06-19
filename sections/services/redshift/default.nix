@@ -5,16 +5,12 @@
 in {
 
   services.redshift = {
+    enable = config.services.xserver.enable && config.c74d-params.personal;
     latitude = toString loc.latitude;
     longitude = toString loc.longitude;
     temperature = {
       night = 1850;
     };
   };
-
-  systemd.user.services.redshift.environment =
-    lib.mkIf (config.services.xserver.display == null) (lib.mkForce {
-      DISPLAY = ":0";
-    });
 
 }
