@@ -144,7 +144,7 @@ in {
         VM = false;
       }).${params.installation-type};
       description = ''
-        Whether this installation is intended to usually be powered on and
+        Whether this installation is intended to be usually powered on and
         running.
       '';
     };
