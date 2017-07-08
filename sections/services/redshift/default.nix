@@ -13,4 +13,10 @@ in {
     };
   };
 
+  systemd.user.services.redshift = {
+    environment = {
+      TZ = loc.timezone;
+    };
+  };
+
 }
