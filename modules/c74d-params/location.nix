@@ -47,8 +47,8 @@ in {
     type = loc-ty;
     example = config.lib.c74d.places.US.CO.p008;
     description = ''
-      The location on Earth that features like clocks and Redshift should be
-      targeted for. This is only a rough location, because the latitude and
+      The location on Earth for which features like clocks and Redshift should
+      be targeted. This is only a rough location, because the latitude and
       longitude are represented as integers.
     '';
   };
