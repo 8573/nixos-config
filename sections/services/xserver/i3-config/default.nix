@@ -31,7 +31,7 @@
       bindsym XF86MonBrightnessUp exec '${xbacklight}' + 1
     '';
 
-  systemctl = "/run/current-system/sw/bin/systemctl";
+  systemctl = "${config.system.path}/bin/systemctl";
 
   Redshift-toggle = op: "exec ${systemctl} --user ${op} redshift.service";
 

@@ -5,7 +5,7 @@
   ];
 
   environment.sessionVariables = {
-    "TERMINFO" = "/run/current-system/sw/share/terminfo";
+    "TERMINFO" = "${config.system.path}/share/terminfo";
   };
 
 }

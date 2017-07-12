@@ -2,7 +2,7 @@
 
   xclip = "${pkgs.xclip}/bin/xclip";
 
-  zsh = "/run/current-system/sw/bin/zsh";
+  zsh = "${config.system.path}/bin/zsh";
 
 in {
 
