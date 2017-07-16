@@ -2,6 +2,7 @@
 
   imports = [
     ./bash
+    ./gnupg
     ./mosh
     ./ssh
     ./tmux

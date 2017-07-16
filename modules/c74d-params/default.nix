@@ -320,6 +320,16 @@ in {
       '';
     };
 
+    GnuPG.services.enable = mkOption {
+      type = types.bool;
+      default = ({
+        desktop = true;
+        laptop = true;
+        server = false;
+        VM = false;
+      }).${params.installation-type};
+    };
+
     enable-all-firmware = mkOption {
       type = types.bool;
       default = !params.minimal && lib.elem params.installation-type [
