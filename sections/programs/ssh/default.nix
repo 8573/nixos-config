@@ -1,6 +1,13 @@
 { config, lib, pkgs, ... }: {
 
   programs.ssh = {
+    startAgent = {
+      desktop = true;
+      laptop = true;
+      server = false;
+      VM = false;
+    }.${config.c74d-params.installation-type};
+
     extraConfig = ''
       Host github.com
         # GitHub closes the idle connections, making SSH print non-sequitur
