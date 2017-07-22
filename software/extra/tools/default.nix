@@ -4,6 +4,7 @@
   modules = [
     ./audio-video
     ./compression
+    ./file-mgmt
     ./google
     ./hardware
     ./image
