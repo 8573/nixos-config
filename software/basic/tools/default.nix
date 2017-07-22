@@ -25,7 +25,6 @@
     smartmontools
     tcpdump
     telnet
-    tree
     usbutils
     wdiff
     wget
