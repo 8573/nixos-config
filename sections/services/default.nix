@@ -11,6 +11,7 @@
     ./tmux
     ./udev
     ./xserver
+    ./zfs
   ];
 
 }
