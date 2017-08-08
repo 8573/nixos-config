@@ -2,8 +2,10 @@
 
   environment.etc."gitconfig".text = let
     pager = "${pkgs.less}/bin/less -+FSX";
+    diff-highlight-dir =
+      "${pkgs.gitFull}/share/git/contrib/diff-highlight";
     diff-highlight =
-      "${pkgs.gitFull}/share/git/contrib/diff-highlight/diff-highlight";
+      "${pkgs.perl}/bin/perl -I${diff-highlight-dir} -mDiffHighlight ${diff-highlight-dir}/diff-highlight.perl";
     common-personal-log-alias-options =
       "--decorate --source --encoding=UTF-8 --notes --show-signature --date=iso --graph";
   in ''
