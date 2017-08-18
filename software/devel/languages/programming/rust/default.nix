@@ -5,11 +5,10 @@
     ./global
   ];
   sw = p: with p; ([
-    cargo
-    rustc
+    (rustChannelOf {
+      channel = "1.19.0";
+    }).rust
     rustfmt
     rustracer
-  ] ++ map (lib.getOutput "doc") [
-    rustc
   ]);
 }
