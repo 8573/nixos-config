@@ -1,19 +1,6 @@
-{ config, ... }: let
+{ config, ... }: {
 
-  base = import <nixpkgs> {};
-
-  nixpkgs-mozilla = base.fetchFromGitHub {
-    owner = "mozilla";
-    repo = "nixpkgs-mozilla";
-    # This revision is dated 2017-08-15.
-    rev = "ca0031baaac0538b9089625c8fa0b790b4270d36";
-    sha256 = "0albnrwnx5ixgxvlrrcdyjsh5r25bqiw0xw7kdgi298inwyz3xz5";
-  };
-
-in {
-
-  nixpkgs.overlays = [
-    (import "${nixpkgs-mozilla}/rust-overlay.nix")
-  ];
+  nixpkgs.overlays =
+    import ./overlays.nix;
 
 }
