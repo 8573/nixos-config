@@ -17,6 +17,8 @@ in {
 
   vim-try-x = call-pkg ./vim-try-x {};
 
+  with-rust = call-pkg ./with-rust {};
+
   zsh-config = call-pkg ./zsh-config {};
 
 }
