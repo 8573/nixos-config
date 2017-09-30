@@ -50,6 +50,13 @@ in {
       the brightness of the display backlight
     '';
 
+    bindings.audio-volume.enable = lib.mkEnableOption ''
+      key-bindings, of the relevant media-keys, for increasing and decreasing
+      the audio output volume, and muting or unmuting the audio output
+    '' // {
+      default = config.hardware.pulseaudio.enable;
+    };
+
     bindings.toggle-Redshift.enable = mk-enable-opt-default-on ''
       key-bindings, of the display-brightness media-keys modified with the main
       i3 modifier key, for toggling Redshift

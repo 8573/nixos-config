@@ -31,6 +31,16 @@
       bindsym XF86MonBrightnessUp exec '${xbacklight}' + 1
     '';
 
+  amixer = "${pkgs.alsaUtils}/bin/amixer";
+
+  audio-volume-control-bindings =
+    lib.optionalString cfg.bindings.audio-volume.enable ''
+      # Key-bindings for audio output control
+      bindsym XF86AudioRaiseVolume exec '${amixer}' -Mq set Master 5%+ unmute
+      bindsym XF86AudioLowerVolume exec '${amixer}' -Mq set Master 5%- unmute
+      bindsym XF86AudioMute exec '${amixer}' -Mq set Master toggle
+    '';
+
   systemctl = "${config.system.path}/bin/systemctl";
 
   Redshift-toggle = op: "exec ${systemctl} --user ${op} redshift.service";
@@ -75,6 +85,7 @@
 
     ${Chromium-open-binding}
     ${brightness-control-bindings}
+    ${audio-volume-control-bindings}
     ${Redshift-toggle-bindings}
     ${screencap-bindings}
 
