@@ -58,6 +58,11 @@ in {
       # standard binding of `=` when I do mean to paste from a buffer.
       unbind-key ]
 
+      set-option -g @resurrect-save 'S'
+      set-option -g @resurrect-restore 'R'
+
+      set-option -g @continuum-restore 'on'
+
       run-shell ${tmux-resurrect}/resurrect.tmux
       run-shell ${tmux-continuum}/continuum.tmux
     '';
