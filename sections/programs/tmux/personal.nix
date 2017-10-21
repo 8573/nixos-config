@@ -4,6 +4,20 @@
 
   zsh = "${config.system.path}/bin/zsh";
 
+  tmux-resurrect = pkgs.fetchFromGitHub {
+    owner = "tmux-plugins";
+    repo = "tmux-resurrect";
+    rev = "dcef21995add18a50db8f7342824935e4826c39d";
+    sha256 = "0hbvx27sn0a23s67niib8xx1i61s5m4dq35fxvzbdp84j8mm33j4";
+  };
+
+  tmux-continuum = pkgs.fetchFromGitHub {
+    owner = "tmux-plugins";
+    repo = "tmux-continuum";
+    rev = "90f4a00c41de094864dd4e29231253bcd80d4409";
+    sha256 = "1hviqz62mnq5h4vgcy9bl5004q18yz5b90bnih0ibsna877x3nbc";
+  };
+
 in {
 
   programs.tmux = lib.mkIf config.c74d-params.personal {
@@ -43,7 +57,14 @@ in {
       # undesirable, so I'm unbinding `]` in favor of always using the
       # standard binding of `=` when I do mean to paste from a buffer.
       unbind-key ]
+
+      run-shell ${tmux-resurrect}/resurrect.tmux
+      run-shell ${tmux-continuum}/continuum.tmux
     '';
   };
+
+  systemd.tmpfiles.rules = [
+    "r /home/*/.tmux/resurrect/* - - - 1w"
+  ];
 
 }
