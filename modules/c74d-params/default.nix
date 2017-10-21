@@ -320,7 +320,7 @@ in {
       '';
     };
 
-    enable-all-firmware = mkOption {
+    enable-most-firmware = mkOption {
       type = types.bool;
       default = !params.minimal && lib.elem params.installation-type [
         "desktop"

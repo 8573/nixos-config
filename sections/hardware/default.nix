@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }: {
 
-  hardware.enableAllFirmware = config.c74d-params.enable-all-firmware;
+  hardware.enableRedistributableFirmware =
+    config.c74d-params.enable-most-firmware;
 
   hardware.pulseaudio = {
     enable = lib.mkDefault
