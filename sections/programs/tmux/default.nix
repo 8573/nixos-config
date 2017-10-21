@@ -1,4 +1,13 @@
-{ config, lib, pkgs, ... }: {
+{ config, lib, pkgs, ... }: let
+
+  tmux-sensible = pkgs.fetchFromGitHub {
+    owner = "tmux-plugins";
+    repo = "tmux-sensible";
+    rev = "e91b178ff832b7bcbbf4d99d9f467f63fd1b76b5";
+    sha256 = "1z8dfbwblrbmb8sgb0k8h1q0dvfdz7gw57las8nwd5gj6ss1jyvx";
+  };
+
+in {
 
   imports = [
     ./personal.nix
@@ -8,10 +17,6 @@
     enable = true;
 
     clock24 = true;
-
-    escapeTime = 125;
-
-    historyLimit = 65536;
 
     terminal = "tmux-256color";
 
@@ -27,6 +32,8 @@
 
       set-window-option -g allow-rename off
       set-window-option -g xterm-keys on
+
+      run-shell ${tmux-sensible}/sensible.tmux
     '';
   };
 
