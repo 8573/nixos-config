@@ -62,6 +62,7 @@ in {
       set-option -g @resurrect-restore 'R'
 
       set-option -g @continuum-restore 'on'
+      set-option -g @continuum-save-interval '60'
 
       run-shell ${tmux-resurrect}/resurrect.tmux
       run-shell ${tmux-continuum}/continuum.tmux
