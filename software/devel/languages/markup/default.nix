@@ -4,5 +4,6 @@
   modules = [
     ./asciidoc
     ./swim
+    ./tex
   ];
 }
