@@ -5,10 +5,17 @@
   sw = p: with p; [
     (texlive.combine {
       inherit (texlive)
-        latexmk
+        collection-bibtexextra
+        collection-binextra
+        collection-fontsrecommended
+        collection-genericrecommended
+        collection-latexextra
+        collection-mathextra
+        collection-pictures
         scheme-small
       ;
     })
+    biber
     texmaker
   ];
 }
