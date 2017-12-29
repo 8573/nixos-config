@@ -4,6 +4,7 @@
   global = false;
   modules = [
     ./graphics
+    ./logic
     ./markup
     ./programming
     ./style
