@@ -8,10 +8,10 @@
         collection-bibtexextra
         collection-binextra
         collection-fontsrecommended
-        collection-genericrecommended
         collection-latexextra
-        collection-mathextra
+        collection-mathscience
         collection-pictures
+        collection-plaingeneric
         scheme-small
       ;
     })
