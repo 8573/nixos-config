@@ -6,7 +6,8 @@
   ];
   sw = p: with p; ([
     (rustChannelOf {
-      channel = "1.20.0";
+      # The last version of 2017, as of 2017-12-30.
+      channel = "1.22.1";
     }).rust
     rustfmt
     rustracer
