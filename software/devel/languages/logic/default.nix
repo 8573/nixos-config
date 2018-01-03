@@ -10,5 +10,7 @@
     && parent.enable;
   global = true;
   modules = [
+#    ./coq
+#    ./lean
   ];
 }
