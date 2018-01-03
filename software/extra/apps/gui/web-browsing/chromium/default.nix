@@ -5,7 +5,7 @@
     script = ''
       #!/bin/sh
       exec '${chromium}/bin/chromium-browser' \
-        --no-default-browser-check
+        --no-default-browser-check "$@"
     '';
   in [
     (writeScriptBin "chromium" script)
