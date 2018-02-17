@@ -23,6 +23,9 @@
     noto-fonts
     noto-fonts-cjk
     dejavu_fonts
+    roboto
+    roboto-mono
+    roboto-slab
     symbola
   ]);
 
