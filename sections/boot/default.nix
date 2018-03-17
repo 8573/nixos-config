@@ -19,9 +19,15 @@ in {
   boot.kernel = {
     sysctl = {
       "kernel.yama.ptrace_scope" = 1;
+
       "vm.overcommit_memory" = lib.mkIf
         (config.c74d-params.hardware.memory.main.gigabytes >= 2)
         2;
+
+      # [2018-03-17] Apparently the Nix sandbox requires user namespaces now.
+      # I don't know how many it requires, but I assume two for each build job
+      # should be enough.
+      "user.max_user_namespaces" = config.nix.maxJobs * 2;
     };
   };
 
