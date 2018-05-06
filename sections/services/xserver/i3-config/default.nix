@@ -76,6 +76,8 @@
         s/\<\(monospace\) 8\>/\1 ${font-size}/g;
         s|^\s*status_command \(/.*/\)\?i3status$|& -c '${i3status-cfg-file}'|;
         s/^exec i3-config-wizard\>/#&/;
+        s/bindsym $mod+d exec dmenu_run/#&/;
+        s/# \(bindsym $mod+d exec .*\<i3-dmenu-desktop\>\)/\1/;
       ' '${pkgs.i3}/etc/i3/config' > "$out"
 
     echo >> "$out"
