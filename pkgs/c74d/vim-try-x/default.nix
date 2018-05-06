@@ -1,4 +1,4 @@
-{ stdenv, vim, writeScriptBin }:
+{ stdenv, vim }:
 
 stdenv.mkDerivation rec {
   name = "${scriptName}-${version}";

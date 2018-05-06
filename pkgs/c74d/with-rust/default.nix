@@ -1,7 +1,6 @@
-{ writeText, writeScriptBin, nix, nixpkgs-mozilla }:
+{ writeText, writeShellScriptBin, nix, nixpkgs-mozilla }:
 
-writeScriptBin "with-rust" ''
-  #!/bin/sh
+writeShellScriptBin "with-rust" ''
   exec '${nix}/bin/nix-shell' \
     ${writeText "rust-env.nix" ''
       with import <nixpkgs> {

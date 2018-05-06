@@ -3,7 +3,7 @@
   desc = "the Web browser Chromium";
   sw = p: let
     inherit (p)
-      chromium lib writeScriptBin;
+      chromium lib writeShellScriptBin;
 
     version = (lib.splitString "." (lib.getVersion chromium));
 
@@ -18,13 +18,13 @@
     ];
 
     script = ''
-      #!/bin/sh
       exec '${chromium}/bin/chromium-browser' \
         ${lib.concatStringsSep " " (lib.concatLists args)} \
         "$@"
     '';
-  in [
-    (writeScriptBin "chromium" script)
-    (writeScriptBin "chromium-browser" script)
-  ];
+
+    wrapper-scripts = map (name: writeShellScriptBin name script) [
+      "chromium" "chromium-browser"
+    ];
+  in wrapper-scripts;
 }
