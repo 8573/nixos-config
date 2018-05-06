@@ -11,10 +11,9 @@
 
     args = [
       ["--no-default-browser-check"]
-      (lib.optional (major-version == 63)
+      (lib.optional (major-version >= 63)
         # Enable this flag as a mitigation of the Spectre/Meltdown
-        # vulnerabilities. It sounds as though the flag is unavailable before
-        # and superseded after major version 63, at least for this purpose.
+        # vulnerabilities.
         "--site-per-process")
     ];
 
