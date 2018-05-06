@@ -3,7 +3,7 @@
   desc = "the Web browser Chromium";
   sw = p: let
     inherit (p)
-      chromium lib writeShellScriptBin;
+      chromium lib runCommand;
 
     version = (lib.splitString "." (lib.getVersion chromium));
 
@@ -17,14 +17,27 @@
         "--site-per-process")
     ];
 
-    script = ''
-      exec '${chromium}/bin/chromium-browser' \
-        ${lib.concatStringsSep " " (lib.concatLists args)} \
-        "$@"
-    '';
+    chromium-wrapped = runCommand "chromium-wrapped" {} ''
+      mkdir -p "$out"
 
-    wrapper-scripts = map (name: writeShellScriptBin name script) [
-      "chromium" "chromium-browser"
-    ];
-  in wrapper-scripts;
+      cd "$out"
+
+      mkdir bin
+
+      cat >> bin/chromium <<SHELL_SCRIPT
+        #!/bin/sh
+        exec '${chromium}/bin/chromium' \
+          ${lib.concatStringsSep " " (lib.concatLists args)} \
+          "$@"
+      SHELL_SCRIPT
+
+      chmod +x bin/chromium
+
+      ln bin/chromium bin/chromium-browser
+
+      ln -s ${chromium}/share
+    '';
+  in [
+    chromium-wrapped
+  ];
 }
