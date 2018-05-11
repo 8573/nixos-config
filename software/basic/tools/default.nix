@@ -25,9 +25,11 @@
     smartmontools
     tcpdump
     telnet
+    unzip
     usbutils
     wdiff
     wget
     whois
+    zip
   ];
 }
