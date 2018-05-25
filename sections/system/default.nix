@@ -7,10 +7,6 @@
 in {
 
   system = {
-    # The NixOS release to be compatible with for stateful data such as
-    # databases.
-    stateVersion = config.c74d-params.system-state-version;
-
     autoUpgrade = {
       enable = with config.c74d-params;
         usually-up && manages-own-store && usually-on-Internet;
@@ -22,6 +18,12 @@ in {
       flags = [
         "-I" "AUTO-BUILD-FLAG=/dev/null/AUTO-BUILD-FLAG"
       ];
+    };
+
+    nixos = {
+      # The NixOS release to be compatible with for stateful data such as
+      # databases.
+      stateVersion = config.c74d-params.system-state-version;
     };
   };
 
