@@ -5,6 +5,6 @@
     projects
   '';
   sw = p: with p; [
-    tokei
+    #tokei
   ];
 }
