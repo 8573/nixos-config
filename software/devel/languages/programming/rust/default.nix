@@ -6,7 +6,7 @@
   ];
   sw = p: with p; ([
     (rustChannelOf {
-      channel = "1.24.1";
+      channel = "1.26.0";
     }).rust
     rustracer
   ]);
