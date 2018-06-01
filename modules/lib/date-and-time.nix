@@ -6,6 +6,11 @@
 
 in rec {
 
+  # [2018-06-01] All extant uses of the `approx-target-local-time-*` functions
+  # were for creating systemd calendar event specifications (see the
+  # systemd.time(7) man-page), and those uses are addressed better by
+  # specifying timezones for the calendar events.
+  /*
   approx-target-local-time-h = local-hour:
     assert local-hour >= 0;
     assert local-hour < 24;
@@ -46,6 +51,7 @@ in rec {
       m-pad = lib.optionalString (local-minute < 10) "0";
     in
       "${h-str}:${m-pad}${m}";
+  */
 
   mk-if-TZ-is-UTC = content:
     lib.mkIf

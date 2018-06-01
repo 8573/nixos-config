@@ -1,7 +1,6 @@
 { config, lib, pkgs, ... }: let
 
   inherit (config.lib.c74d)
-    approx-target-local-time-hm-str
     mk-if-TZ-is-UTC;
 
 in {
@@ -11,7 +10,7 @@ in {
       automatic = true;
       dates =
         mk-if-TZ-is-UTC
-          (approx-target-local-time-hm-str 3 15);
+          "03:15 ${config.c74d-params.location.target.timezone}";
     };
     maxJobs =
       lib.mkIf

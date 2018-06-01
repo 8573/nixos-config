@@ -5,11 +5,11 @@
 
 { config, lib, pkgs, ... }: let
 
-  inherit (config.lib.c74d)
-    approx-target-local-time-hm-str;
-
   inherit (config.lib.c74d.pkgs.wrapped)
     i3lock;
+
+  inherit (config.c74d-params.location.target)
+    timezone;
 
   cfg = config.c74d-params.sleeplock;
 
@@ -45,7 +45,7 @@ in {
     };
 
     startAt = [
-      (approx-target-local-time-hm-str cfg.time.hour cfg.time.minute)
+      "${toString cfg.time.hour}:${toString cfg.time.minute} ${timezone}"
     ];
 
     unitConfig = {
