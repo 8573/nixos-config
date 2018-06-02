@@ -46,6 +46,12 @@ in {
       battery power
     '';
 
+    audio-volume.enable = mk-modl-enbl-opt (
+      with config; sound.enable || hardware.pulseaudio.enable
+    ) ''
+      audio volume
+    '';
+
     load.enable = mk-modl-enbl-opt true ''
       the system load
     '';

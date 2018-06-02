@@ -44,6 +44,7 @@
   U-battery = ''\xF0\x9F\x94\x8B'';
   U-electric-plug = ''\xF0\x9F\x94\x8C'';
   U-degree = ''\xC2\xB0'';
+  U-sound = ''\xF0\x9F\x8E\xB5'';
 
   Unicode-icon = description: symbol:
     if cfg.Unicode-symbols.advanced.enable then
@@ -55,6 +56,7 @@
   Ethernet-icon = " Ethernet ";
   battery-icon = Unicode-icon "BAT" U-battery;
   charging-icon = Unicode-icon "CHR" U-electric-plug;
+  audio-volume-icon = Unicode-icon "VOL" U-sound;
 
   block = name: id: contents: lib.optionalString cfg.${name}.enable ''
     order += "${id}"
@@ -90,6 +92,13 @@
     threshold_type = "time";
   };
 
+  audio-volume-block = block "audio-volume" "volume master" {
+    format = "${audio-volume-icon}%volume ";
+    format_muted = "${audio-volume-icon}off ";
+    mixer = "Master";
+    mixer_idx = "0";
+  };
+
   load-block = block "load" "load" {
     format = " %1min %5min %15min ";
   };
@@ -117,6 +126,7 @@ in pkgs.writeText "i3status.conf" ''
   ${battery-block}
   ${temperature-block}
   ${load-block}
+  ${audio-volume-block}
   ${storage-block}
   ${clocks}
 
