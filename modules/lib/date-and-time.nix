@@ -7,10 +7,14 @@
 in rec {
 
   # [2018-06-01] All extant uses of the `approx-target-local-time-*` functions
-  # were for creating systemd calendar event specifications (see the
+  # are for creating systemd calendar event specifications (see the
   # systemd.time(7) man-page), and those uses are addressed better by
   # specifying timezones for the calendar events.
-  /*
+  #
+  # [2018-06-16] ...Except that specifying timezones for calendar events only
+  # seems to work for systemd user units. For system units, the timezone in
+  # "[Timer]OnCalendar" seems to be ignored in favor of UTC (the system
+  # timezone).
   approx-target-local-time-h = local-hour:
     assert local-hour >= 0;
     assert local-hour < 24;
@@ -51,7 +55,6 @@ in rec {
       m-pad = lib.optionalString (local-minute < 10) "0";
     in
       "${h-str}:${m-pad}${m}";
-  */
 
   mk-if-TZ-is-UTC = content:
     lib.mkIf

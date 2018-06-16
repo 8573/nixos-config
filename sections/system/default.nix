@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }: let
 
   inherit (config.lib.c74d)
+    approx-target-local-time-hm-str
     mk-if-TZ-is-UTC;
 
 in {
@@ -13,7 +14,7 @@ in {
         "https://nixos.org/channels/nixos-${config.c74d-params.channel}";
       dates =
         mk-if-TZ-is-UTC
-          "04:40 ${config.c74d-params.location.target.timezone}";
+          (approx-target-local-time-hm-str 4 40);
       flags = [
         "-I" "AUTO-BUILD-FLAG=/dev/null/AUTO-BUILD-FLAG"
       ];
