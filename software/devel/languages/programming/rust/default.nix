@@ -9,7 +9,7 @@
       channel = "1.22.1";
     }).rust
     (rustChannelOf {
-      channel = "1.26.0";
+      channel = "1.26.2";
     }).rust
     rustracer
   ]);
