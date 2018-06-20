@@ -1,6 +1,6 @@
 {
-  id = "office-suites";
-  desc = "graphical office-suite software";
+  id = "office";
+  desc = "graphical office software";
   default = {config, parent, ...}:
     { desktop = true;
       laptop = true;

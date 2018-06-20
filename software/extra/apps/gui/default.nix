@@ -9,7 +9,7 @@
     ./entertainment
     ./image
     ./maths
-    ./office-suites
+    ./office
     ./pdf
     ./web-browsing
   ];
