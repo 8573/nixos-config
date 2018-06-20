@@ -4,6 +4,7 @@
   sw = p: with p; [
     exa
     fd
+    jdupes
     renameutils
   ];
 }
