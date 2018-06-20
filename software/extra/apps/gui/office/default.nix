@@ -9,6 +9,7 @@
     .${config.c74d-params.installation-type}
     && parent.enable;
   modules = [
+    ./abiword
     ./calligra
   ];
 }
