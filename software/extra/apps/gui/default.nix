@@ -7,6 +7,7 @@
   modules = [
     ./audio-video
     ./entertainment
+    ./gis
     ./image
     ./maths
     ./office
