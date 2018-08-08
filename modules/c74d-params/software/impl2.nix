@@ -108,6 +108,7 @@
     option,
     pkgs-cfg,
     global-computed,
+    ignore-broken-pkgs-computed,
     modules,
   }:
     assert lib.isAttrs option;
@@ -120,6 +121,7 @@
     desc,
     default ? null,
     global ? null,
+    ignore-broken-pkgs ? null,
     sw ? null,
     modules ? null,
   }:
@@ -127,6 +129,8 @@
     assert lib.isString desc;
     assert default != null -> lib.isBool default || lib.isFunction default;
     assert global != null -> lib.isBool global || lib.isFunction global;
+    assert ignore-broken-pkgs != null ->
+      lib.isBool ignore-broken-pkgs || lib.isFunction ignore-broken-pkgs;
     assert modules == null -> lib.isFunction sw;
     assert sw == null -> lib.isList modules;
     true;
@@ -136,6 +140,7 @@
     desc,
     default ? null,
     global ? null,
+    ignore-broken-pkgs ? null,
     sw ? null,
     modules ? null,
   } @ this-swmodule:
@@ -179,6 +184,11 @@
           global
           parent-ir.global-computed;
 
+      ignore-broken-pkgs-computed =
+        compute-default
+          ignore-broken-pkgs
+          parent-ir.ignore-broken-pkgs-computed;
+
       option =
         lib.setAttrByPath
           enable-opt-path
@@ -200,9 +210,14 @@
               (lib.recursiveUpdate
                 pkgs
                 config.lib.c74d.pkgs);
+          filter-predicate = pkg:
+            # If `ignore-broken-pkgs-computed == true`, then ignore (i.e.,
+            # filter out) broken packages.
+            ignore-broken-pkgs-computed -> !(pkg.meta.broken or false)
+            ;
         in
           assert lib.isList value;
-          value;
+          lib.filter filter-predicate value;
 
       pkgs-cfg =
         if sw == null then
@@ -242,6 +257,7 @@
         inherit
           option
           pkgs-cfg
+          ignore-broken-pkgs-computed
           global-computed;
 
         modules = sub-modules;
