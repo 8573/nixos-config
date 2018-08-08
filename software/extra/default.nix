@@ -8,6 +8,7 @@
       VM = false; }
     .${config.c74d-params.installation-type}
     && parent.enable;
+  ignore-broken-pkgs = true;
   modules = [
     ./apps
     ./rare
