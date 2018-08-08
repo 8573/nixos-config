@@ -11,6 +11,5 @@
     (rustChannelOf {
       channel = "1.26.2";
     }).rust
-    rustracer
   ]);
 }
