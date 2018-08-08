@@ -2,6 +2,7 @@
 
   imports = [
     ./bash
+    ./dconf
     ./mosh
     ./ssh
     ./tmux

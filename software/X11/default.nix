@@ -4,6 +4,7 @@
   default = {config, ...}:
     config.c74d-params.X11.enable;
   modules = [
+    ./data
     ./tools
   ];
 }
