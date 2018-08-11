@@ -11,6 +11,7 @@
     stdenv.bootstrapTools
   ] ++ map lib.getDev [
     bash
+    bashInteractive
     curl
     libssh2
     nghttp2
