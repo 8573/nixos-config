@@ -6,6 +6,7 @@
     like this
   '';
   global = false;
+  filter-outputs = false;
   sw = p: with p; ([
     patchelf
     stdenv.bootstrapTools

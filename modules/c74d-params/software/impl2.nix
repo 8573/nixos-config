@@ -122,6 +122,7 @@
     default ? null,
     global ? null,
     ignore-broken-pkgs ? null,
+    filter-outputs ? true,
     sw ? null,
     modules ? null,
   }:
@@ -131,6 +132,7 @@
     assert global != null -> lib.isBool global || lib.isFunction global;
     assert ignore-broken-pkgs != null ->
       lib.isBool ignore-broken-pkgs || lib.isFunction ignore-broken-pkgs;
+    assert lib.isBool filter-outputs;
     assert modules == null -> lib.isFunction sw;
     assert sw == null -> lib.isList modules;
     true;
@@ -141,6 +143,7 @@
     default ? null,
     global ? null,
     ignore-broken-pkgs ? null,
+    filter-outputs ? true,
     sw ? null,
     modules ? null,
   } @ this-swmodule:
@@ -232,10 +235,13 @@
       pkgs-cfg-inner =
         if global-computed then {
           environment.systemPackages =
-            map lib.getBin sw-pkgs
-            ++ lib.optionals
-              (!config.c74d-params.minimal)
-              (map (lib.getOutput "doc") sw-pkgs);
+            if filter-outputs then
+              map lib.getBin sw-pkgs
+              ++ lib.optionals
+                (!config.c74d-params.minimal)
+                (map (lib.getOutput "doc") sw-pkgs)
+            else
+              sw-pkgs;
         } else {
           system.extraDependencies =
             sw-pkgs;
