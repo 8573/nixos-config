@@ -5,6 +5,5 @@
   sw = p: with p; [
     nix-generate-from-cpan
     nix-prefetch-scripts
-    nix-repl
   ];
 }
