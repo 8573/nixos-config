@@ -16,10 +16,15 @@ in {
     };
 
     autoSnapshot = {
-      enable = config.c74d-params.usually-up;
+      enable = config.c74d-params.manages-own-store;
       flags = "${options.services.zfs.autoSnapshot.flags.default} --utc";
+    } // (if config.c74d-params.usually-up then {
       monthly = 1;
-    };
+    } else {
+      daily = 0;
+      monthly = 0;
+      weekly = 0;
+    });
   };
 
 }
