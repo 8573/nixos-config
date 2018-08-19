@@ -24,7 +24,7 @@
 
       mkdir bin
 
-      cat >> bin/chromium <<SHELL_SCRIPT
+      cat >> bin/chromium <<'SHELL_SCRIPT'
         #!/bin/sh
         exec '${chromium}/bin/chromium' \
           ${lib.concatStringsSep " " (lib.concatLists args)} \
