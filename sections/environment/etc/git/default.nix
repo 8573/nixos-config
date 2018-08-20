@@ -1,14 +1,17 @@
-{ config, lib, pkgs, ... }: {
+{ config, lib, pkgs, ... }: let
 
-  environment.etc."gitconfig".text = let
-    pager = "${pkgs.less}/bin/less -+FSX";
-    diff-highlight-dir =
-      "${pkgs.gitFull}/share/git/contrib/diff-highlight";
-    diff-highlight =
-      "${pkgs.perl}/bin/perl -I${diff-highlight-dir} -mDiffHighlight ${diff-highlight-dir}/diff-highlight.perl";
-    common-personal-log-alias-options =
-      "--decorate --source --encoding=UTF-8 --notes --show-signature --date=iso --graph";
-  in ''
+  pager = "${pkgs.less}/bin/less -+FSX";
+
+  diff-highlight-dir =
+    "${pkgs.gitFull}/share/git/contrib/diff-highlight";
+
+  diff-highlight =
+    "${pkgs.perl}/bin/perl -I${diff-highlight-dir} -mDiffHighlight ${diff-highlight-dir}/diff-highlight.perl";
+
+  common-personal-log-alias-options =
+    "--decorate --source --encoding=UTF-8 --notes --show-signature --date=iso --graph";
+
+  git-config-base = ''
     [core]
         compression = 9
         pager = ${pager}
@@ -37,7 +40,9 @@
         stat = yes
     [alias]
         diff-highlight = !${diff-highlight}
-  '' + lib.optionalString config.c74d-params.personal ''
+  '';
+
+  git-config-personal = ''
     [alias]
         vc = commit --verbose
         vci = commit --verbose --interactive
@@ -70,4 +75,14 @@
         xfsck = fsck --full --strict --unreachable --dangling
   '';
 
+  git-config = ''
+    ${git-config-base}
+    ${lib.optionalString config.c74d-params.personal git-config-personal}
+  '';
+
+in
+{
+  environment.etc."gitconfig".text = lib.mkIf
+    config.c74d-params.software.devel.version-control.enable
+    git-config;
 }
