@@ -3,7 +3,7 @@
   desc = "graphical mathematical applications";
   sw = p: with p; [
     octaveFull
-    #rstudio
+    rstudio
     wxmaxima
   ];
 }
