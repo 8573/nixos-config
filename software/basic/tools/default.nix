@@ -30,6 +30,7 @@
     wdiff
     wget
     whois
+    yq
     zip
   ];
 }
