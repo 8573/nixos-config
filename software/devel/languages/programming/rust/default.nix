@@ -6,11 +6,16 @@
   ];
   sw = p: with p; ([
     (rustChannelOf {
-      channel = "1.22.1";
+      channel = "1.29.1";
     }).rust
-    (rustChannelOf {
-      channel = "1.26.2";
-    }).rust
+
+    ((rustChannelOf {
+      channel = "1.29.1";
+    }).rust.override {
+      extensions = [
+        "clippy-preview"
+      ];
+    })
 
     rustfmt
   ]);
