@@ -5,9 +5,9 @@ let
   nixpkgs-mozilla = base.fetchFromGitHub {
     owner = "mozilla";
     repo = "nixpkgs-mozilla";
-    # This revision is dated 2017-08-15.
-    rev = "ca0031baaac0538b9089625c8fa0b790b4270d36";
-    sha256 = "0albnrwnx5ixgxvlrrcdyjsh5r25bqiw0xw7kdgi298inwyz3xz5";
+    # This revision is dated 2018-09-13.
+    rev = "b9c99d043b1cb55ee8c08265223b7c35d687acb9";
+    sha256 = "0akyhdv5p0qiiyp6940k9bvismjqm9f8xhs0gpznjl6509dwgfxl";
   };
 
 in [
