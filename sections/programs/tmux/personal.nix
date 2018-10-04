@@ -1,8 +1,10 @@
 { config, lib, pkgs, ... }: let
 
+  tmux = "${pkgs.tmux}/bin/tmux";
+
   xclip = "${pkgs.xclip}/bin/xclip";
 
-  zsh = "${config.system.path}/bin/zsh";
+  zsh = "${pkgs.zsh}/bin/zsh";
 
   tmux-resurrect = pkgs.fetchFromGitHub {
     owner = "tmux-plugins";
@@ -18,9 +20,31 @@
     sha256 = "1hviqz62mnq5h4vgcy9bl5004q18yz5b90bnih0ibsna877x3nbc";
   };
 
-in {
+  tmux-opening-cmd = "new -A -s 0";
 
-  programs.tmux = lib.mkIf config.c74d-params.personal {
+  tmux-opener = pkgs.writeShellScriptBin "to" ''
+    set -euo pipefail
+    if [[ "''${#@}" = 0 ]]; then
+      exec "${tmux}" ${tmux-opening-cmd}
+    elif [[ "''${#@}" = 2 ]] && [[ "$1" = "-u" ]]; then
+      exec su -lc '${zsh} -ic "${tmux} ${tmux-opening-cmd}"' "$2"
+    else
+      echo -e >&2 \
+        'to [-u <user>]\n' \
+        'Opens (attaches to) tmux session 0, creating it if necessary.' \
+        '<user>, if given, names a user account under which (via `su`) to' \
+        'open tmux.'
+      exit 2
+    fi
+  '';
+
+in lib.mkIf config.c74d-params.personal {
+
+  environment.systemPackages = [
+    tmux-opener
+  ];
+
+  programs.tmux = {
     keyMode = "vi";
 
     extraTmuxConf = ''
