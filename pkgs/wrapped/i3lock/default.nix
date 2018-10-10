@@ -1,27 +1,12 @@
-{ stdenv, i3lock }:
+{ lib, writeShellScriptBin, i3lock }: let
 
-stdenv.mkDerivation rec {
   name = "${i3lock.name}-configured-${version}";
+
   version = "0.1.0";
 
-  src = ''
-    #!/bin/sh
+  script = writeShellScriptBin name ''
     exec '${i3lock}/bin/i3lock' --color=000000 --ignore-empty-password "$@"
   '';
-
-  phases = [
-    "installPhase"
-    "fixupPhase"
-  ];
-
-  installPhase = ''
-    mkdir -p "$out/bin"
-    echo -E "$src" >> "$out/bin/i3lock"
-    chmod +x "$out/bin/i3lock"
-  '';
-
-  dontPatchELF = true;
-  dontStrip = true;
 
   meta = {
     description = "A wrapper around i3lock that sets some of its options";
@@ -30,7 +15,8 @@ stdenv.mkDerivation rec {
       background and not count a press of the Enter key before one starts
       typing a password as a failed login attempt.
     '';
-    license = stdenv.lib.licenses.zlib;
-    platforms = i3lock.meta.platforms;
   };
+
+in lib.recursiveUpdate script {
+  inherit meta;
 }
