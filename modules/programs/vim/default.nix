@@ -85,6 +85,7 @@
   vim-configured = pkgs.runCommand
     "vim-configured-${pkgs.vim_configurable.version}"
     { src = pkgs.vim_configurable.override {
+        # Python 3 is required by the plugin Denite.
         python = pkgs.python3;
       };
 
