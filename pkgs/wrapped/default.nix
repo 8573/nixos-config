@@ -5,6 +5,8 @@
 
 in {
 
+  chromium = call-pkg ./chromium {};
+
   i3lock = call-pkg ./i3lock {};
 
 }
