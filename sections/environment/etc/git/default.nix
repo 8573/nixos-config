@@ -9,7 +9,7 @@
     "${pkgs.perl}/bin/perl -I${diff-highlight-dir} -mDiffHighlight ${diff-highlight-dir}/diff-highlight.perl";
 
   common-personal-log-alias-options =
-    "--decorate --source --encoding=UTF-8 --notes --show-signature --date=iso --graph";
+    "--decorate --source --encoding=UTF-8 --notes --date=iso --graph";
 
   git-config-base = ''
     [core]
