@@ -2,6 +2,8 @@
 
   cfg = config.c74d-params.i3;
 
+  c74d-pkgs = config.lib.c74d.pkgs;
+
   mod-key =
     if cfg.use-Super-key then
       "Mod4"
@@ -13,7 +15,7 @@
   i3status-cfg-file = import ./i3status.nix args;
 
   sh = "${pkgs.bash}/bin/sh";
-  chromium = "${pkgs.chromium}/bin/chromium";
+  chromium = "${c74d-pkgs.wrapped.chromium}/bin/chromium";
   xclip = "${pkgs.xclip}/bin/xclip";
 
   Chromium-open-binding =
