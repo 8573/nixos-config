@@ -4,7 +4,7 @@
     mk-if-non-minimal;
 
   mkswap = "${pkgs.utillinux}/sbin/mkswap";
-  nproc = "${pkgs.coreutils}/bin/nproc";
+  nproc = "${pkgs.coreutils-full}/bin/nproc";
   sed = "${pkgs.gnused}/bin/sed";
   sh = "${pkgs.bash}/bin/sh";
   swapon = "${pkgs.utillinux}/sbin/swapon";

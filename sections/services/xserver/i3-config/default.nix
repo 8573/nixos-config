@@ -54,8 +54,8 @@
 
   screencap-dir = cfg.bindings.screen-capture.output-directory;
 
-  mkdir = "${pkgs.coreutils}/bin/mkdir";
-  date = "${pkgs.coreutils}/bin/date";
+  mkdir = "${pkgs.coreutils-full}/bin/mkdir";
+  date = "${pkgs.coreutils-full}/bin/date";
   im-import = "${pkgs.imagemagick.out}/bin/import";
 
   screencap-cmd = file-ext: ''
