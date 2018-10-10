@@ -10,8 +10,6 @@ in {
 
   lib.c74d.pkgs = {
 
-    agrep = call-pkg ./agrep {};
-
     c74d = import ./c74d args;
 
     git-hub-ingydotnet = call-pkg ./git-hub-ingydotnet {};
