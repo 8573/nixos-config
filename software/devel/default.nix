@@ -1,6 +1,6 @@
 {
   id = "devel";
-  desc = "developer tools and toolchains";
+  desc = "tools and toolchains for engineering and software development";
   default = {config, parent, ...}:
     { desktop = true;
       laptop = true;
@@ -10,6 +10,7 @@
     && parent.enable;
   ignore-broken-pkgs = true;
   modules = [
+    ./CAx
     ./debug
     ./languages
     ./project-stats
