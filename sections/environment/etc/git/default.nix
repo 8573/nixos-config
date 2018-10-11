@@ -20,7 +20,7 @@
         compression = 9
         pager = ${pager}
     [diff]
-        algorithm = patience
+        algorithm = histogram
         compactionHeuristic = yes
         mnemonicPrefix = yes
         renames = copy
