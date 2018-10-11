@@ -1,5 +1,9 @@
 { config, lib, pkgs, ... }: let
 
+  c74d-pkgs = config.lib.c74d.pkgs;
+
+  editor = "${c74d-pkgs.c74d.vim-try-x}/bin/vim-try-x --nofork";
+
   pager = "${pkgs.less}/bin/less -+FSX";
 
   diff-highlight-dir =
@@ -43,6 +47,8 @@
   '';
 
   git-config-personal = ''
+    [core]
+        editor = ${editor}
     [alias]
         vc = commit --verbose
         vci = commit --verbose --interactive
