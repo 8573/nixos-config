@@ -20,6 +20,7 @@ in {
         config.c74d-params.hardware.cores.virtual;
     useSandbox = true;
     extraOptions = ''
+      max-silent-time = 3600
     '';
   };
 
