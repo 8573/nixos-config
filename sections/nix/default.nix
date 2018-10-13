@@ -7,6 +7,7 @@
 in {
 
   nix = {
+    autoOptimiseStore = true;
     gc = {
       automatic = true;
       dates =
@@ -19,7 +20,6 @@ in {
         config.c74d-params.hardware.cores.virtual;
     useSandbox = true;
     extraOptions = ''
-      auto-optimise-store = true
     '';
   };
 
