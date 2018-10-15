@@ -1,10 +1,17 @@
-{ lib, writeShellScriptBin, i3lock }: let
+{ lib, writeTextFile, i3lock }: let
 
   name = "${i3lock.name}-configured-${version}";
 
   version = "0.1.0";
 
-  script = writeShellScriptBin name ''
+  script = writeTextFile {
+    inherit name text;
+    executable = true;
+    destination = "/bin/i3lock";
+  };
+
+  text = ''
+    #!/bin/sh
     exec '${i3lock}/bin/i3lock' --color=000000 --ignore-empty-password "$@"
   '';
 
