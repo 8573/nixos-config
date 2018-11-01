@@ -1,11 +1,11 @@
 { config, lib, pkgs, ... }: let
 
   enable-NetworkManager = lib.elem config.c74d-params.installation-type [
-    "laptop"
   ];
 
   enable-WiFi = lib.elem config.c74d-params.installation-type [
     "desktop"
+    "laptop"
   ];
 
   enable-wpa_supplicant = enable-WiFi && !enable-NetworkManager;
