@@ -11,8 +11,7 @@ in {
     gc = {
       automatic = true;
       dates =
-        mk-if-TZ-is-UTC
-          (approx-target-local-time-hm-str 3 15);
+        "Wed *~05..11 ${approx-target-local-time-hm-str 3 15}";
     };
     maxJobs =
       lib.mkIf
