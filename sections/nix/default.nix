@@ -9,7 +9,13 @@ in {
   nix = {
     autoOptimiseStore = true;
     gc = {
-      automatic = true;
+      automatic =
+        { desktop = true;
+          laptop = false;
+          server = true;
+          VM = true; }
+        .${config.c74d-params.installation-type}
+        && config.c74d-params.manages-own-store;
       dates =
         "Wed *~05..11 ${approx-target-local-time-hm-str 3 15}";
     };
