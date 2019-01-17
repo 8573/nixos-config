@@ -1,4 +1,4 @@
-{ stdenv, lib, fetchFromGitHub, makeWrapper, perlPackages }:
+{ stdenv, fetchFromGitHub, makeWrapper, perlPackages }:
 
 stdenv.mkDerivation rec {
   name = "git-hub-ingydotnet-unstable-${version}";
@@ -27,7 +27,7 @@ stdenv.mkDerivation rec {
   dontBuild = true;
   dontStrip = true;
 
-  perl_lib = lib.makePerlPath (with perlPackages; [
+  perl_lib = perlPackages.makePerlPath (with perlPackages; [
     JSONMaybeXS
     JSONXS
   ]);
