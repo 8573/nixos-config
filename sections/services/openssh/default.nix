@@ -2,7 +2,7 @@
 
   services.openssh = {
     enable = lib.elem config.c74d-params.installation-type [
-      "server" "desktop"
+      "server"
     ];
 
     # Note: `startWhenNeeded` may result in tmux being killed on logout,
