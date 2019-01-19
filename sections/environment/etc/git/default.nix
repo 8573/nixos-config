@@ -12,8 +12,11 @@
   diff-highlight =
     "${pkgs.perl}/bin/perl -I${diff-highlight-dir} -mDiffHighlight ${diff-highlight-dir}/diff-highlight.perl";
 
+  very-common-personal-log-alias-options =
+    "--encoding=UTF-8 --notes --date=iso";
+
   common-personal-log-alias-options =
-    "--decorate --source --encoding=UTF-8 --notes --date=iso --graph";
+    "${very-common-personal-log-alias-options} --source --graph --decorate";
 
   git-config-base = ''
     [core]
@@ -66,6 +69,7 @@
         sxl = log ${common-personal-log-alias-options} --format=fuller --stat --patch
         pxl = log ${common-personal-log-alias-options} --format=fuller --stat --patch
         wpxl = log ${common-personal-log-alias-options} --format=fuller --stat --patch --word-diff
+        ll = log ${very-common-personal-log-alias-options} --format=fuller --stat --patch --decorate=no --reverse
         authors = "!f() { git log --format='%aN <%aE>' \"$@\" | sort -u; }; f"
         ffmerge = merge --ff-only
         noffmerge = merge --no-ff
