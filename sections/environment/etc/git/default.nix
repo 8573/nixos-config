@@ -66,7 +66,7 @@
         gl = log --graph
         sl = log ${common-personal-log-alias-options} --format=short
         xl = log ${common-personal-log-alias-options} --format=fuller
-        sxl = log ${common-personal-log-alias-options} --format=fuller --stat --patch
+        sxl = log ${common-personal-log-alias-options} --format=fuller --stat
         pxl = log ${common-personal-log-alias-options} --format=fuller --stat --patch
         wpxl = log ${common-personal-log-alias-options} --format=fuller --stat --patch --word-diff
         ll = log ${very-common-personal-log-alias-options} --format=fuller --stat --patch --decorate=no --reverse
