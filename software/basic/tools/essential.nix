@@ -4,6 +4,9 @@
     system administration tools performing functions whose importance rises
     above mere convenience
   '';
+  modules = [
+    ./user-mgmt.nix
+  ];
   sw = p: with p; [
     file
     gnupg
