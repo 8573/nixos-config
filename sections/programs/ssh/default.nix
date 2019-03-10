@@ -18,6 +18,7 @@
         ControlMaster auto
         ControlPath ~/.ssh/mux-socket-%C
         ControlPersist 10m
+        HashKnownHosts yes
         VerifyHostKeyDNS ask
         VisualHostKey yes
     '';
