@@ -1,6 +1,8 @@
 { config, lib, pkgs, ... }: {
 
   programs.ssh = {
+    setXAuthLocation = !config.environment.noXlibs;
+
     startAgent = {
       desktop = true;
       laptop = true;
