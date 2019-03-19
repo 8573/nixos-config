@@ -29,6 +29,10 @@
       };
     });
 
+    libinput = lib.mkIf (config.c74d-params.installation-type == "laptop") {
+      enable = true;
+    };
+
     windowManager = {
       default = lib.mkIf config.c74d-params.i3.enable "i3";
       i3.enable = config.c74d-params.i3.install;
