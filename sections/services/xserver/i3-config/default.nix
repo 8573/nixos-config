@@ -24,13 +24,13 @@
       bindsym $mod+u exec '${sh}' -c '"${chromium}" "$("${xclip}" -o)" >/dev/null'
     '';
 
-  xbacklight = "${pkgs.xorg.xbacklight}/bin/xbacklight";
+  brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
 
   brightness-control-bindings =
     lib.optionalString cfg.bindings.display-brightness.enable ''
       # Control display brightness
-      bindsym XF86MonBrightnessDown exec '${xbacklight}' - 1
-      bindsym XF86MonBrightnessUp exec '${xbacklight}' + 1
+      bindsym XF86MonBrightnessDown exec '${brightnessctl}' set '5%-'
+      bindsym XF86MonBrightnessUp exec '${brightnessctl}' set '+5%'
     '';
 
   amixer = "${pkgs.alsaUtils}/bin/amixer";
@@ -98,6 +98,10 @@
   '';
 
 in {
+
+  hardware.brightnessctl = lib.mkIf cfg.bindings.display-brightness.enable {
+    enable = true;
+  };
 
   services.xserver.windowManager.i3.configFile =
     lib.mkIf config.services.xserver.windowManager.i3.enable i3-cfg-file;
