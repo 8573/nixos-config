@@ -40,6 +40,19 @@ in {
       '';
     };
 
+    media-key-levels = lib.mkOption {
+      type = lib.types.int;
+      default = 20;
+      example = 15;
+      description = ''
+        This is the number of discrete levels (gradations) that should be
+        implemented in quantities controlled by media keys, such as display
+        brightness and audio volume; i.e., a press of a media key should
+        increase or decrease the relevant quantity by 100%/L, where L is this
+        value.
+      '';
+    };
+
     bindings.open-in-browser.enable = mk-enable-opt-default-on ''
       a key-binding, of Modifier+U, for opening the content of the default X
       selection buffer in a Web browser

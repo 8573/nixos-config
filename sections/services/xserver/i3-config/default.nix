@@ -26,11 +26,34 @@
 
   brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
 
+  brightness-level-calc = ./brightness-level-calc.awk;
+
+  brightnessctl-exp =
+    let
+      pkg = pkgs.writeShellScriptBin "brightnessctl-exponential" ''
+        set -euo pipefail
+        old="$('${brightnessctl}' -mc backlight get)"
+        max="$('${brightnessctl}' -mc backlight max)"
+        case "$1" in
+          (dec) delta=-1;;
+          (inc) delta=1;;
+        esac
+        new="$(gawk \
+          -v mapped_delta="$delta" \
+          -v mapped_max='${toString cfg.media-key-levels}' \
+          -v raw_old="$old" \
+          -v raw_max="$max" \
+          --posix --lint=fatal -f '${brightness-level-calc}')"
+        exec '${brightnessctl}' -qc backlight set "$new"
+      '';
+    in
+      "${pkg}/bin/brightnessctl-exponential";
+
   brightness-control-bindings =
     lib.optionalString cfg.bindings.display-brightness.enable ''
       # Control display brightness
-      bindsym XF86MonBrightnessDown exec '${brightnessctl}' set '5%-'
-      bindsym XF86MonBrightnessUp exec '${brightnessctl}' set '+5%'
+      bindsym XF86MonBrightnessDown exec '${brightnessctl-exp}' dec
+      bindsym XF86MonBrightnessUp exec '${brightnessctl-exp}' inc
     '';
 
   amixer = "${pkgs.alsaUtils}/bin/amixer";
