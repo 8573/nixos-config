@@ -58,10 +58,14 @@ in {
       selection buffer in a Web browser
     '';
 
-    bindings.display-brightness.enable = mk-enable-opt-default-on ''
+    bindings.display-brightness.enable = lib.mkEnableOption ''
       key-bindings, of the relevant media-keys, for increasing and decreasing
       the brightness of the display backlight
-    '';
+    '' // {
+      # A desktop computer, assuming it has a discrete monitor and keyboard,
+      # well may not have functional backlight control keys.
+      default = config.c74d-params.installation-type == "laptop";
+    };
 
     bindings.audio-volume.enable = lib.mkEnableOption ''
       key-bindings, of the relevant media-keys, for increasing and decreasing
