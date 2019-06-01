@@ -3,5 +3,6 @@
   desc = "PDF tools";
   sw = p: with p; [
     pdfdiff
+    pdftk
   ];
 }
