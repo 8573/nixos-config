@@ -82,6 +82,11 @@ in lib.mkIf config.c74d-params.personal {
       # standard binding of `=` when I do mean to paste from a buffer.
       unbind-key ]
 
+      # When the program in a pane exits, close the pane iff it exited
+      # normally.
+      set-window-option -g remain-on-exit on
+      set-hook -g pane-died "if-shell -F '#{==:#{pane_dead_status},0}' 'kill-pane'"
+
       set-option -g @resurrect-save 'S'
       set-option -g @resurrect-restore 'R'
 
