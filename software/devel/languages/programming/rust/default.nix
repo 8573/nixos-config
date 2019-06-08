@@ -6,11 +6,11 @@
   ];
   sw = p: with p; ([
     (rustChannelOf {
-      channel = "1.29.1";
+      channel = "1.34.2";
     }).rust
 
     ((rustChannelOf {
-      channel = "1.29.1";
+      channel = "1.34.2";
     }).rust.override {
       extensions = [
         "clippy-preview"
