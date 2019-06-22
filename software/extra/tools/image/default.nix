@@ -4,5 +4,6 @@
   sw = p: with p; [
     imagemagick
     mozjpeg
+    optipng
   ];
 }
