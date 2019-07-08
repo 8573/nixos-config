@@ -6,6 +6,6 @@
   global = true;
   sw = p: with p; [
     c74d.with-rust
-    rustracer
+    #rustracer
   ];
 }
