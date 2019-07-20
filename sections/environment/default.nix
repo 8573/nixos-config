@@ -24,7 +24,15 @@
   #       is sufficiently obnoxious for me to disable this feature.
   # It was suggested on GitHub that "scudo" might cause less breakage while
   # still being a security-enhanced allocator, so I'm trying that.
-  environment.memoryAllocator.provider = "scudo";
+  #
+  # [2019-07-20] Scudo still breaks various applications, such as Inkscape and
+  # GIMP, and some Rust programs, including rustc and my Rust IRC bot, and the
+  # preloading mechanism has been changed such that it's much less easy to
+  # disable selectively (see NixOS GitHub issue #65000). joachifm, maintainer
+  # of the hardened profile, says that the hardened malloc options weren't
+  # intended "for interactive systems"; and I'm disabling this (i.e., setting
+  # it to "libc") accordingly.
+  environment.memoryAllocator.provider = "libc";
 
   environment.noXlibs = !config.c74d-params.X11.enable;
 
