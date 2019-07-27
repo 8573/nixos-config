@@ -12,6 +12,7 @@
     ./monitoring
     ./network
     ./pdf
+    ./security
     ./spellcheck
     ./terminfo
     ./text
