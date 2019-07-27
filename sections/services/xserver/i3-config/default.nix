@@ -66,7 +66,7 @@
       bindsym XF86AudioMute exec '${amixer}' -Mq set Master toggle
     '';
 
-  systemctl = "${config.system.path}/bin/systemctl";
+  systemctl = "/run/current-system/sw/bin/systemctl";
 
   Redshift-toggle = op: "exec ${systemctl} --user ${op} redshift.service";
 
