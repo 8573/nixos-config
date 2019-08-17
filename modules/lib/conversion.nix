@@ -2,6 +2,6 @@
 
   floatOfInt = int:
     assert lib.isInt int;
-    builtins.fromJSON "${toString int}.0";
+    int * 1.0;
 
 }
