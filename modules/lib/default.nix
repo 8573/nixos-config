@@ -2,6 +2,7 @@
 
   libs-srcs = [
     ./trivial.nix
+    ./conversion.nix
     ./strings.nix
     ./date-and-time.nix
     ./c74d-params.nix

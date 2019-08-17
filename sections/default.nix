@@ -7,6 +7,7 @@
     ./fonts
     ./hardware
     ./i18n
+    ./location
     ./networking
     ./nix
     ./nixpkgs
