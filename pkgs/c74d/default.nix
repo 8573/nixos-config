@@ -11,6 +11,8 @@ in {
 
   tmux-open-piped-url = call-pkg ./tmux-open-piped-url {};
 
+  update-NixOS-config-from-Git = call-pkg ./update-NixOS-config-from-Git {};
+
   vim-config = call-pkg ./vim-config {};
 
   vim-pager = call-pkg ./vim-pager {};

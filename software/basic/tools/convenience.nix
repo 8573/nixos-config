@@ -7,6 +7,7 @@
   sw = p: with p; [
     apg
     atool
+    c74d.update-NixOS-config-from-Git
     c74d.vim-pager
     checksec
     htop
