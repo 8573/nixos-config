@@ -7,4 +7,5 @@ writeShellScriptBin "update-NixOS-config-from-Git" ''
   git fetch
   git diff --ignore-all-space @ FETCH_HEAD
   git status
+  exec zsh
 ''
