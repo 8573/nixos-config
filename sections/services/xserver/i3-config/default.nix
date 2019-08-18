@@ -95,15 +95,31 @@
     '';
 
   i3-cfg-file = pkgs.runCommand "i3-config" {} ''
-    sed '
-        0,/^$/s/^$/\nset $mod ${mod-key}\n/;
-        s/\<Mod1\>/$mod/g;
-        s/\<\(monospace\) 8\>/\1 ${font-size}/g;
-        s|^\s*status_command \(/.*/\)\?i3status$|& -c '${i3status-cfg-file}'|;
-        s/^exec i3-config-wizard\>/#&/;
-        s/bindsym $mod+d exec dmenu_run/#&/;
-        s/# \(bindsym $mod+d exec .*\<i3-dmenu-desktop\>\)/\1/;
-      ' '${pkgs.i3}/etc/i3/config' > "$out"
+    sed_script="$(mktemp --tmpdir)"
+
+    cat >> "$sed_script" <<'I3CONFIGSED'
+      0,/^$/s/^$/\nset $mod ${mod-key}\n/;
+      s/\<Mod1\>/$mod/g;
+      s/\<\(monospace\) 8\>/\1 ${font-size}/g;
+      s|^\s*status_command \(/.*/\)\?i3status$|& -c '${i3status-cfg-file}'|;
+      s/^exec i3-config-wizard\>/#&/;
+      # Don't start anything on start-up by default.
+      s/^exec\>/#&/;
+      # Disable the executable-name-based dmenu_run...
+      s/^bindsym $mod+d exec dmenu_run/#&/;
+      # ...in favor of the .desktop-file-based i3-dmenu-desktop.
+      s/^# \(bindsym $mod+d exec \(-[^ ]\+ \+\)*\<i3-dmenu-desktop\>\)/\1/;
+      # Bind i3 programs by their Nix store paths.
+      s|^\(bindsym *[^ ]\+ *exec *\(-[^ ]\+ \+\)*\)\(\<i3-[^ ]\+\>\)|\1'${pkgs.i3}/bin/\3'|;
+      # Disable i3's default bindings of programs by their unqualified
+      # filenames --- the filenames might not be in PATH, and the bindings
+      # might clash with mine.
+      s/^bindsym *[^ ]\+ *exec *\(-[^ ]\+ \+\)*[a-zA-Z0-9]/#&/;
+    I3CONFIGSED
+
+    sed -f "$sed_script" '${pkgs.i3}/etc/i3/config' > "$out"
+
+    rm "$sed_script"
 
     echo >> "$out"
 
