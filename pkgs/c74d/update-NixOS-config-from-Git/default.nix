@@ -5,6 +5,6 @@ writeShellScriptBin "update-NixOS-config-from-Git" ''
   cd /etc/nixos
   git checkout master
   git fetch
-  git diff @ FETCH_HEAD
+  git diff --ignore-all-space @ FETCH_HEAD
   git status
 ''
