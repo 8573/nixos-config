@@ -19,7 +19,9 @@
 
 in {
 
-  networking.dnsExtensionMechanism = true;
+  networking.resolvconf = {
+    dnsExtensionMechanism = true;
+  };
 
   networking.hostId = config.c74d-params.id8;
 
