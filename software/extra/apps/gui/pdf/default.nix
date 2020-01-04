@@ -5,6 +5,6 @@
     documents
   '';
   sw = p: with p; [
-    xpdf
+    #xpdf
   ];
 }
