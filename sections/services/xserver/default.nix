@@ -9,12 +9,12 @@
     enable = config.c74d-params.X11.enable;
 
     desktopManager = {
-      default = "none";
       #plasma5.enable = config.c74d-params.KDE.install;
       xterm.enable = false;
     };
 
     displayManager = {
+      defaultSession = lib.mkIf config.c74d-params.i3.enable "none+i3";
       hiddenUsers = [
         "nobody"
       ];
@@ -29,7 +29,6 @@
     };
 
     windowManager = {
-      default = lib.mkIf config.c74d-params.i3.enable "i3";
       i3.enable = config.c74d-params.i3.install;
     };
 
