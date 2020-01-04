@@ -60,8 +60,8 @@
         co = checkout
         ai = add --interactive
         ap = add --patch
-        dp = diff --diff-algorithm=patience
-        dpw = diff --diff-algorithm=patience --word-diff
+        d = diff
+        dw = diff --word-diff
         mwdiff = diff --minimal --word-diff
         gl = log --graph
         sl = log ${common-personal-log-alias-options} --format=short
