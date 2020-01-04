@@ -9,8 +9,8 @@
     enable = config.c74d-params.X11.enable;
 
     desktopManager = {
-      default = lib.mkIf config.c74d-params.KDE.enable "plasma5";
-      plasma5.enable = config.c74d-params.KDE.install;
+      default = "none";
+      #plasma5.enable = config.c74d-params.KDE.install;
       xterm.enable = false;
     };
 
@@ -18,16 +18,11 @@
       hiddenUsers = [
         "nobody"
       ];
-    } // (if config.c74d-params.KDE.enable then {
-      sddm = {
-        enable = config.services.xserver.enable;
-      };
-    } else {
       lightdm = {
         enable = config.services.xserver.enable;
         background = "#000000";
       };
-    });
+    };
 
     libinput = lib.mkIf (config.c74d-params.installation-type == "laptop") {
       enable = true;

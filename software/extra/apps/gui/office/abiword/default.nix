@@ -7,7 +7,7 @@
     # Google Docs.
     && !config.c74d-params.usually-on-Internet
     # If I have KDE, I should have Calligra.
-    && !config.c74d-params.KDE.enable;
+    /*&& !config.c74d-params.KDE.enable*/;
   sw = p: with p; [
     abiword
   ];

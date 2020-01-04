@@ -10,6 +10,6 @@
     && parent.enable;
   modules = [
     ./abiword
-    ./calligra
+    #./calligra
   ];
 }

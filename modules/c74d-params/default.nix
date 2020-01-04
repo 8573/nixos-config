@@ -330,10 +330,10 @@ in {
 
   } // mk-env-pkg-options {
     id = "i3";
-    on-by-default = params.X11.enable && !params.KDE.enable;
-  } // mk-env-pkg-options {
+    on-by-default = params.X11.enable /*&& !params.KDE.enable*/;
+  } /* // mk-env-pkg-options {
     id = "KDE";
-  };
+  } */;
 
   config.lib.c74d = {
     auto-build-flag =
