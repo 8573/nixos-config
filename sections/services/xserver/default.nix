@@ -24,7 +24,12 @@
       };
     };
 
-    libinput = lib.mkIf (config.c74d-params.installation-type == "laptop") {
+    libinput = lib.mkIf (lib.elem config.c74d-params.installation-type [
+      # I expect laptop computers to have integral touchpads.
+      "laptop"
+      # I might connect a peripheral touchpad to a desktop computer.
+      "desktop"
+    ]) {
       enable = true;
     };
 
