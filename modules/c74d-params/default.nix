@@ -293,6 +293,14 @@ in {
       '';
     };
 
+    Wi-Fi.enable = mkOption {
+      type = types.bool;
+      default = params.hardware.Wi-Fi.present && !params.minimal;
+      description = ''
+        Whether to enable the system's Wi-Fi hardware
+      '';
+    };
+
     firmware.type = mkOption {
       type = types.enum [
         "EFI"

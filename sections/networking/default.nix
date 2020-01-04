@@ -3,10 +3,7 @@
   enable-NetworkManager = lib.elem config.c74d-params.installation-type [
   ];
 
-  enable-WiFi = lib.elem config.c74d-params.installation-type [
-    "desktop"
-    "laptop"
-  ];
+  enable-WiFi = config.c74d-params.Wi-Fi.enable;
 
   enable-wpa_supplicant = enable-WiFi && !enable-NetworkManager;
 
