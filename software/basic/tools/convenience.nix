@@ -12,6 +12,7 @@
     checksec
     htop
     silver-searcher
+    smem
     wget
     yq
   ];
