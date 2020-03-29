@@ -68,8 +68,8 @@ in lib.mkIf config.c74d-params.personal {
 
       bind-key C-r split-window -v -b -l 5 env ZSHRC_EXIT_AFTER_FIRST_CMD_IF_OK=1 '${zsh}'
 
-      bind-key -r < swap-window -t -1
-      bind-key -r > swap-window -t +1
+      bind-key -r < swap-window -d -t -1
+      bind-key -r > swap-window -d -t +1
 
       bind-key -T copy-mode-vi u send-keys -X copy-pipe-and-cancel "${config.lib.c74d.pkgs.c74d.tmux-open-piped-url}"
       bind-key -T copy-mode-vi x send-keys -X copy-pipe-and-cancel "'${xclip}' -in -selection primary"
