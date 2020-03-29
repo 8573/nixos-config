@@ -47,7 +47,7 @@ in lib.mkIf config.c74d-params.personal {
   programs.tmux = {
     keyMode = "vi";
 
-    extraTmuxConf = ''
+    extraConfig = ''
       # For now I'm leaving Bash as the system's default login shell, but
       # within tmux I'll have it be zsh.
       set-option -g default-shell '${zsh}'

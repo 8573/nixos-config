@@ -20,7 +20,7 @@ in {
 
     terminal = "tmux-256color";
 
-    extraTmuxConf = ''
+    extraConfig = ''
       set-option -g mouse on
       set-option -g renumber-windows on
       set-option -g set-titles on
