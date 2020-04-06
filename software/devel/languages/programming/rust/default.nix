@@ -8,6 +8,7 @@ in
   desc = "software for working with the programming language Rust";
   modules = [
     ./global
+    ./cargo-plugins.nix
   ];
   sw = p: with p; ([
     (Rust p {})
