@@ -19,6 +19,8 @@ in
       ];
     })
 
+    rls
+
     rustfmt
   ]);
 }
