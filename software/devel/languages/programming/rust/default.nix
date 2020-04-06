@@ -5,10 +5,12 @@ let
 in
 {
   id = "rust";
+  # NOTE: Much of the Rust software installed if this software module is
+  # enabled is installed not from this file but from
+  # `sections/environment/variables/rust.nix`.
   desc = "software for working with the programming language Rust";
   modules = [
     ./global
-    ./cargo-plugins.nix
   ];
   sw = p: with p; ([
     (Rust p {})
@@ -18,11 +20,5 @@ in
         "clippy-preview"
       ];
     })
-
-    rls
-
-    rustfmt
-
-    rustracer
   ]);
 }

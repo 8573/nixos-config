@@ -2,6 +2,7 @@
 
   imports = [
     ./personal
+    ./rust.nix
   ];
 
   environment.sessionVariables = {
