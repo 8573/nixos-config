@@ -1,3 +1,8 @@
+let
+  Rust = pkgs: cfg: (pkgs.rustChannelOf ({
+    channel = "1.34.2";
+  } // cfg)).rust;
+in
 {
   id = "rust";
   desc = "software for working with the programming language Rust";
@@ -5,13 +10,9 @@
     ./global
   ];
   sw = p: with p; ([
-    (rustChannelOf {
-      channel = "1.34.2";
-    }).rust
+    (Rust p {})
 
-    ((rustChannelOf {
-      channel = "1.34.2";
-    }).rust.override {
+    ((Rust p {}).override {
       extensions = [
         "clippy-preview"
       ];
