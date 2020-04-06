@@ -28,7 +28,7 @@ in {
 
     daemon = lib.mkOption {
       type = lib.types.bool;
-      default = true;
+      default = false;
       description = ''
         Whether to run the GNU Emacs daemon for all(?) users (this has no
         effect if <varname>programs.emacs.enable=false</varname>)
