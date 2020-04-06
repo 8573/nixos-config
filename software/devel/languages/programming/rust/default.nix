@@ -22,5 +22,7 @@ in
     rls
 
     rustfmt
+
+    rustracer
   ]);
 }
