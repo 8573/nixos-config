@@ -3,6 +3,7 @@
   imports = [
     ./bash
     ./dconf
+    ./emacs
     ./firejail
     ./mosh
     ./ssh
