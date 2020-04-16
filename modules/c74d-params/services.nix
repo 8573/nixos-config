@@ -12,21 +12,33 @@
       '';
     };
 
-    sleeplock.time.hour = lib.mkOption {
-      type = lib.types.int;
-      default = 22;
-      example = 1;
+    sleeplock.times = lib.mkOption {
+      type = lib.types.listOf (lib.types.submodule {
+        options = {
+          hour = lib.mkOption {
+            type = lib.types.ints.between 0 23;
+            default = 22;
+            example = 1;
+            description = ''
+              The hour of each day at which sleeplock should trigger, if
+              enabled
+            '';
+          };
+          minute = lib.mkOption {
+            type = lib.types.ints.between 0 59;
+            default = 0;
+            example = 30;
+            description = ''
+              The minute of the hour at which sleeplock should trigger, if
+              enabled
+            '';
+          };
+        };
+      });
+      default = [{}];
+      example = [{hour = 20;} {hour = 1; minute = 30;}];
       description = ''
-        The hour of each day at which sleeplock should trigger, if enabled.
-      '';
-    };
-
-    sleeplock.time.minute = lib.mkOption {
-      type = lib.types.int;
-      default = 0;
-      example = 30;
-      description = ''
-        The minute of the hour at which sleeplock should trigger, if enabled.
+        The times each day at which sleeplock should trigger, if enabled
       '';
     };
 

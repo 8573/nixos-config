@@ -44,9 +44,9 @@ in {
       Type = "oneshot";
     };
 
-    startAt = [
-      "${toString cfg.time.hour}:${toString cfg.time.minute} ${timezone}"
-    ];
+    startAt = map ({hour, minute}:
+      "${toString hour}:${toString minute} ${timezone}"
+    ) cfg.times;
 
     unitConfig = {
       X-StopOnRemoval = false;
