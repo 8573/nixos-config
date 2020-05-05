@@ -10,9 +10,11 @@
       gtk2 = null;
     };
   } // lib.optionalAttrs (!config.c74d-params.minimal) {
-    diffoscope = pkgs.diffoscope.override {
-      enableBloat = true;
-    };
+    # [2020-05-05] Never mind... the optional dependencies weigh FOUR
+    # GIGABYTES!
+    #diffoscope = pkgs.diffoscope.override {
+    #  enableBloat = true;
+    #};
   };
 
 }
