@@ -16,6 +16,7 @@ in rec {
   # "[Timer]OnCalendar" seems to be ignored in favor of UTC (the system
   # timezone).
   approx-target-local-time-h = local-hour:
+    assert lib.isInt local-hour;
     assert local-hour >= 0;
     assert local-hour < 24;
     let
@@ -50,6 +51,7 @@ in rec {
       h-str';
 
   approx-target-local-time-hm-str = local-hour: local-minute:
+    assert lib.isInt local-minute;
     assert local-minute >= 0;
     assert local-minute < 60;
     let
