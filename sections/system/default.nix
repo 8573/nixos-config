@@ -17,8 +17,7 @@ in {
       channel =
         "https://nixos.org/channels/nixos-${config.c74d-params.channel}";
       dates =
-        mk-if-TZ-is-UTC
-          (approx-target-local-time-hm-str 4 40);
+        "Sat ${approx-target-local-time-hm-str 4 40}";
       flags = [
         "-I" "AUTO-BUILD-FLAG=/dev/null/AUTO-BUILD-FLAG"
       ];
