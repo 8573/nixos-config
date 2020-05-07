@@ -41,20 +41,26 @@ in rec {
 
   approx-target-local-time-h-str = local-hour:
     let
-      h = toString (approx-target-local-time-h local-hour);
-      h-pad = lib.optionalString (local-hour < 10) "0";
+      h = approx-target-local-time-h local-hour;
+      h-str = toString h;
+      h-pad = lib.optionalString (h < 10) "0";
+      h-str' = "${h-pad}${h-str}";
     in
-      "${h-pad}${h}";
+      assert lib.stringLength h-str' == 2;
+      h-str';
 
   approx-target-local-time-hm-str = local-hour: local-minute:
     assert local-minute >= 0;
     assert local-minute < 60;
     let
       h-str = approx-target-local-time-h-str local-hour;
-      m = toString local-minute;
-      m-pad = lib.optionalString (local-minute < 10) "0";
+      m = local-minute;
+      m-str = toString m;
+      m-pad = lib.optionalString (m < 10) "0";
+      hm-str = "${h-str}:${m-pad}${m-str}";
     in
-      "${h-str}:${m-pad}${m}";
+      assert lib.stringLength hm-str == 5;
+      hm-str;
 
   mk-if-TZ-is-UTC = content:
     lib.mkIf
