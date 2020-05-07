@@ -55,11 +55,11 @@ in {
 
   config.lib.c74d.places = {
     nowhere = loc "UTC" (0) (0) (0);
-    CA.BC.wd00 = loc "America/Vancouver" (-8) (49) (-123);
-    US.CA.r001 = loc "America/Los_Angeles" (-8) (34) (-118);
-    US.CO.p008 = loc "America/Denver" (-7) (39) (-105);
-    US.NC.p015 = loc "America/New_York" (-5) (36) (-80);
-    US.NY.c002 = loc "America/New_York" (-5) (43) (-79);
+    CA.BC.wd00 = loc "America/Vancouver" (-7) (49) (-123);
+    US.CA.r001 = loc "America/Los_Angeles" (-7) (34) (-118);
+    US.CO.p008 = loc "America/Denver" (-6) (39) (-105);
+    US.NC.p015 = loc "America/New_York" (-4) (36) (-80);
+    US.NY.c002 = loc "America/New_York" (-4) (43) (-79);
   };
 
 }
