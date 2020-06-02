@@ -18,14 +18,8 @@ in {
 
     plugins = [
       "sensible"
+      "vim-plugin-AnsiEsc"
       "vim-repeat"
-
-      (plugin-from-GitHub {
-        owner = "powerman";
-        repo = "vim-plugin-AnsiEsc";
-        rev = "13.3";
-        sha256 = "0xjwp60z17830lvs4y8az8ym4rm2h625k4n52jc0cdhqwv8gwqpg";
-      })
 
       (plugin-from-GitHub {
         owner = "bitc";
