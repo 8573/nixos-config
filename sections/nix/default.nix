@@ -17,7 +17,11 @@ in {
         .${config.c74d-params.installation-type}
         && config.c74d-params.manages-own-store;
       dates =
-        "Wed *~05..11 ${approx-target-local-time-hm-str 3 15}";
+        # [2020-06-02] The default time is 03:15, but I move it earlier so
+        # that, if this must wake me with its disk churn, it wakes me nearer
+        # midnight, when there's less light outside and returning to sleep is
+        # easier.
+        "Wed *~05..11 ${approx-target-local-time-hm-str 2 0}";
     };
     maxJobs =
       lib.mkIf

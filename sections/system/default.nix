@@ -17,7 +17,11 @@ in {
       channel =
         "https://nixos.org/channels/nixos-${config.c74d-params.channel}";
       dates =
-        "Sat ${approx-target-local-time-hm-str 4 40}";
+        # [2020-06-02] The default time is 04:40, but I move it earlier so
+        # that, if this must wake me with its disk churn, it wakes me nearer
+        # midnight, when there's less light outside and returning to sleep is
+        # easier.
+        "Sat ${approx-target-local-time-hm-str 2 0}";
       flags = [
         "-I" "AUTO-BUILD-FLAG=/dev/null/AUTO-BUILD-FLAG"
       ];
