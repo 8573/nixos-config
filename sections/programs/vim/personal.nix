@@ -7,6 +7,7 @@ in lib.mkIf config.c74d-params.personal {
 
   programs.vim = {
     plugins = [
+      "LanguageClient-neovim"
       "commentary"
       "delimitMate"
       "editorconfig-vim"
