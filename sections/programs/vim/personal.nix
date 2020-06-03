@@ -21,8 +21,8 @@ in lib.mkIf config.c74d-params.personal {
       (plugin-from-GitHub {
         owner = "dahu";
         repo = "vim-fanfingtastic";
-        rev = "02493e56ffa8236951d71188b2a5ec7b33b1b18c";
-        sha256 = "1r5nirzc975c8408v34ws21cwm4zqfxqwfq9m8i77bh7n8kdp3hp";
+        rev = "f6674e44840172dee5eb7e74be021ccf8403a72b";
+        sha256 = "0aivwzaxn9a4dgm210ia3sdxnj6faghdckm4g3c8vgrr785vnb63";
       })
 
       (plugin-from-GitHub {
