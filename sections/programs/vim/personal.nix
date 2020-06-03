@@ -9,6 +9,7 @@ in lib.mkIf config.c74d-params.personal {
     plugins = [
       "commentary"
       "delimitMate"
+      "editorconfig-vim"
       "fugitive"
       "rust-vim"
       "sleuth"
