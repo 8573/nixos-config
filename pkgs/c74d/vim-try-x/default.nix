@@ -1,5 +1,22 @@
 { stdenv, vim }:
 
+let
+  vim-pkg = vim;
+in
+
+let
+  # NOTE: [2020-06-03] This package now uses the run-time path (not to be
+  # confused with 'runtimepath') of Vim, '/run/current-system/sw/bin/vim',
+  # rather than the Nix store path "${vim}/bin/vim", because it seems that
+  # this package was not consistently picking up the fully configured version
+  # of "${vim}" from my Vim module (`config.programs.vim.package`): the
+  # version of this package that went into `environment.systemPackages` would
+  # have all the configured plugins, but the version of this package that went
+  # into `environment.variables.EDITOR` (and `VISUAL`) would have only some
+  # plugins.
+  vim = throw "Don't use this; see the NOTE";
+in
+
 stdenv.mkDerivation rec {
   name = "${scriptName}-${version}";
   scriptName = "vim-try-x";
@@ -14,7 +31,7 @@ stdenv.mkDerivation rec {
       g='-g'
     fi
 
-    exec '${vim}/bin/vim' $g "$@"
+    exec '/run/current-system/sw/bin/vim' $g "$@"
   '';
 
   phases = [
@@ -51,8 +68,8 @@ stdenv.mkDerivation rec {
         vim-platforms =
           stdenv.lib.platforms.unix;
       in
-        assert vim.meta ? platforms ->
-         vim.meta.platforms == vim-platforms;
+        assert vim-pkg.meta ? platforms ->
+         vim-pkg.meta.platforms == vim-platforms;
         vim-platforms;
   };
 }
