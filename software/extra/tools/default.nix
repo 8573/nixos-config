@@ -6,6 +6,7 @@
     ./compression
     ./diff
     ./file-mgmt
+    ./fuzzyfinder
     ./google
     ./hardware
     ./image
