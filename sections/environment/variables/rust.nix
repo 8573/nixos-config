@@ -10,6 +10,7 @@
       cargo-tree
       clippy
       rls
+      rust-analyzer
       rustfmt
       rustracer
       rustracerd
