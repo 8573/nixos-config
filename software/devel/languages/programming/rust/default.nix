@@ -4,7 +4,7 @@ let
   } // cfg)).rust;
 
   Rust = Rust-at-version "1.34.2";
-  Rust-new = Rust-at-version "1.43.1";
+  Rust-new = Rust-at-version "1.44.0";
 in
 {
   id = "rust";
