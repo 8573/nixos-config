@@ -3,8 +3,8 @@ let
     inherit channel;
   } // cfg)).rust;
 
-  Rust = Rust-at-version "1.34.2";
-  Rust-new = Rust-at-version "1.44.0";
+  Rust-4th-anniversary-version = Rust-at-version "1.34.2";
+  Rust-5th-anniversary-version = Rust-at-version "1.44.0";
 in
 {
   id = "rust";
@@ -18,8 +18,7 @@ in
   # NOTE: Don't add Clippy etc. here as rustup extensions; use the NixOS
   # packages for those tools.
   sw = p: with p; ([
-    (Rust p {})
-
-    (Rust-new p {})
+    (Rust-4th-anniversary-version p {})
+    (Rust-5th-anniversary-version p {})
   ]);
 }
