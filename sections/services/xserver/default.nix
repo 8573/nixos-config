@@ -20,7 +20,15 @@
       ];
       lightdm = {
         enable = config.services.xserver.enable;
-        background = "#000000";
+
+        # Use a blank black desktop background rather than an image of a
+        # gradient and a NixOS logo.
+        #
+        # [2020-06-17] See <https://github.com/NixOS/nixpkgs/issues/90558>.
+        #background = "#000000";
+        greeters.gtk.extraConfig = ''
+          background = #000000
+        '';
       };
     };
 
