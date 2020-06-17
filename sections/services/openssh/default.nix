@@ -5,7 +5,7 @@
       "server" "desktop"
     ];
 
-    forwardX11 = !config.environment.noXlibs;
+    forwardX11 = !config.environment.noXlibs && false;
 
     # Note: `startWhenNeeded` may result in tmux being killed on logout,
     # apparently independent of KillUserProcesses.
