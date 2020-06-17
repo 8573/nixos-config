@@ -1,9 +1,12 @@
 { config, lib, pkgs, ... }: {
 
   services.openssh = {
-    enable = lib.elem config.c74d-params.installation-type [
-      "server" "desktop"
-    ];
+    enable = {
+      desktop = false;
+      laptop = false;
+      server = true;
+      VM = false;
+    }.${config.c74d-params.installation-type};
 
     forwardX11 = !config.environment.noXlibs && false;
 
