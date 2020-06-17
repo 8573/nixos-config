@@ -7,6 +7,12 @@
 
     forwardX11 = !config.environment.noXlibs && false;
 
+    permitRootLogin = lib.mkIf
+      (lib.elem config.c74d-params.installation-type [
+        "desktop" "laptop"
+      ])
+      "no";
+
     # Note: `startWhenNeeded` may result in tmux being killed on logout,
     # apparently independent of KillUserProcesses.
     startWhenNeeded = false;
