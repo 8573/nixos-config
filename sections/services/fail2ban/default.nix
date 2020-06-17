@@ -1,7 +1,9 @@
 { config, lib, pkgs, ... }: {
 
   services.fail2ban = {
-    enable = lib.mkDefault true;
+    enable = lib.mkDefault (
+      config.services.openssh.enable
+    );
 
     jails = {
       ssh-iptables = ''
