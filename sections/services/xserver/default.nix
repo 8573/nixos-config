@@ -18,8 +18,19 @@
       hiddenUsers = [
         "nobody"
       ];
-      lightdm = {
+      gdm = {
         enable = config.services.xserver.enable;
+
+        # For ZFS's sake
+        autoSuspend = false;
+      };
+      lightdm = {
+        # [2020-06-19] Today, wondering whether the 2018 issue ticket implying
+        # that all of NixOS's display managers are configured to run X as root
+        # might have become outdated, I tried switching from LightDM, which
+        # does run X as root, to GDM, which, to my pleasant surprise, seems
+        # not to.
+        enable = false && config.services.xserver.enable;
 
         # Use a blank black desktop background rather than an image of a
         # gradient and a NixOS logo.
@@ -47,6 +58,33 @@
 
     xkbOptions = "compose:caps";
   };
+
+  # [2020-06-19] Disable AccountsService to disable GDM's user list, since no
+  # other available means of enforcing my `hiddenUsers` setting seems to work.
+  services.accounts-daemon.enable =
+    (if config.services.xserver.displayManager.gdm.enable
+      then lib.mkForce
+      else lib.mkDefault)
+    false;
+
+  # [2020-06-19] Enforce the `hiddenUsers` setting on GDM.
+  #
+  # [2020-06-19] This doesn't seem to have any effect, so I'm disabling the
+  # AccountsService entirely instead.
+  environment.etc."gdm/custom.conf".text = lib.mkIf
+    (false && config.services.xserver.displayManager.gdm.enable)
+    (let
+      # [2020-06-19] According to GDM's manual, this default value of
+      # `[greeter]Exclude` must be copied because setting `[greeter]Exclude`
+      # overrides it.  I imagine there is a better way of copying it that
+      # would stay in sync with GDM if GDM changes the default value.
+      defaultExclude = "bin,root,daemon,adm,lp,sync,shutdown,halt,mail,news,uucp,operator,nobody,nobody4,noaccess,postgres,pvm,rpm,nfsnobody,pcap";
+    in ''
+      [greeter]
+      IncludeAll=false
+      Exclude=${defaultExclude},${lib.concatStringsSep ","
+          config.services.xserver.displayManager.hiddenUsers}
+    '');
 
   systemd.services.c74d-set-X11-VTs-to-RAW-mode = {
     after = ["display-manager.service"];
