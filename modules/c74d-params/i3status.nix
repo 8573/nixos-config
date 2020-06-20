@@ -60,6 +60,10 @@ in {
       CPU temperature
     '';
 
+    UID.enable = mk-modl-enbl-opt true ''
+      the current user account's ID number
+    '';
+
     Unicode-symbols.advanced.enable = mk-bool-opt true ''
       Whether to use advanced Unicode symbols such as U+1F50B BATTERY in the
       status bar.
@@ -96,14 +100,6 @@ in {
       description = ''
         A `strftime` format string to use as the output format for the status
         bar's clock(s).
-      '';
-    };
-
-    extraConfig = lib.mkOption {
-      type = lib.types.lines;
-      default = "";
-      description = ''
-        Extra text to append to the i3status configuration file.
       '';
     };
 
