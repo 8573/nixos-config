@@ -281,15 +281,33 @@ in {
 
     hardware.Ethernet.present = mkOption {
       type = types.bool;
+      default = params.hardware.Ethernet.ifaces != [];
       description = ''
-        Whether the system has Ethernet hardware.
+        Whether the system has Ethernet hardware (DEPRECATED -- use
+        `hardware.Ethernet.ifaces` instead)
+      '';
+    };
+
+    hardware.Ethernet.ifaces = mkOption {
+      type = types.listOf types.str;
+      description = ''
+        The filenames in `/sys/class/net/` of the system's Ethernet interfaces
       '';
     };
 
     hardware.Wi-Fi.present = mkOption {
       type = types.bool;
+      default = params.hardware.Wi-Fi.ifaces != [];
       description = ''
-        Whether the system has Wi-Fi hardware.
+        Whether the system has Wi-Fi hardware (DEPRECATED -- use
+        `hardware.Ethernet.ifaces` instead)
+      '';
+    };
+
+    hardware.Wi-Fi.ifaces = mkOption {
+      type = types.listOf types.str;
+      description = ''
+        The filenames in `/sys/class/net/` of the system's Wi-Fi interfaces
       '';
     };
 
