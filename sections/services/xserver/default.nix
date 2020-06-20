@@ -86,7 +86,9 @@
           config.services.xserver.displayManager.hiddenUsers}
     '');
 
-  systemd.services.c74d-set-X11-VTs-to-RAW-mode = {
+  systemd.services.c74d-set-X11-VTs-to-RAW-mode = lib.mkIf
+    config.services.xserver.displayManager.lightdm.enable
+  {
     after = ["display-manager.service"];
     partOf = ["display-manager.service"];
     wantedBy = ["display-manager.service"];
