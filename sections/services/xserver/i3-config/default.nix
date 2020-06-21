@@ -14,6 +14,22 @@
 
   i3status = import ./i3status-rust-wrapped.nix args;
   i3status-cfg-file = import ./i3status-rust-cfg.nix args;
+  i3status-cfg-dir = pkgs.linkFarm "i3status-cfg-dir" (map
+    (user:
+      let
+        uid-str = toString user.uid;
+        hash = builtins.hashString "sha256" uid-str;
+        color = lib.substring 0 6 hash;
+      in {
+        name = "${hash}.toml";
+        path = i3status-cfg-file color;
+      }
+    )
+    (lib.filter
+      (user: user.isNormalUser && user.uid > 0)
+      (lib.attrValues config.users.users)
+    )
+  );
 
   sh = "${pkgs.bash}/bin/sh";
   chromium = "${c74d-pkgs.wrapped.chromium}/bin/chromium";
@@ -102,7 +118,7 @@
       0,/^$/s/^$/\nset $mod ${mod-key}\n/;
       s/\<Mod1\>/$mod/g;
       s/\<\(monospace\) 8\>/\1 ${font-size}/g;
-      s|^\(\s*status_command \(/.*/\)\?\)i3status$|\1'${i3status}/bin/i3status-rs' '${i3status-cfg-file}'|;
+      s|^\(\s*status_command \(/.*/\)\?\)i3status$|\1'${i3status}/bin/i3status-rs' '${i3status-cfg-dir}'|;
       s/^exec i3-config-wizard\>/#&/;
       # Don't start anything on start-up by default.
       s/^exec\>/#&/;

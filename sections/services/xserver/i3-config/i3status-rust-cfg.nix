@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: let
+{ config, lib, pkgs, ... }: sep-color: let
 
   cfg = config.c74d-params.i3.status-bar;
 
@@ -112,4 +112,17 @@ in pkgs.writeText "i3status.toml" ''
   ${storage-block}
   ${clocks}
   ${user-block}
+
+  [theme]
+  name = "plain"
+
+  # The default theme has too little contrast for my taste.
+  [theme.overrides]
+  idle_fg = "#EEEEEE"
+  info_fg = "#FFFFFF"
+  good_fg = "#00FF00"
+  warning_fg = "#FFBB00"
+  critical_fg = "#FF0000"
+  separator_bg = "#${sep-color}"
+  separator_fg = "#${sep-color}"
 ''
