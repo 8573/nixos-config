@@ -4,8 +4,10 @@
     ./trivial.nix
     ./conversion.nix
     ./strings.nix
+    ./math.nix
     ./date-and-time.nix
     ./c74d-params.nix
+    ./color.nix
   ];
 
   libs =
