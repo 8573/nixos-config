@@ -43,6 +43,19 @@ in {
 
   boot.kernelPackages = pkgs.linuxPackages_hardened;
 
+  boot.kernelParams = lib.concatLists [
+    (lib.optionals config.c74d-params.ZFS.enable [
+      # [2020-06-23] Reading gchristensen's blog post
+      # <https://grahamc.com/blog/nixos-on-zfs> reminds me that, for the ~5
+      # years I've been using NixOS, I've been forgetting to override the
+      # Linux I/O scheduler so ZFS can handle I/O scheduling itself without
+      # Linux's competing with it.  Back on Gentoo, I would do this while
+      # configuring my kernel, but, using pre-built kernels on NixOS, I never
+      # thought of it.
+      "elevator=none"
+    ])
+  ];
+
   boot.loader = {
     efi = {
       canTouchEfiVariables = config.boot.loader.systemd-boot.enable;
