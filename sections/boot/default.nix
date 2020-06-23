@@ -52,7 +52,15 @@ in {
       # Linux's competing with it.  Back on Gentoo, I would do this while
       # configuring my kernel, but, using pre-built kernels on NixOS, I never
       # thought of it.
-      "elevator=none"
+      #
+      # [2020-06-23] A remark of gchristensen's in IRC after I mention the
+      # above ("good news c74d I keep meaning to just delete that line")
+      # prompts me to check whether overriding the Linux I/O scheduler has
+      # come no longer to be recommended for ZFS users, and indeed I find
+      # behlendorf saying that "These days [...] users should not need to
+      # change the scheduler":
+      # <https://github.com/openzfs/zfs/pull/9609#issuecomment-557325590>.
+      #"elevator=none"
     ])
   ];
 
