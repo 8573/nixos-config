@@ -2,6 +2,8 @@
 
   cfg = config.c74d-params.i3.status-bar;
 
+  coreutil = x: "${pkgs.coreutils-full}/bin/${x}";
+
   interval = 10;
 
   interval-squared = interval * interval;
@@ -97,7 +99,7 @@
   };
 
   user-block = block "UID" "custom" {
-    command = "'${pkgs.coreutils}/bin/id' -u";
+    command = "'${coreutil "id"}' -u";
     interval = interval-cubed;
   };
 

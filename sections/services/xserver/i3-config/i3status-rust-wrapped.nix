@@ -6,7 +6,7 @@
     lm_sensors
   ]);
 
-  coreutil = x: "${pkgs.coreutils}/bin/${x}";
+  coreutil = x: "${pkgs.coreutils-full}/bin/${x}";
 
   gawk = "${pkgs.gawk}/bin/gawk";
 
