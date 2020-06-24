@@ -14,6 +14,7 @@
     jq
     ldns
     lshw
+    lsof
     lsscsi
     openssl
     par2cmdline
