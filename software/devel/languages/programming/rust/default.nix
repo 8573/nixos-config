@@ -4,7 +4,7 @@ let
   } // cfg)).rust;
 
   Rust-4th-anniversary-version = Rust-at-version "1.34.2";
-  Rust-5th-anniversary-version = Rust-at-version "1.44.0";
+  Rust-5th-anniversary-version = Rust-at-version "1.44.1";
 in
 {
   id = "rust";
