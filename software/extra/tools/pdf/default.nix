@@ -4,5 +4,6 @@
   sw = p: with p; [
     #pdfdiff
     pdftk
+    poppler_utils
   ];
 }
