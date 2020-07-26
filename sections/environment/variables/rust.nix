@@ -4,6 +4,8 @@
     name = "c74d-Rust-env";
     paths = with pkgs; [
       cargo-audit
+      cargo-crev
+      cargo-deny
       cargo-fuzz
       cargo-geiger
       cargo-tree
