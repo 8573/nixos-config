@@ -6,7 +6,6 @@
       cargo-audit
       cargo-fuzz
       cargo-geiger
-      cargo-release
       cargo-tree
       clippy
       rls
