@@ -8,6 +8,7 @@
     ./date-and-time.nix
     ./c74d-params.nix
     ./color.nix
+    ./dns.nix
   ];
 
   libs =
