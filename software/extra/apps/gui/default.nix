@@ -7,6 +7,7 @@
   modules = [
     ./audio-video
     ./entertainment
+    ./fontforge.nix
     ./gis
     ./image
     ./maths
