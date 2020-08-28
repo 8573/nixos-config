@@ -11,5 +11,6 @@
   global = false;
   modules = [
     ./examples
+    ./general-use
   ];
 }
