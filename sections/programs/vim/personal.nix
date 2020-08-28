@@ -11,7 +11,7 @@ in lib.mkIf config.c74d-params.personal {
       "delimitMate"
       "editorconfig-vim"
       "fugitive"
-      "skim"
+      "skim-vim"
       "sleuth"
       "surround"
       "undotree"
