@@ -14,7 +14,7 @@
       # Enable this flag as a mitigation of the Spectre/Meltdown
       # vulnerabilities.
       "--site-per-process")
-    (lib.optional (major-version > 81 && major-version <= 84)
+    (lib.optional (major-version > 81)
       # Work around <https://github.com/NixOS/nixpkgs/issues/89512>, a.k.a.
       # <https://crbug.com/1087109>.
       "--force-device-scale-factor=1")
