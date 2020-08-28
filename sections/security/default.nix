@@ -15,7 +15,12 @@
     };
 
     chromiumSuidSandbox = {
-      enable = true;
+      enable = {
+        desktop = true;
+        laptop = true;
+        server = false;
+        VM = false;
+      }.${config.c74d-params.installation-type};
     };
 
     hideProcessInformation = true;
