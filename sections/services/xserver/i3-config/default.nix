@@ -26,7 +26,10 @@
       }
     )
     (lib.filter
-      (user: user.isNormalUser && user.uid > 0)
+      (user: user.isNormalUser && (
+        assert user.uid != null;
+        user.uid > 0
+      ))
       (lib.attrValues config.users.users)
     )
   );
