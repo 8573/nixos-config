@@ -41,7 +41,11 @@ in {
         "kvm-amd")
     ]);
 
-  boot.kernelPackages = pkgs.linuxPackages_hardened;
+  # Yes, the hardened profile sets this itself, but only as a default, and I
+  # want to know if something tries to override this.
+  boot.kernelPackages = lib.mkIf
+    config.c74d-params.hardened-profile
+    pkgs.linuxPackages_hardened;
 
   boot.kernelParams = lib.concatLists [
     (lib.optionals config.c74d-params.ZFS.enable [

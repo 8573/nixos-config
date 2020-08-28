@@ -74,6 +74,7 @@ in {
     ./software
     ./location.nix
     ./i3.nix
+    ./hardened-profile.nix
     ./services.nix
   ];
 
@@ -108,6 +109,12 @@ in {
 
     secure = mkOption {
       type = types.bool;
+    };
+
+    hardened-profile = mkEnableOption
+      "the NixOS hardened profile"
+    // {
+      default = true;
     };
 
     minimal = mkOption {
