@@ -8,7 +8,6 @@
       cargo-deny
       cargo-fuzz
       cargo-geiger
-      cargo-tree
       clippy
       rls
       rust-analyzer
