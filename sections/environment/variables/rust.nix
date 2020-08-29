@@ -6,14 +6,14 @@
       cargo-audit
       cargo-crev
       cargo-deny
-      cargo-fuzz
+      #cargo-fuzz
       cargo-geiger
       clippy
-      rls
+      #rls
       rust-analyzer
       rustfmt
       rustracer
-      rustracerd
+      #rustracerd
     ];
   };
 
