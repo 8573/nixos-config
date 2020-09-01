@@ -13,6 +13,9 @@
 in {
 
   networking.resolvconf = {
+    # [2020-09-01] NOTE: This may need to be overridden to get DNS access
+    # behind some routers or other such devices:
+    # <https://github.com/NixOS/nixpkgs/issues/24433>.
     dnsExtensionMechanism = true;
   };
 
