@@ -41,6 +41,11 @@
           background = #000000
         '';
       };
+
+      # [2020-09-01] If someday I decide to use a desktop background image,
+      # this, today's featured picture on English Wikipedia, respectable,
+      # public-domain, and not too bright in color, may work:
+      # <https://upload.wikimedia.org/wikipedia/commons/5/5c/Albert_Bierstadt_-_Among_the_Sierra_Nevada,_California_-_Google_Art_Project.jpg>.
     };
 
     libinput = lib.mkIf (lib.elem config.c74d-params.installation-type [
