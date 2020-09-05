@@ -3,6 +3,7 @@
   libs-srcs = [
     ./trivial.nix
     ./conversion.nix
+    ./lists.nix
     ./strings.nix
     ./math.nix
     ./date-and-time.nix
