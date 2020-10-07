@@ -5,5 +5,6 @@
     #pdfdiff
     pdftk
     poppler_utils
+    qpdf
   ];
 }
