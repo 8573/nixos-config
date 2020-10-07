@@ -6,7 +6,7 @@
   '';
   default = {config, parent, ...}:
     { desktop = true;
-      laptop = false;
+      laptop = true;
       server = false;
       VM = false; }
     .${config.c74d-params.installation-type}
