@@ -11,7 +11,7 @@
       VM = false; }
     .${config.c74d-params.installation-type}
     && parent.enable;
-  sw = p: with p; [
-    mupdf
+  modules = [
+    ./MuPDF.nix
   ];
 }
