@@ -13,5 +13,6 @@
     && parent.enable;
   modules = [
     ./MuPDF.nix
+    ./Okular.nix
   ];
 }
